@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TND DebtPro - Advanced Loan Recovery Cockpit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 6s ease-in-out infinite',
+              'spin-slow': 'spin 12s linear infinite',
+              'content-entrance': 'contentEntrance 0.6s ease-out forwards',
+            },
+            keyframes: {
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-15px)' },
+              },
+              contentEntrance: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              }
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        transition: background-color 0.4s ease, color 0.4s ease;
+        margin: 0;
+      }
+      .ant-layout { background: transparent !important; }
+      .grid-bg {
+        background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
+        background-size: 60px 60px;
+        mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+      }
+      .dark .grid-bg {
+        background-image: linear-gradient(to right, rgba(59, 130, 246, 0.04) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+      }
+      .gradient-text {
+        background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .bloom {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: rgba(59, 130, 246, 0.08);
+        filter: blur(150px);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: -1;
+      }
+      .dark .bloom {
+        background: rgba(59, 130, 246, 0.05);
+      }
+      /* Antd Custom Overrides */
+      .ant-btn-primary {
+        box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.25);
+        border: none !important;
+      }
+      .ant-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border: 1px solid rgba(0,0,0,0.06) !important;
+      }
+      .dark .ant-card {
+        background: rgba(15, 23, 42, 0.7) !important;
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+      }
+      body:not(.dark) .ant-card, .light .ant-card {
+        background: #ffffff !important;
+        box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.04), 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+      
+      /* Smooth transitions for sections */
+      section { transition: background-color 0.4s ease; }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@19.0.0",
+    "react/": "https://esm.sh/react@19.0.0/",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "antd": "https://esm.sh/antd@5.24.0?bundle&deps=react@19.0.0,react-dom@19.0.0",
+    "@ant-design/icons": "https://esm.sh/@ant-design/icons@5.6.1?bundle&deps=react@19.0.0",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0",
+    "recharts": "https://esm.sh/recharts@2.15.1?bundle&deps=react@19.0.0,react-dom@19.0.0"
+  }
+}
+</script>
+  </head>
+  <body class="antialiased">
+    <div id="root"></div>
+  </body>
+</html>
