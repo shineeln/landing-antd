@@ -26,7 +26,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
   const isDark = theme === 'dark';
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
+    const handleScroll = () => setScrolled(window.scrollY > 80);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -50,7 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
       icon: <ThunderboltOutlined className="text-blue-500" />
     },
     {
-      key: 'product-analytics', // Scrolls to the product section too
+      key: 'product-analytics',
       label: (
         <Space direction="vertical" size={0} className="p-2">
           <Text strong className={`uppercase text-[10px] tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.megaMenu.analytics.title}</Text>
@@ -72,14 +72,14 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
   ];
   
   return (
-    <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 px-6 ${scrolled ? 'pt-4' : 'pt-8'}`}>
-      <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-500 h-20 px-8 navbar-island ${scrolled ? 'shadow-[0_20px_40px_rgba(0,0,0,0.5)] scale-[0.98]' : ''} ${isDark ? 'navbar-island-dark' : 'navbar-island-light'}`}>
-        <div className="flex items-center gap-4 cursor-pointer group" onClick={() => scrollTo('home')}>
-          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-xl shadow-blue-600/30 group-hover:scale-110 transition-transform">D</div>
+    <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 ${scrolled ? 'pt-4' : 'pt-10'}`}>
+      <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-700 h-20 px-10 navbar-island ${scrolled ? 'shadow-[0_25px_60px_rgba(0,0,0,0.6)] scale-[0.98]' : 'scale-100'} ${isDark ? 'navbar-island-dark' : 'navbar-island-light'}`}>
+        <div className="flex items-center gap-5 cursor-pointer group" onClick={() => scrollTo('home')}>
+          <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-xl shadow-blue-600/30 group-hover:scale-110 transition-all duration-500">D</div>
           <span className={`text-xl font-black tracking-tighter uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
         </div>
         
-        <div className="hidden lg:flex items-center gap-6">
+        <div className="hidden lg:flex items-center gap-8">
           <Dropdown 
             menu={{ 
               items: productMenuItems,
@@ -91,7 +91,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
             placement="bottomCenter" 
             overlayClassName="debtpro-nav-dropdown"
           >
-            <Button type="text" className={`uppercase text-[10px] font-black tracking-[0.1em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}>
+            <Button type="text" className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}>
               {t.nav.product} <DownOutlined style={{ fontSize: 9 }} />
             </Button>
           </Dropdown>
@@ -100,16 +100,16 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
               key={key} 
               type="text" 
               onClick={() => scrollTo(key)}
-              className={`uppercase text-[10px] font-black tracking-[0.1em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
+              className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300 hover:text-white' : 'text-slate-500 hover:text-blue-600'}`}
             >
               {(t.nav as any)[key]}
             </Button>
           ))}
         </div>
 
-        <div className="flex items-center gap-4">
-          <div className="hidden md:flex items-center gap-2 mr-2">
-            <Tooltip title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}>
+        <div className="flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4">
+            <Tooltip title={isDark ? "Enable Light Interface" : "Enable Dark Interface"}>
               <Button 
                 type="text" 
                 shape="circle"
@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
 
           <Button 
             type="primary" 
-            className="h-12 px-8 uppercase text-[10px] font-black tracking-[0.1em]"
+            className="h-12 px-10 uppercase text-[11px] font-black tracking-[0.1em] shadow-xl"
             onClick={() => scrollTo('contact')}
           >
             {t.nav.demo}
@@ -137,27 +137,21 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
       </nav>
       <style>{`
         .navbar-island-dark {
-          background: rgba(8, 12, 24, 0.8) !important;
-          border-color: rgba(255, 255, 255, 0.08) !important;
+          background: rgba(8, 12, 24, 0.4) !important;
+          border: 1px solid rgba(255, 255, 255, 0.05) !important;
+          backdrop-filter: blur(24px);
         }
         .navbar-island-light {
-          background: rgba(255, 255, 255, 0.9) !important;
-          border-color: rgba(0, 0, 0, 0.05) !important;
-          box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+          background: rgba(255, 255, 255, 0.6) !important;
+          border: 1px solid rgba(0, 0, 0, 0.04) !important;
+          backdrop-filter: blur(24px);
         }
         .debtpro-nav-dropdown .ant-dropdown-menu {
           background: ${isDark ? '#0f172a' : '#ffffff'} !important;
           border: 1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)'} !important;
-          border-radius: 20px !important;
-          padding: 8px !important;
-          box-shadow: 0 20px 40px rgba(0,0,0,0.2) !important;
-        }
-        .debtpro-nav-dropdown .ant-dropdown-menu-item {
-          border-radius: 12px !important;
-          margin-bottom: 4px !important;
-        }
-        .debtpro-nav-dropdown .ant-dropdown-menu-item:hover {
-          background: ${isDark ? 'rgba(255,255,255,0.05)' : 'rgba(37,99,235,0.05)'} !important;
+          border-radius: 24px !important;
+          padding: 12px !important;
+          box-shadow: 0 30px 60px rgba(0,0,0,0.3) !important;
         }
       `}</style>
     </div>

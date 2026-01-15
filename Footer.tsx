@@ -52,70 +52,26 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
                       {t.finalCta.cta}
                       <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </button>
-                    
-                    <div className={`flex items-center gap-6 px-8 py-5 rounded-2xl border backdrop-blur-sm ${isDark ? 'border-white/5 bg-white/5' : 'border-slate-100 bg-slate-50'}`}>
-                      <div className="flex -space-x-3">
-                        {[1, 2, 3, 4].map(i => (
-                          <div key={i} className="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 text-white flex items-center justify-center text-[10px] font-black">B{i}</div>
-                        ))}
-                      </div>
-                      <div className="text-[10px] font-black uppercase tracking-[0.1em] leading-none">
-                        <span className="text-slate-500">ADOPTED_BY </span>
-                        <span className={`block mt-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>20+ CORE_NBFI</span>
-                      </div>
-                    </div>
                   </div>
                 </Reveal>
               </div>
 
-              {/* Right Visual Transformation Engine */}
+              {/* Right Decorative Background */}
               <div className={`relative p-14 md:p-24 flex items-center justify-center overflow-hidden ${isDark ? 'bg-slate-950/40' : 'bg-slate-50/40'}`}>
                 <div className="absolute inset-0 flex items-center justify-center opacity-10">
                    <div className="w-[180%] h-[180%] border-[1px] border-blue-500/20 rounded-full animate-spin-slow"></div>
                    <div className="absolute w-[120%] h-[120%] border-[1px] border-blue-500/20 rounded-full animate-reverse-spin-slow"></div>
                 </div>
 
-                <div className="relative z-10 w-full max-w-md">
-                  <div className="space-y-10">
-                    {/* Step 1: Input (Risk) */}
-                    <Reveal direction="right" delay={200}>
-                      <div className={`p-8 rounded-[2.5rem] border flex items-center justify-between group shadow-2xl ${isDark ? 'border-red-500/20 bg-slate-900 shadow-red-500/10' : 'border-red-100 bg-white shadow-red-100'}`}>
-                        <div className="flex items-center gap-6">
-                          <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
-                            <TrendingUp size={24} className="rotate-180" />
-                          </div>
-                          <div>
-                            <div className="text-[10px] font-black text-red-500 uppercase tracking-[0.1em] mb-1.5">HIGH_RISK_NPL</div>
-                            <div className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>420.0M MNT</div>
-                          </div>
-                        </div>
-                        <div className="text-[10px] font-black text-slate-600 uppercase tracking-[0.1em]">INGEST</div>
-                      </div>
-                    </Reveal>
-
-                    {/* Flow Spark Animation */}
-                    <div className="flex justify-center py-4">
-                       <div className="w-px h-16 relative bg-gradient-to-b from-red-500/50 via-blue-500 to-emerald-500/50">
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_20px_#2563eb] animate-bounce-slow"></div>
-                       </div>
-                    </div>
-
-                    {/* Step 2: Output (Revenue) */}
-                    <Reveal direction="right" delay={400}>
-                      <div className={`p-8 rounded-[2.5rem] border flex items-center justify-between shadow-2xl ${isDark ? 'border-emerald-500/20 bg-slate-900 shadow-emerald-500/10' : 'border-emerald-100 bg-white shadow-emerald-100'}`}>
-                        <div className="flex items-center gap-6">
-                          <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20 shadow-xl shadow-emerald-500/10">
-                            <DollarSign size={24} />
-                          </div>
-                          <div>
-                            <div className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.1em] mb-1.5">RECOVERED_LIQUIDITY</div>
-                            <div className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>385.2M MNT</div>
-                          </div>
-                        </div>
-                        <div className="text-xs font-black text-emerald-500 tracking-tighter">91.7%</div>
-                      </div>
-                    </Reveal>
-                  </div>
+                <div className="relative z-10 w-full max-w-md flex flex-col items-center">
+                   {/* Centered Decorative Icon */}
+                   <div className={`w-32 h-32 rounded-full border-2 border-dashed flex items-center justify-center animate-pulse-slow ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
+                      <TrendingUp size={48} className="text-blue-500 opacity-40" />
+                   </div>
+                   <div className="mt-8 text-center">
+                      <div className={`text-[10px] font-black uppercase tracking-[0.2em] mb-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>System Engine</div>
+                      <div className={`text-xs font-bold uppercase tracking-widest ${isDark ? 'text-blue-500' : 'text-blue-600'}`}>Optimal State</div>
+                   </div>
                 </div>
               </div>
             </div>
