@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Cpu, ArrowRight, TrendingUp, DollarSign, BarChart2, ShieldCheck, Zap } from 'lucide-react';
+import { Shield, Cpu, ArrowRight, ShieldCheck, Zap } from 'lucide-react';
 import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
 
@@ -20,63 +20,72 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
   
   return (
     <>
-      {/* High-Impact Final CTA Section */}
-      <section className={`py-40 px-6 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+      {/* High-Impact Final CTA Section - Refined for Cinematic Presence */}
+      <section className={`py-48 px-6 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto relative group">
-          <div className="absolute -top-60 -left-60 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] animate-pulse-slow"></div>
-          <div className="absolute -bottom-60 -right-60 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] animate-pulse-slow"></div>
+          {/* Dynamic Ambient Background Elements */}
+          <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-blue-600/15 rounded-full blur-[180px] animate-pulse-slow"></div>
+          <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[180px] animate-pulse-slow"></div>
 
           <div className={`relative rounded-[5rem] overflow-hidden border glass-card-pro shadow-[0_80px_160px_rgba(0,0,0,0.8)] ${isDark ? 'border-white/10' : 'border-slate-200 shadow-xl'}`}>
-            <div className="absolute inset-0 grid-bg opacity-10"></div>
+            <div className="absolute inset-0 grid-bg opacity-[0.15]"></div>
             
-            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2">
-              {/* Left Content */}
-              <div className={`p-14 md:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
-                <Reveal>
-                  <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-10 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-100 bg-blue-50'}`}>
-                    <Zap size={16} className="text-blue-500 fill-blue-500"/>
-                    <span className={`text-[10px] font-black uppercase tracking-[0.1em] ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>MAXIMIZE_RECOVERY_NOW</span>
-                  </div>
-                  <h2 className={`text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-[0.85] ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                    {lang === 'mn' ? <>Эрсдэлээ <br/><span className="text-blue-600">Орлого</span> болго.</> : <>Turn <span className="text-red-500">Risk</span> <br/>Into <span className="text-emerald-500">Revenue.</span></>}
-                  </h2>
-                  <p className={`text-xl md:text-2xl max-w-lg mb-16 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                    {t.finalCta.subtitle}
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-8">
-                    <button 
-                      onClick={() => scrollTo('contact')}
-                      className="group bg-blue-600 hover:bg-blue-500 text-white font-black py-6 px-12 rounded-2xl text-xs uppercase tracking-[0.1em] shadow-2xl shadow-blue-600/40 active:scale-95 transition-all flex items-center justify-center gap-4"
-                    >
-                      {t.finalCta.cta}
-                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-                    </button>
-                  </div>
-                </Reveal>
-              </div>
-
-              {/* Right Decorative Background */}
-              <div className={`relative p-14 md:p-24 flex items-center justify-center overflow-hidden ${isDark ? 'bg-slate-950/40' : 'bg-slate-50/40'}`}>
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                   <div className="w-[180%] h-[180%] border-[1px] border-blue-500/20 rounded-full animate-spin-slow"></div>
-                   <div className="absolute w-[120%] h-[120%] border-[1px] border-blue-500/20 rounded-full animate-reverse-spin-slow"></div>
+            {/* Full-width Impactful Content */}
+            <div className="relative z-10 px-8 py-24 md:py-32 flex flex-col items-center text-center">
+              <Reveal>
+                <div className={`inline-flex items-center gap-3 px-8 py-2.5 rounded-full border mb-12 ${isDark ? 'border-blue-500/20 bg-blue-500/10' : 'border-blue-100 bg-blue-50'}`}>
+                  <Zap size={18} className="text-blue-500 fill-blue-500"/>
+                  <span className={`text-[11px] font-black uppercase tracking-[0.3em] ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>MISSION_CRITICAL_READY</span>
                 </div>
-
-                <div className="relative z-10 w-full max-w-md flex flex-col items-center">
-                   {/* Centered Decorative Icon */}
-                   <div className={`w-32 h-32 rounded-full border-2 border-dashed flex items-center justify-center animate-pulse-slow ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
-                      <TrendingUp size={48} className="text-blue-500 opacity-40" />
+                
+                <h2 className={`text-6xl md:text-[8rem] font-black mb-12 tracking-tighter leading-[0.85] ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  {lang === 'mn' ? (
+                    <>Эрсдэлээ <br/><span className="gradient-text-impact">Орлого</span> болго.</>
+                  ) : (
+                    <>Turn <span className="text-red-500">Risk</span> Into <span className="gradient-text-impact">Revenue.</span></>
+                  )}
+                </h2>
+                
+                <p className={`text-xl md:text-2xl max-w-2xl mx-auto mb-16 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {t.finalCta.subtitle}
+                </p>
+                
+                <div className="flex flex-col sm:flex-row justify-center gap-8">
+                  <button 
+                    onClick={() => scrollTo('contact')}
+                    className="group h-24 px-16 bg-blue-600 hover:bg-blue-500 text-white font-black rounded-3xl text-sm uppercase tracking-[0.3em] shadow-[0_25px_60px_rgba(37,99,235,0.4)] hover:shadow-[0_35px_80px_rgba(37,99,235,0.5)] active:scale-95 transition-all duration-300 flex items-center justify-center gap-6"
+                  >
+                    {t.finalCta.cta}
+                    <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
+                  </button>
+                </div>
+                
+                {/* Micro Details */}
+                <div className="mt-16 flex justify-center gap-12 opacity-40">
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">ISO_27001</span>
                    </div>
-                   <div className="mt-8 text-center">
-                      <div className={`text-[10px] font-black uppercase tracking-[0.2em] mb-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>System Engine</div>
-                      <div className={`text-xs font-bold uppercase tracking-widest ${isDark ? 'text-blue-500' : 'text-blue-600'}`}>Optimal State</div>
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">CORE_SYNC_V4</span>
+                   </div>
+                   <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 rounded-full bg-blue-500"></div>
+                      <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">GDPR_COMPLIANT</span>
                    </div>
                 </div>
-              </div>
+              </Reveal>
             </div>
           </div>
         </div>
+        <style>{`
+          .gradient-text-impact {
+            background: linear-gradient(to right, #3b82f6, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        `}</style>
       </section>
       
       {/* Standard Obsidian Footer */}

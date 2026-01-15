@@ -52,11 +52,14 @@
       
       html {
         scroll-behavior: smooth;
+        scroll-snap-type: y proximity; /* Proximity is smoother for scroll-telling sections */
       }
 
       /* Scroll margin for fixed header */
       section, [id] {
-        scroll-margin-top: 100px;
+        scroll-margin-top: 0px;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
       }
 
       body {
@@ -176,6 +179,15 @@
       
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Fullscreen section utility */
+      .section-fullscreen {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 80px; /* Accounts for fixed navbar space if needed, though we center content */
+      }
     </style>
     <script type="importmap">
 {

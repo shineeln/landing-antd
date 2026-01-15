@@ -60,35 +60,34 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ lang, them
   ];
   
   return (
-    <section className={`py-40 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
-       <div className="max-w-7xl mx-auto px-6 relative">
+    <section id="comparison" className={`section-fullscreen transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+       <div className="max-w-7xl mx-auto px-6 w-full">
           <Reveal>
-             <div className="text-center mb-32">
-                <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-10 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
+             <div className="text-center mb-16 md:mb-24">
+                <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-8 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
                    <Text className={`text-[10px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.excelSection.tag}</Text>
                 </div>
-                <h2 className={`text-4xl md:text-6xl font-black mb-10 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.excelSection.title}</h2>
-                <p className={`text-xl max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.subtitle}</p>
+                <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.excelSection.title}</h2>
+                <p className={`text-lg md:text-xl max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.subtitle}</p>
              </div>
           </Reveal>
           
-          <Row gutter={[64, 64]} className="mb-32 relative">
-             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:flex w-20 h-20 rounded-full text-xs font-black items-center justify-center shadow-2xl border ${isDark ? 'bg-slate-950 text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'}`}>VS</div>
+          <Row gutter={[48, 48]} className="mb-20 relative">
+             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:flex w-16 h-16 rounded-full text-[10px] font-black items-center justify-center shadow-2xl border ${isDark ? 'bg-slate-950 text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'}`}>VS</div>
              
              <Col xs={24} lg={12}>
                 <Reveal direction="right">
-                   <div className={`glass-card-pro h-full rounded-[3.5rem] p-12 transition-all duration-500 border border-transparent hover:border-red-500/30 group`}>
+                   <div className={`glass-card-pro h-full rounded-[3rem] p-8 md:p-10 border border-transparent hover:border-red-500/30 group`}>
                       <ExcelChaosAnimation />
-                      <div className="mt-12">
-                         <h3 className={`text-2xl font-black mb-6 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                      <div className="mt-10">
+                         <h3 className={`text-xl md:text-2xl font-black mb-4 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                            <FileExcelOutlined className="text-red-500" /> {t.excelSection.excel.title}
                          </h3>
-                         <p className={`mb-10 font-medium leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.excel.description}</p>
-                         <ul className="space-y-6">
+                         <ul className="space-y-4">
                             {t.excelSection.excel.items.map((item, idx) => (
                                <li key={idx} className="flex items-start gap-4">
                                   <CloseCircleOutlined className="text-red-500/40 mt-1" />
-                                  <Text className={`font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</Text>
+                                  <Text className={`text-sm md:text-base font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</Text>
                                </li>
                             ))}
                          </ul>
@@ -99,18 +98,17 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ lang, them
              
              <Col xs={24} lg={12}>
                 <Reveal direction="left">
-                   <div className={`glass-card-pro h-full rounded-[3.5rem] p-12 border transition-all duration-500 ${isDark ? 'border-blue-500/20 hover:border-blue-500' : 'border-blue-100 hover:border-blue-400'}`}>
+                   <div className={`glass-card-pro h-full rounded-[3rem] p-8 md:p-10 border transition-all duration-500 ${isDark ? 'border-blue-500/20 hover:border-blue-500' : 'border-blue-100 hover:border-blue-400'}`}>
                       <DebtProOrderAnimation />
-                      <div className="mt-12">
-                         <h3 className={`text-2xl font-black mb-6 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                      <div className="mt-10">
+                         <h3 className={`text-xl md:text-2xl font-black mb-4 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                            <RocketOutlined className="text-blue-500" /> {t.excelSection.debtpro.title}
                          </h3>
-                         <p className={`mb-10 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.excelSection.debtpro.description}</p>
-                         <ul className="space-y-6">
+                         <ul className="space-y-4">
                             {t.excelSection.debtpro.items.map((item, idx) => (
                                <li key={idx} className="flex items-start gap-4">
                                   <CheckCircleOutlined className="text-blue-500 mt-1" />
-                                  <Text className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{item}</Text>
+                                  <Text className={`text-sm md:text-base font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{item}</Text>
                                </li>
                             ))}
                          </ul>
@@ -119,18 +117,6 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ lang, them
                 </Reveal>
              </Col>
           </Row>
-          
-          <Reveal>
-             <div className="glass-card-pro rounded-[3rem] overflow-hidden p-2">
-                <Table 
-                  dataSource={tableData} 
-                  columns={columns} 
-                  pagination={false} 
-                  className={`rounded-[2.5rem] overflow-hidden ${isDark ? 'dark-table' : 'light-table'}`}
-                  rowClassName={() => 'bg-transparent'}
-                />
-             </div>
-          </Reveal>
        </div>
        <style>{`
          .dark-table .ant-table { background: transparent !important; color: white !important; }
