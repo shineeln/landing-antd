@@ -41,7 +41,7 @@ export const Reveal: React.FC<{
 };
 
 export const GlowOrb: React.FC<{ color?: string; className?: string }> = ({ color = "bg-blue-600", className = "" }) => (
-  <div className={`floating-orb ${color} ${className}`} style={{ width: '400px', height: '400px' }} />
+  <div className={`floating-orb ${color} ${className} dark:opacity-[0.25] opacity-[0.08]`} style={{ width: '400px', height: '400px', filter: 'blur(160px)' }} />
 );
 
 export const NumberTicker: React.FC<{ value: number; prefix?: string; suffix?: string; duration?: number }> = ({ value, prefix = "", suffix = "", duration = 2000 }) => {
@@ -67,13 +67,13 @@ export const NumberTicker: React.FC<{ value: number; prefix?: string; suffix?: s
 
 export const ExcelChaosAnimation: React.FC = () => {
   return (
-    <div className="h-64 w-full relative overflow-hidden bg-red-950/20 rounded-[2rem] flex items-center justify-center border border-red-500/10">
+    <div className="h-64 w-full relative overflow-hidden bg-red-950/20 dark:bg-red-950/20 rounded-[2rem] flex items-center justify-center border border-red-500/10">
       <div className="absolute inset-0 grid-bg opacity-5"></div>
       <div className="flex flex-wrap gap-3 p-8 justify-center max-w-sm">
         {[...Array(12)].map((_, i) => (
           <div 
             key={i} 
-            className="h-12 w-24 bg-slate-900/80 border border-red-500/20 rounded-xl shadow-lg animate-pulse"
+            className="h-12 w-24 bg-white dark:bg-slate-900/80 border border-red-500/20 rounded-xl shadow-lg animate-pulse"
             style={{ 
               animationDelay: `${i * 150}ms`, 
               transform: `rotate(${Math.sin(i) * 15}deg)` 
@@ -100,10 +100,10 @@ export const DebtProOrderAnimation: React.FC = () => {
         {[...Array(4)].map((_, i) => (
           <div 
             key={i} 
-            className="h-10 w-full bg-slate-900 border border-blue-500/30 rounded-2xl shadow-2xl flex items-center px-6 gap-5 overflow-hidden transition-all duration-700 hover:translate-x-4 hover:border-blue-400 group"
+            className="h-10 w-full bg-white dark:bg-slate-900 border border-blue-500/30 rounded-2xl shadow-xl dark:shadow-2xl flex items-center px-6 gap-5 overflow-hidden transition-all duration-700 hover:translate-x-4 hover:border-blue-400 group"
           >
             <div className="w-3 h-3 rounded-full bg-blue-500 shadow-[0_0_12px_rgba(59,130,246,0.8)] group-hover:scale-125 transition-transform"></div>
-            <div className="h-2 flex-1 bg-blue-500/20 rounded-full">
+            <div className="h-2 flex-1 bg-blue-500/10 dark:bg-blue-500/20 rounded-full">
               <div className="h-full bg-blue-500 w-1/2 animate-shimmer"></div>
             </div>
             <div className="w-16 h-2 bg-emerald-500/40 rounded-full"></div>
@@ -111,7 +111,7 @@ export const DebtProOrderAnimation: React.FC = () => {
         ))}
       </div>
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <div className="bg-blue-600/20 backdrop-blur-xl border border-blue-500/40 text-blue-400 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+        <div className="bg-blue-600/10 dark:bg-blue-600/20 backdrop-blur-xl border border-blue-500/40 text-blue-500 dark:text-blue-400 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] shadow-[0_20px_40px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
           Real-time Engine
         </div>
       </div>

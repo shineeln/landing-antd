@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useRef } from 'react';
 import { Typography, Input, Avatar, Badge, Space } from 'antd';
 import { 
   ArrowRightOutlined, 
@@ -35,27 +35,34 @@ export const Hero: React.FC<HeroProps> = ({ lang, theme }) => {
   const t = i18n[lang];
   const [activeKey, setActiveKey] = useState('dashboard');
   const [scrollY, setScrollY] = useState(0);
+  const containerRef = useRef<HTMLElement>(null);
   const isDark = theme === 'dark';
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      setScrollY(window.scrollY);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrollY(window.scrollY);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollProgress = useMemo(() => Math.min(scrollY / 800, 1), [scrollY]);
   
   const titleScale = 1 - (scrollProgress * 0.45);
-  const titleOpacity = 1 - (scrollProgress * 1.8);
-  const titleTranslateY = scrollProgress * -150;
+  const titleOpacity = 1 - (scrollProgress * 2.2);
+  const titleTranslateY = scrollProgress * -120;
 
-  const mockupScale = 0.82 + (scrollProgress * 0.18);
-  const mockupTranslateY = (1 - scrollProgress) * 250;
-  const mockupOpacity = 0.3 + (scrollProgress * 0.7);
-  const mockupBlur = (1 - scrollProgress) * 12;
+  const mockupScale = 0.85 + (scrollProgress * 0.15);
+  const mockupTranslateY = (1 - scrollProgress) * 180;
+  const mockupOpacity = 0.4 + (scrollProgress * 0.6);
+  const mockupBlur = (1 - scrollProgress) * 10;
 
   const menuItems = [
     { key: 'dashboard', icon: <DashboardOutlined />, label: t.hero.carousel.dashboard, component: <PreviewCommandCenter lang={lang} theme={theme}/> },
@@ -68,7 +75,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, theme }) => {
   const currentView = menuItems.find(m => m.key === activeKey);
 
   return (
-    <header className="relative min-h-[175vh] flex flex-col items-center">
+    <header ref={containerRef} className="relative min-h-[160vh] flex flex-col items-center">
       <div className="fixed inset-0 grid-bg-complex -z-10 pointer-events-none"></div>
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
         <GlowOrb color="bg-blue-600" className="top-[-10%] left-[-10%] w-[900px] h-[900px] opacity-[0.06] blur-[220px]" />
@@ -82,11 +89,11 @@ export const Hero: React.FC<HeroProps> = ({ lang, theme }) => {
       </div>
 
       <div 
-        className="w-full h-screen flex flex-col items-center justify-center sticky top-0 z-20 pointer-events-none px-6 pb-24"
+        className="w-full h-screen flex flex-col items-center justify-center sticky top-0 z-20 pointer-events-none px-6 pb-24 will-change-transform"
         style={{ 
           transform: `scale(${titleScale}) translateY(${titleTranslateY}px)`,
           opacity: Math.max(0, titleOpacity),
-          visibility: titleOpacity <= 0 ? 'hidden' : 'visible'
+          visibility: titleOpacity <= -0.1 ? 'hidden' : 'visible'
         }}
       >
         <div className="flex flex-col items-center max-w-7xl pointer-events-auto">
@@ -126,7 +133,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, theme }) => {
       </div>
 
       <div 
-        className="w-full max-w-[92vw] 2xl:max-w-7xl mx-auto px-6 mt-[65vh] pb-64 relative z-10 transition-all duration-300 ease-out will-change-transform"
+        className="w-full max-w-[94vw] 2xl:max-w-[1400px] mx-auto px-6 mt-[60vh] pb-48 relative z-10 transition-all duration-200 ease-out will-change-transform"
         style={{ 
           transform: `scale(${mockupScale}) translateY(${mockupTranslateY}px)`,
           opacity: Math.max(0, mockupOpacity),
@@ -226,7 +233,7 @@ export const Hero: React.FC<HeroProps> = ({ lang, theme }) => {
       >
         <div 
           className="flex flex-col items-center gap-4 cursor-pointer pointer-events-auto group"
-          onClick={() => window.scrollTo({ top: 800, behavior: 'smooth' })}
+          onClick={() => window.scrollTo({ top: window.innerHeight * 0.8, behavior: 'smooth' })}
         >
           <span className={`text-[9px] font-black uppercase tracking-[0.6em] transition-colors ${isDark ? 'text-slate-600 group-hover:text-blue-400' : 'text-slate-400 group-hover:text-blue-600'}`}>
             ENTER_ECOSYSTEM

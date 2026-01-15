@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
   
   return (
     <div className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-700 px-6 ${scrolled ? 'pt-4' : 'pt-10'}`}>
-      <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-700 h-20 px-10 navbar-island ${scrolled ? 'shadow-[0_25px_60px_rgba(0,0,0,0.6)] scale-[0.98]' : 'scale-100'} ${isDark ? 'navbar-island-dark' : 'navbar-island-light'}`}>
+      <nav className={`max-w-7xl mx-auto flex justify-between items-center transition-all duration-700 h-20 px-10 navbar-island ${scrolled ? 'shadow-[0_25px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_25px_60px_rgba(0,0,0,0.6)] scale-[0.98]' : 'scale-100'} ${isDark ? 'navbar-island-dark' : 'navbar-island-light'}`}>
         <div className="flex items-center gap-5 cursor-pointer group" onClick={() => scrollTo('home')}>
           <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-xl shadow-blue-600/30 group-hover:scale-110 transition-all duration-500">D</div>
           <span className={`text-xl font-black tracking-tighter uppercase ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
@@ -142,16 +142,16 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
           backdrop-filter: blur(24px);
         }
         .navbar-island-light {
-          background: rgba(255, 255, 255, 0.6) !important;
-          border: 1px solid rgba(0, 0, 0, 0.04) !important;
+          background: rgba(255, 255, 255, 0.75) !important;
+          border: 1px solid rgba(37, 99, 235, 0.1) !important;
           backdrop-filter: blur(24px);
         }
         .debtpro-nav-dropdown .ant-dropdown-menu {
           background: ${isDark ? '#0f172a' : '#ffffff'} !important;
-          border: 1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.05)'} !important;
+          border: 1px solid ${isDark ? 'rgba(255,255,255,0.08)' : 'rgba(37, 99, 235, 0.1)'} !important;
           border-radius: 24px !important;
           padding: 12px !important;
-          box-shadow: 0 30px 60px rgba(0,0,0,0.3) !important;
+          box-shadow: 0 30px 60px rgba(0,0,0,${isDark ? '0.3' : '0.1'}) !important;
         }
       `}</style>
     </div>

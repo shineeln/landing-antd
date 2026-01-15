@@ -16,6 +16,9 @@ import { i18n, Language } from './i18n';
 
 const { Text } = Typography;
 
+// Fix for JSX element type 'Card' does not have any construct or call signatures
+const AntdCard = Card as any;
+
 interface Message {
   role: 'user' | 'model';
   text: string;
@@ -52,6 +55,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
     setIsLoading(true);
 
     try {
+      // Initialize GoogleGenAI using the apiKey named parameter from process.env.API_KEY
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
       const systemInstruction = `You are the TND DebtPro AI Assistant. Use the following context about the system to answer user queries professionally.
       
@@ -67,6 +71,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
       - Timeline: CRM V2 launch June 2025; DebtPro TND V1 launch Nov 2025.
       - Language: Respond in the language the user is speaking (${lang}). Be concise and helpful.`;
 
+      // Call generateContent with the model name and contents including history
       const response = await ai.models.generateContent({
         model: 'gemini-3-pro-preview',
         contents: messages.concat({ role: 'user', text: userMessage }).map(m => ({
@@ -79,6 +84,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
         }
       });
 
+      // Extract generated text directly using the .text property
       const modelText = response.text || (lang === 'mn' ? "Уучлаарай, хариулахад алдаа гарлаа." : "Sorry, I couldn't process that.");
       setMessages(prev => [...prev, { role: 'model', text: modelText }]);
     } catch (error) {
@@ -111,7 +117,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
       className={`fixed bottom-8 right-8 z-[1000] flex flex-col transition-all duration-300 transform origin-bottom-right
         ${isMinimized ? 'h-16 w-64' : 'h-[500px] w-[350px] md:w-[400px]'}`}
     >
-      <Card 
+      <AntdCard 
         className={`h-full flex flex-col overflow-hidden shadow-2xl border ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}
         styles={{ body: { padding: 0, height: '100%', display: 'flex', flexDirection: 'column' } }}
       >
@@ -211,7 +217,7 @@ export const ChatBot: React.FC<ChatBotProps> = ({ lang, theme }) => {
             </div>
           </>
         )}
-      </Card>
+      </AntdCard>
     </div>
   );
 };

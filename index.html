@@ -47,25 +47,19 @@
       :root {
         --primary: #2563eb;
         --base-dark: #020617;
-        --base-light: #ffffff;
+        --base-light: #f8fafc;
       }
       
       html {
         scroll-behavior: smooth;
-        scroll-snap-type: y proximity; /* Proximity is smoother for scroll-telling sections */
-      }
-
-      /* Scroll margin for fixed header */
-      section, [id] {
-        scroll-margin-top: 0px;
-        scroll-snap-align: start;
-        scroll-snap-stop: always;
       }
 
       body {
         transition: background-color 0.5s ease, color 0.5s ease;
         margin: 0;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       body.dark {
@@ -98,7 +92,8 @@
 
       .glass-card-pro {
         backdrop-filter: blur(40px) !important;
-        transition: all 0.3s ease;
+        transition: transform 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
+        will-change: transform, opacity;
       }
 
       .dark .glass-card-pro {
@@ -108,15 +103,19 @@
       }
 
       .light .glass-card-pro {
-        background: rgba(255, 255, 255, 0.7) !important;
-        border: 1px solid rgba(0, 0, 0, 0.05) !important;
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important;
+        background: rgba(255, 255, 255, 0.85) !important;
+        border: 1px solid rgba(37, 99, 235, 0.12) !important;
+        box-shadow: 
+          0 10px 15px -3px rgba(0, 0, 0, 0.02),
+          0 4px 6px -4px rgba(0, 0, 0, 0.02),
+          0 30px 60px -12px rgba(37, 99, 235, 0.08) !important;
       }
 
       .navbar-island {
         border-radius: 24px;
         border: 1px solid transparent;
         backdrop-filter: blur(20px);
+        will-change: transform, scale;
       }
 
       .stage-glow {
@@ -136,8 +135,8 @@
 
       .light .grid-bg-complex {
         background-image: 
-          linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+          linear-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
       }
 
       .ant-btn-primary {
@@ -166,6 +165,7 @@
         border-radius: 50%;
         z-index: -1;
         opacity: 0.25;
+        will-change: transform;
       }
 
       .dark .ant-segmented {
@@ -180,13 +180,12 @@
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-      /* Fullscreen section utility */
       .section-fullscreen {
         min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding-top: 80px; /* Accounts for fixed navbar space if needed, though we center content */
+        padding: 100px 0;
       }
     </style>
     <script type="importmap">
