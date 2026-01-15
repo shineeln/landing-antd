@@ -8,30 +8,35 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
       tailwind.config = {
         darkMode: 'class',
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Inter', 'sans-serif'],
+              sans: ['Inter', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
               mono: ['JetBrains Mono', 'monospace'],
             },
             animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
-              'spin-slow': 'spin 12s linear infinite',
-              'content-entrance': 'contentEntrance 0.6s ease-out forwards',
+              'pulse-slow': 'pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'float': 'float 8s ease-in-out infinite',
+              'shimmer': 'shimmer 8s linear infinite',
+              'beam': 'beam 5s linear infinite',
+              'marquee': 'marquee 40s linear infinite',
             },
             keyframes: {
               float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-15px)' },
+                '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+                '50%': { transform: 'translateY(-20px) rotate(0.5deg)' },
               },
-              contentEntrance: {
-                '0%': { opacity: '0', transform: 'translateY(20px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% 0' },
+                '100%': { backgroundPosition: '200% 0' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0%)' },
+                '100%': { transform: 'translateX(-50%)' },
               }
             }
           },
@@ -39,62 +44,138 @@
       }
     </script>
     <style>
+      :root {
+        --primary: #2563eb;
+        --base-dark: #020617;
+        --base-light: #ffffff;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Scroll margin for fixed header */
+      section, [id] {
+        scroll-margin-top: 100px;
+      }
+
       body {
-        transition: background-color 0.4s ease, color 0.4s ease;
+        transition: background-color 0.5s ease, color 0.5s ease;
         margin: 0;
+        overflow-x: hidden;
       }
-      .ant-layout { background: transparent !important; }
-      .grid-bg {
-        background-image: linear-gradient(to right, rgba(59, 130, 246, 0.05) 1px, transparent 1px),
-                          linear-gradient(to bottom, rgba(59, 130, 246, 0.05) 1px, transparent 1px);
-        background-size: 60px 60px;
-        mask-image: radial-gradient(ellipse at center, black, transparent 90%);
+
+      body.dark {
+        background-color: var(--base-dark);
+        color: #fff;
       }
-      .dark .grid-bg {
-        background-image: linear-gradient(to right, rgba(59, 130, 246, 0.04) 1px, transparent 1px),
-                          linear-gradient(to bottom, rgba(59, 130, 246, 0.04) 1px, transparent 1px);
+
+      body.light {
+        background-color: var(--base-light);
+        color: #0f172a;
       }
-      .gradient-text {
-        background: linear-gradient(135deg, #2563eb 0%, #7c3aed 50%, #db2777 100%);
+
+      .font-sans {
+        letter-spacing: -0.01em;
+        line-height: 1.6;
+      }
+
+      .gradient-text-hero {
+        background: linear-gradient(to bottom right, #ffffff 30%, #3b82f6 70%, #60a5fa 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% 200%;
+      }
+      
+      .light .gradient-text-hero {
+        background: linear-gradient(to bottom right, #0f172a 30%, #2563eb 70%, #3b82f6 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .bloom {
+
+      .glass-card-pro {
+        backdrop-filter: blur(40px) !important;
+        transition: all 0.3s ease;
+      }
+
+      .dark .glass-card-pro {
+        background: rgba(255, 255, 255, 0.02) !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7) !important;
+      }
+
+      .light .glass-card-pro {
+        background: rgba(255, 255, 255, 0.7) !important;
+        border: 1px solid rgba(0, 0, 0, 0.05) !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .navbar-island {
+        border-radius: 24px;
+        border: 1px solid transparent;
+        backdrop-filter: blur(20px);
+      }
+
+      .stage-glow {
+        background: radial-gradient(50% 50% at 50% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 100%);
+      }
+
+      .grid-bg-complex {
+        background-size: 80px 80px;
+        mask-image: radial-gradient(ellipse at center, black 10%, transparent 80%);
+      }
+
+      .dark .grid-bg-complex {
+        background-image: 
+          linear-gradient(rgba(37, 99, 235, 0.07) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.07) 1px, transparent 1px);
+      }
+
+      .light .grid-bg-complex {
+        background-image: 
+          linear-gradient(rgba(37, 99, 235, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(37, 99, 235, 0.03) 1px, transparent 1px);
+      }
+
+      .ant-btn-primary {
+        background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 10px 25px -5px rgba(37, 99, 235, 0.4) !important;
+        height: 52px !important;
+        padding: 0 32px !important;
+        border-radius: 14px !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.1em !important;
+        font-size: 11px !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      
+      .ant-btn-primary:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.5) !important;
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
+      }
+
+      .floating-orb {
         position: absolute;
-        width: 800px;
-        height: 800px;
-        background: rgba(59, 130, 246, 0.08);
         filter: blur(150px);
         border-radius: 50%;
-        pointer-events: none;
         z-index: -1;
+        opacity: 0.25;
       }
-      .dark .bloom {
-        background: rgba(59, 130, 246, 0.05);
+
+      .dark .ant-segmented {
+        background: rgba(255, 255, 255, 0.05) !important;
       }
-      /* Antd Custom Overrides */
-      .ant-btn-primary {
-        box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.25);
-        border: none !important;
+      .dark .ant-segmented-item-selected {
+        background: #2563eb !important;
+        color: white !important;
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
       }
-      .ant-card {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(0,0,0,0.06) !important;
-      }
-      .dark .ant-card {
-        background: rgba(15, 23, 42, 0.7) !important;
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-      }
-      body:not(.dark) .ant-card, .light .ant-card {
-        background: #ffffff !important;
-        box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.04), 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-      }
+      
       .no-scrollbar::-webkit-scrollbar { display: none; }
       .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-      
-      /* Smooth transitions for sections */
-      section { transition: background-color 0.4s ease; }
     </style>
     <script type="importmap">
 {
@@ -102,17 +183,18 @@
     "react": "https://esm.sh/react@19.0.0",
     "react/": "https://esm.sh/react@19.0.0/",
     "react-dom": "https://esm.sh/react-dom@19.0.0",
-    "react-dom/": "https://esm.sh/react-dom@19.0.0/",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
     "antd": "https://esm.sh/antd@5.24.0?bundle&deps=react@19.0.0,react-dom@19.0.0",
     "@ant-design/icons": "https://esm.sh/@ant-design/icons@5.6.1?bundle&deps=react@19.0.0",
     "lucide-react": "https://esm.sh/lucide-react@0.475.0",
     "recharts": "https://esm.sh/recharts@2.15.1?bundle&deps=react@19.0.0,react-dom@19.0.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.36.0"
+    "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
 </script>
   </head>
-  <body class="antialiased">
+  <body class="antialiased font-sans dark">
     <div id="root"></div>
   </body>
 </html>

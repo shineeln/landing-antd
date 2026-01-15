@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Shield, Cpu, ExternalLink, ArrowRight, TrendingUp, DollarSign, BarChart2, ShieldCheck, Zap } from 'lucide-react';
+import { Shield, Cpu, ArrowRight, TrendingUp, DollarSign, BarChart2, ShieldCheck, Zap } from 'lucide-react';
 import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
 
@@ -21,47 +21,47 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
   return (
     <>
       {/* High-Impact Final CTA Section */}
-      <section className={`py-24 px-6 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+      <section className={`py-40 px-6 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto relative group">
-          {/* Animated Background Glows */}
-          <div className="absolute -top-40 -left-40 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] animate-pulse-slow"></div>
-          <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] animate-pulse-slow"></div>
+          <div className="absolute -top-60 -left-60 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-[150px] animate-pulse-slow"></div>
+          <div className="absolute -bottom-60 -right-60 w-[500px] h-[500px] bg-emerald-500/10 rounded-full blur-[150px] animate-pulse-slow"></div>
 
-          <div className={`relative rounded-[3.5rem] md:rounded-[5rem] overflow-hidden border transition-colors duration-500 ${isDark ? 'bg-slate-900/40 border-slate-800' : 'bg-slate-50 border-slate-200'}`}>
+          <div className={`relative rounded-[5rem] overflow-hidden border glass-card-pro shadow-[0_80px_160px_rgba(0,0,0,0.8)] ${isDark ? 'border-white/10' : 'border-slate-200 shadow-xl'}`}>
             <div className="absolute inset-0 grid-bg opacity-10"></div>
             
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2">
               {/* Left Content */}
-              <div className={`p-10 md:p-20 flex flex-col justify-center border-b lg:border-b-0 lg:border-r ${isDark ? 'border-slate-800/50' : 'border-slate-200'}`}>
+              <div className={`p-14 md:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
                 <Reveal>
-                  <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-[10px] font-black uppercase tracking-widest mb-8 ${isDark ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
-                    <Zap size={14} className={isDark ? "fill-blue-400" : "fill-blue-600"}/> {lang === 'mn' ? 'ХӨРӨНГӨ ӨСГӨХ ЦАГ' : 'MAXIMIZE RECOVERY'}
+                  <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-10 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-100 bg-blue-50'}`}>
+                    <Zap size={16} className="text-blue-500 fill-blue-500"/>
+                    <span className={`text-[10px] font-black uppercase tracking-[0.1em] ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>MAXIMIZE_RECOVERY_NOW</span>
                   </div>
-                  <h2 className={`text-4xl md:text-6xl lg:text-7xl font-black mb-8 tracking-tighter leading-[0.95] ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                  <h2 className={`text-5xl md:text-8xl font-black mb-12 tracking-tighter leading-[0.85] ${isDark ? 'text-white' : 'text-slate-900'}`}>
                     {lang === 'mn' ? <>Эрсдэлээ <br/><span className="text-blue-600">Орлого</span> болго.</> : <>Turn <span className="text-red-500">Risk</span> <br/>Into <span className="text-emerald-500">Revenue.</span></>}
                   </h2>
-                  <p className={`text-lg md:text-xl max-w-lg mb-12 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  <p className={`text-xl md:text-2xl max-w-lg mb-16 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
                     {t.finalCta.subtitle}
                   </p>
                   
-                  <div className="flex flex-col sm:flex-row gap-6">
+                  <div className="flex flex-col sm:flex-row gap-8">
                     <button 
                       onClick={() => scrollTo('contact')}
-                      className="group bg-blue-600 hover:bg-blue-500 text-white font-black py-5 px-10 rounded-2xl text-xs uppercase tracking-widest shadow-2xl shadow-blue-600/30 active:scale-95 transition-all flex items-center justify-center gap-3"
+                      className="group bg-blue-600 hover:bg-blue-500 text-white font-black py-6 px-12 rounded-2xl text-xs uppercase tracking-[0.1em] shadow-2xl shadow-blue-600/40 active:scale-95 transition-all flex items-center justify-center gap-4"
                     >
                       {t.finalCta.cta}
-                      <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                     </button>
                     
-                    <div className={`flex items-center gap-4 px-6 py-4 rounded-2xl border backdrop-blur-sm ${isDark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-200 shadow-sm'}`}>
-                      <div className="flex -space-x-2">
-                        {[1, 2, 3].map(i => (
-                          <div key={i} className={`w-8 h-8 rounded-full border-2 flex items-center justify-center text-[10px] font-black ${isDark ? 'border-slate-900 bg-slate-800 text-white' : 'border-white bg-slate-100 text-slate-600'}`}>B{i}</div>
+                    <div className={`flex items-center gap-6 px-8 py-5 rounded-2xl border backdrop-blur-sm ${isDark ? 'border-white/5 bg-white/5' : 'border-slate-100 bg-slate-50'}`}>
+                      <div className="flex -space-x-3">
+                        {[1, 2, 3, 4].map(i => (
+                          <div key={i} className="w-10 h-10 rounded-full border-2 border-slate-900 bg-slate-800 text-white flex items-center justify-center text-[10px] font-black">B{i}</div>
                         ))}
                       </div>
-                      <div className="text-[10px] font-black uppercase tracking-widest leading-none">
-                        <span className={isDark ? 'text-slate-400' : 'text-slate-500'}>Used by </span>
-                        <span className={isDark ? 'text-white' : 'text-slate-900'}>20+ Institutions</span>
+                      <div className="text-[10px] font-black uppercase tracking-[0.1em] leading-none">
+                        <span className="text-slate-500">ADOPTED_BY </span>
+                        <span className={`block mt-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>20+ CORE_NBFI</span>
                       </div>
                     </div>
                   </div>
@@ -69,68 +69,52 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
               </div>
 
               {/* Right Visual Transformation Engine */}
-              <div className={`relative p-10 md:p-20 flex items-center justify-center overflow-hidden transition-colors ${isDark ? 'bg-slate-950/50' : 'bg-white/50'}`}>
-                <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                   <div className={`w-[150%] h-[150%] border-[1px] rounded-full animate-spin-slow ${isDark ? 'border-slate-800' : 'border-slate-100'}`}></div>
-                   <div className={`absolute w-[100%] h-[100%] border-[1px] rounded-full animate-reverse-spin-slow ${isDark ? 'border-slate-800' : 'border-slate-100'}`}></div>
+              <div className={`relative p-14 md:p-24 flex items-center justify-center overflow-hidden ${isDark ? 'bg-slate-950/40' : 'bg-slate-50/40'}`}>
+                <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                   <div className="w-[180%] h-[180%] border-[1px] border-blue-500/20 rounded-full animate-spin-slow"></div>
+                   <div className="absolute w-[120%] h-[120%] border-[1px] border-blue-500/20 rounded-full animate-reverse-spin-slow"></div>
                 </div>
 
-                <div className="relative z-10 w-full max-w-sm">
-                  <div className="space-y-6">
+                <div className="relative z-10 w-full max-w-md">
+                  <div className="space-y-10">
                     {/* Step 1: Input (Risk) */}
                     <Reveal direction="right" delay={200}>
-                      <div className={`p-5 rounded-2xl border flex items-center justify-between group-hover:-translate-y-1 transition-all ${isDark ? 'bg-slate-900 border-red-500/20' : 'bg-white border-slate-200 shadow-lg shadow-red-500/5'}`}>
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-red-500/10 flex items-center justify-center text-red-500">
-                            <TrendingUp size={20} className="rotate-180" />
+                      <div className={`p-8 rounded-[2.5rem] border flex items-center justify-between group shadow-2xl ${isDark ? 'border-red-500/20 bg-slate-900 shadow-red-500/10' : 'border-red-100 bg-white shadow-red-100'}`}>
+                        <div className="flex items-center gap-6">
+                          <div className="w-14 h-14 rounded-2xl bg-red-500/10 flex items-center justify-center text-red-500 border border-red-500/20">
+                            <TrendingUp size={24} className="rotate-180" />
                           </div>
                           <div>
-                            <div className="text-[10px] font-black text-red-500 uppercase tracking-widest">High Risk NPL</div>
-                            <div className={`text-lg font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>420M MNT</div>
+                            <div className="text-[10px] font-black text-red-500 uppercase tracking-[0.1em] mb-1.5">HIGH_RISK_NPL</div>
+                            <div className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>420.0M MNT</div>
                           </div>
                         </div>
-                        <div className={`h-6 w-px ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}></div>
-                        <div className="text-[10px] font-bold text-slate-400 uppercase">Input</div>
+                        <div className="text-[10px] font-black text-slate-600 uppercase tracking-[0.1em]">INGEST</div>
                       </div>
                     </Reveal>
 
-                    {/* Engine Link */}
-                    <div className="flex justify-center py-2">
-                       <div className={`w-px h-10 relative ${isDark ? 'bg-gradient-to-b from-red-500/50 to-emerald-500/50' : 'bg-slate-200'}`}>
-                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-blue-600 shadow-[0_0_10px_#2563eb] animate-bounce-slow"></div>
+                    {/* Flow Spark Animation */}
+                    <div className="flex justify-center py-4">
+                       <div className="w-px h-16 relative bg-gradient-to-b from-red-500/50 via-blue-500 to-emerald-500/50">
+                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-blue-600 shadow-[0_0_20px_#2563eb] animate-bounce-slow"></div>
                        </div>
                     </div>
 
                     {/* Step 2: Output (Revenue) */}
                     <Reveal direction="right" delay={400}>
-                      <div className={`p-5 rounded-2xl border flex items-center justify-between group-hover:translate-y-1 transition-all ${isDark ? 'bg-slate-900 border-emerald-500/20 shadow-2xl shadow-emerald-500/10' : 'bg-white border-slate-200 shadow-xl shadow-emerald-500/10'}`}>
-                        <div className="flex items-center gap-4">
-                          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                            <DollarSign size={20} />
+                      <div className={`p-8 rounded-[2.5rem] border flex items-center justify-between shadow-2xl ${isDark ? 'border-emerald-500/20 bg-slate-900 shadow-emerald-500/10' : 'border-emerald-100 bg-white shadow-emerald-100'}`}>
+                        <div className="flex items-center gap-6">
+                          <div className="w-14 h-14 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 border border-emerald-500/20 shadow-xl shadow-emerald-500/10">
+                            <DollarSign size={24} />
                           </div>
                           <div>
-                            <div className="text-[10px] font-black text-emerald-600 uppercase tracking-widest">Recovered Capital</div>
-                            <div className={`text-lg font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>385.2M MNT</div>
+                            <div className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.1em] mb-1.5">RECOVERED_LIQUIDITY</div>
+                            <div className={`text-2xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>385.2M MNT</div>
                           </div>
                         </div>
-                        <div className={`h-6 w-px ${isDark ? 'bg-slate-800' : 'bg-slate-100'}`}></div>
-                        <div className="text-xs font-black text-emerald-600">91.7%</div>
+                        <div className="text-xs font-black text-emerald-500 tracking-tighter">91.7%</div>
                       </div>
                     </Reveal>
-                  </div>
-
-                  {/* Trust Metrics below visualization */}
-                  <div className="mt-12 grid grid-cols-2 gap-4">
-                    <div className={`text-center p-4 rounded-2xl border transition-colors ${isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-100'}`}>
-                      <BarChart2 size={20} className="mx-auto text-blue-600 mb-2" />
-                      <div className="text-[10px] font-black text-slate-500 uppercase">Efficiency</div>
-                      <div className={`text-sm font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>+34%</div>
-                    </div>
-                    <div className={`text-center p-4 rounded-2xl border transition-colors ${isDark ? 'bg-white/5 border-white/5' : 'bg-slate-50 border-slate-100'}`}>
-                      <ShieldCheck size={20} className="mx-auto text-emerald-600 mb-2" />
-                      <div className="text-[10px] font-black text-slate-500 uppercase">Security</div>
-                      <div className={`text-sm font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>Enterprise</div>
-                    </div>
                   </div>
                 </div>
               </div>
@@ -139,81 +123,65 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
         </div>
       </section>
       
-      {/* Standard Footer */}
-      <footer className={`pt-20 pb-12 border-t transition-colors ${isDark ? 'bg-slate-950 border-slate-900' : 'bg-white border-slate-100'}`}>
+      {/* Standard Obsidian Footer */}
+      <footer className={`pt-32 pb-16 border-t transition-colors duration-500 ${isDark ? 'bg-slate-950 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
         <div className="max-w-7xl mx-auto px-6">
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-12 mb-16">
-            <div className="flex flex-col gap-6">
-              <div className="flex items-center gap-3 cursor-pointer group" onClick={() => scrollTo('home')}>
-                <div className="w-10 h-10 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white text-lg shadow-lg group-hover:scale-110 transition-transform">D</div>
-                <span className={`text-xl font-black uppercase tracking-widest ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-16 mb-24">
+            <div className="flex flex-col gap-8">
+              <div className="flex items-center gap-4 cursor-pointer group" onClick={() => scrollTo('home')}>
+                <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center font-black text-white text-xl shadow-2xl shadow-blue-600/30 group-hover:scale-110 transition-transform">D</div>
+                <span className={`text-2xl font-black uppercase tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>DEBTPRO</span>
               </div>
-              <p className={`text-xs font-bold leading-relaxed max-w-xs ${isDark ? 'text-slate-500' : 'text-slate-500'}`}>
-                Банк, ББСБ-ын зээл төлүүлэлтийн процессыг цогцоор нь автоматжуулах "Enterprise-Grade" систем.
+              <p className="text-sm font-bold leading-relaxed max-w-xs text-slate-500">
+                Advanced operating system for credit recovery automation and NPL lifecycle management.
               </p>
             </div>
             
-            <div className="flex flex-wrap gap-x-12 gap-y-6 text-[10px] font-black uppercase tracking-widest transition-colors">
-               <button onClick={() => scrollTo('product')} className={`${isDark ? 'text-slate-400' : 'text-slate-500'} hover:text-blue-600 transition-colors`}>{t.nav.product}</button>
-               <button onClick={() => scrollTo('solutions')} className={`${isDark ? 'text-slate-400' : 'text-slate-500'} hover:text-blue-600 transition-colors`}>{t.nav.solutions}</button>
-               <button onClick={() => scrollTo('why')} className={`${isDark ? 'text-slate-400' : 'text-slate-500'} hover:text-blue-600 transition-colors`}>{t.nav.why}</button>
-               <button onClick={() => scrollTo('customers')} className={`${isDark ? 'text-slate-400' : 'text-slate-500'} hover:text-blue-600 transition-colors`}>{t.nav.customers}</button>
-               <button onClick={() => scrollTo('faq')} className={`${isDark ? 'text-slate-400' : 'text-slate-500'} hover:text-blue-600 transition-colors`}>{t.nav.faq}</button>
+            <div className="flex flex-wrap gap-x-14 gap-y-6 text-[10px] font-black uppercase tracking-[0.15em] text-slate-400">
+               <button onClick={() => scrollTo('home')} className="hover:text-blue-500 transition-colors">HOME_CMD</button>
+               <button onClick={() => scrollTo('product')} className="hover:text-blue-500 transition-colors">PLATFORM_OS</button>
+               <button onClick={() => scrollTo('why')} className="hover:text-blue-500 transition-colors">ADVANTAGES</button>
+               <button onClick={() => scrollTo('pricing')} className="hover:text-blue-500 transition-colors">LICENSING</button>
+               <button onClick={() => scrollTo('faq')} className="hover:text-blue-500 transition-colors">DOCS_FAQ</button>
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-8 sm:gap-10">
-               <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? 'bg-emerald-500/10 text-emerald-500' : 'bg-emerald-50 text-emerald-600'}`}>
-                    <Shield size={18}/>
+            <div className="flex flex-col sm:flex-row gap-10">
+               <div className="flex items-center gap-4">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${isDark ? 'bg-blue-600/10 text-blue-500 border-blue-500/20' : 'bg-blue-50 text-blue-600 border-blue-100'}`}>
+                    <Shield size={20}/>
                   </div>
                   <div>
-                    <div className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>ISO 27001</div>
-                    <div className="text-[9px] font-bold text-slate-400 uppercase">Certified</div>
+                    <div className={`text-[10px] font-black uppercase tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>ISO_27001</div>
+                    <div className="text-[9px] font-bold text-slate-600 uppercase tracking-wide">INFRA_CERTIFIED</div>
                   </div>
                </div>
-               <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${isDark ? 'bg-blue-600/10 text-blue-600' : 'bg-blue-50 text-blue-600'}`}>
-                    <Cpu size={18}/>
+               <div className="flex items-center gap-4">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border ${isDark ? 'bg-emerald-500/10 text-emerald-500 border-emerald-500/20' : 'bg-emerald-50 text-emerald-600 border-emerald-100'}`}>
+                    <Cpu size={20}/>
                   </div>
                   <div>
-                    <div className={`text-[10px] font-black uppercase tracking-widest ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>v4.2.0 Core</div>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-blue-600 animate-pulse"></span>
-                      <span className="text-[9px] font-bold text-slate-400 uppercase">Deployed</span>
+                    <div className={`text-[10px] font-black uppercase tracking-[0.1em] ${isDark ? 'text-white' : 'text-slate-900'}`}>CORE_V4.2</div>
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span className="text-[9px] font-bold text-slate-600 uppercase tracking-wide">ONLINE</span>
                     </div>
                   </div>
                </div>
             </div>
           </div>
 
-          <div className={`pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6 ${isDark ? 'border-slate-900' : 'border-slate-100'}`}>
-            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
-              © 2024 TND DEBTPRO. ALL RIGHTS RESERVED.
+          <div className={`pt-12 border-t flex flex-col md:flex-row justify-between items-center gap-8 ${isDark ? 'border-white/5' : 'border-slate-100'}`}>
+            <p className="text-[10px] font-black text-slate-600 uppercase tracking-[0.1em]">
+              © 2024 TND DEBTPRO TECHNOLOGY GROUP. MISSION CRITICAL.
             </p>
-            <div className="flex items-center gap-4">
-               <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest flex items-center gap-2">
-                 MADE IN MONGOLIA <span className="text-red-500 text-lg">🇲🇳</span>
+            <div className="flex items-center gap-6">
+               <span className="text-[10px] font-black text-slate-500 uppercase tracking-[0.1em] flex items-center gap-3">
+                 ENGINEERED_IN_MONGOLIA <span className="text-xl">🇲🇳</span>
                </span>
             </div>
           </div>
         </div>
       </footer>
-      <style>{`
-        @keyframes reverse-spin {
-          from { transform: rotate(360deg); }
-          to { transform: rotate(0deg); }
-        }
-        .animate-reverse-spin-slow {
-          animation: reverse-spin 20s linear infinite;
-        }
-        @keyframes bounce-slow {
-          0%, 100% { transform: translate(-50%, 0); }
-          50% { transform: translate(-50%, 30px); }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 3s ease-in-out infinite;
-        }
-      `}</style>
     </>
   );
 };

@@ -6,21 +6,24 @@ import {
   Target, 
   Gavel, 
   ChevronRight, 
-  CheckCircle2, 
   Zap, 
   MessageCircle, 
-  Award 
+  Award,
+  TrendingUp,
+  Activity,
+  Info
 } from 'lucide-react';
 import { 
   XAxis, 
   YAxis, 
   CartesianGrid, 
-  Tooltip, 
+  Tooltip as RechartsTooltip, 
   ResponsiveContainer, 
   BarChart,
   Bar,
   Cell
 } from 'recharts';
+import { Tooltip as AntdTooltip } from 'antd';
 import { i18n, Language } from './i18n';
 
 interface PreviewProps {
@@ -30,65 +33,107 @@ interface PreviewProps {
 
 export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) => {
   const t = i18n[lang];
-  const isDark = theme === 'dark';
   const chartData = [
     { name: 'Normal', value: 8500 }, { name: 'Caution', value: 1200 },
     { name: 'Substandard', value: 800 }, { name: 'Doubtful', value: 400 },
     { name: 'Bad', value: 200 },
   ];
 
+  const statTooltips: Record<string, string> = {
+    [t.stats.npl]: lang === 'mn' ? 'Нийт найдваргүй зээлийн үлдэгдэл дүн' : 'Total principal balance of loans in non-performing status.',
+    [t.stats.today]: lang === 'mn' ? 'Өнөөдрийн байдлаар амжилттай төлүүлсэн дүн' : 'Total cash successfully recovered from delinquent accounts today.',
+    [t.stats.rate]: lang === 'mn' ? 'Ангилал ахисан зээлүүдийн эзлэх хувь' : 'Percentage of portfolio that has moved to a healthier credit classification.',
+    [t.stats.risk]: lang === 'mn' ? 'Зээлийн эрсдэлээс хамгаалж нөөцөлсөн сан' : 'Regulatory capital provisioned to cover potential credit losses.'
+  };
+
+  const healthTooltips: Record<string, string> = {
+    'Data_Ingress': lang === 'mn' ? 'Үндсэн банкны системээс дата уншиж буй төлөв' : 'Real-time synchronization status with core banking systems (Polaris).',
+    'Notice_Gen': lang === 'mn' ? 'Хуулийн мэдэгдэх хуудас автоматаар үүссэн амжилт' : 'Success rate of automated legal notice and document generation.',
+    'Latency': lang === 'mn' ? 'Системийн боловсруулалт хийх хугацаа (миллисекунд)' : 'End-to-end processing time for automated recovery workflows.'
+  };
+
   return (
-    <div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-6 md:mb-8">
+    <div className="w-full h-full p-2">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
-          { label: t.stats.npl, value: 124, suffix: 'M', prefix: '$', color: 'text-red-600' },
-          { label: t.stats.today, value: 1.2, suffix: 'M', prefix: '$', color: 'text-emerald-600' },
-          { label: t.stats.rate, value: 42, suffix: '%', color: 'text-blue-600' },
-          { label: t.stats.risk, value: 8.2, suffix: 'M', prefix: '$', color: isDark ? 'text-white' : 'text-slate-900' },
+          { label: t.stats.npl, value: 124, suffix: 'M', prefix: '$', color: 'text-red-500', icon: <Target size={14}/> },
+          { label: t.stats.today, value: 1.2, suffix: 'M', prefix: '$', color: 'text-emerald-500', icon: <TrendingUp size={14}/> },
+          { label: t.stats.rate, value: 42, suffix: '%', color: 'text-blue-500', icon: <Activity size={14}/> },
+          { label: t.stats.risk, value: 8.2, suffix: 'M', prefix: '$', color: 'text-white', icon: <Zap size={14}/> },
         ].map((stat, i) => (
-          <div key={i} className={`p-4 md:p-5 rounded-xl border transition-all ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-            <div className={`text-[10px] md:text-xs font-black uppercase tracking-widest mb-1 md:mb-2 ${isDark ? 'text-slate-500' : 'text-slate-400'}`}>{stat.label}</div>
-            <div className={`text-xl md:text-2xl font-black ${stat.color}`}>
-               {stat.prefix}{stat.value}{stat.suffix}
+          <AntdTooltip key={i} title={statTooltips[stat.label]} placement="top">
+            <div className="p-6 rounded-3xl bg-white/5 border border-white/10 hover:border-blue-500/30 transition-all group overflow-hidden relative cursor-help">
+              <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
+                {stat.icon}
+              </div>
+              <div className="font-mono text-[9px] font-black uppercase tracking-[0.1em] mb-4 text-slate-500 flex items-center gap-2">
+                {stat.label}
+              </div>
+              <div className={`text-3xl font-black tracking-tighter ${stat.color}`}>
+                {stat.prefix}{stat.value}{stat.suffix}
+              </div>
             </div>
-          </div>
+          </AntdTooltip>
         ))}
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-        <div className={`lg:col-span-8 p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-          <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 md:mb-6 flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
-            <BarChart3 size={14} className="text-blue-500"/> MIGRATION ANALYSIS
-          </h4>
-          <div className="h-40 md:h-48">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-8 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden group">
+          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-transparent opacity-50"></div>
+          <div className="flex items-center justify-between mb-8">
+            <AntdTooltip title={lang === 'mn' ? 'Зээлийн ангиллын шилжилт' : 'Tracking how loans migrate between risk categories over time.'}>
+              <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-3 text-slate-400 cursor-help">
+                <BarChart3 size={16} className="text-blue-500"/> PORTFOLIO_MIGRATION_V4 <Info size={12} className="opacity-40" />
+              </h4>
+            </AntdTooltip>
+            <div className="flex gap-2">
+               <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+               <div className="w-2 h-2 rounded-full bg-slate-700"></div>
+            </div>
+          </div>
+          <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke={isDark ? "rgba(255,255,255,0.03)" : "rgba(0,0,0,0.05)"} />
-                <XAxis dataKey="name" stroke={isDark ? "#64748b" : "#475569"} fontSize={9} tickLine={false} axisLine={false} />
+                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.03)" />
+                <XAxis dataKey="name" stroke="#475569" fontSize={10} tickLine={false} axisLine={false} />
                 <YAxis hide />
-                <Tooltip 
-                   cursor={{ fill: 'transparent' }}
-                   contentStyle={{ backgroundColor: isDark ? '#0f172a' : '#ffffff', border: 'none', borderRadius: '12px', fontSize: '11px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}
+                <RechartsTooltip 
+                   cursor={{ fill: 'rgba(59, 130, 246, 0.05)' }}
+                   contentStyle={{ backgroundColor: '#020617', border: '1px solid rgba(255,255,255,0.1)', borderRadius: '16px', fontSize: '11px', boxShadow: '0 20px 40px rgba(0,0,0,0.4)' }}
                 />
-                <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                <Bar dataKey="value" radius={[10, 10, 0, 0]}>
                    {chartData.map((entry, index) => (
-                      <Cell key={index} fill={index === 0 ? '#10b981' : index > 2 ? '#ef4444' : '#3b82f6'} />
+                      <Cell key={index} fill={index === 0 ? '#10b981' : index > 2 ? '#ef4444' : '#3b82f6'} fillOpacity={0.8} />
                    ))}
                 </Bar>
               </BarChart>
             </ResponsiveContainer>
           </div>
         </div>
-        <div className="lg:col-span-4 flex flex-col gap-4">
-           <div className={`p-4 md:p-6 rounded-2xl border h-full ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-              <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 md:mb-6 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>SYSTEM LOAD</h4>
-              <div className="space-y-4 md:space-y-5">
-                 {[ { l: 'Data Processing', v: 84 }, { l: 'Mass Notifications', v: 92 }, { l: 'Audit Logs', v: 61 } ].map((a, i) => (
-                   <div key={i}>
-                      <div className={`flex justify-between text-[9px] md:text-[10px] font-bold uppercase mb-1 ${isDark ? 'text-slate-500' : 'text-slate-600'}`}><span>{a.l}</span><span>{a.v}%</span></div>
-                      <div className={`h-1.5 rounded-full overflow-hidden ${isDark ? 'bg-slate-800' : 'bg-slate-50'}`}><div className="h-full bg-blue-600" style={{ width: `${a.v}%` }}></div></div>
-                   </div>
+        <div className="lg:col-span-4 flex flex-col gap-6">
+           <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 h-full relative group">
+              <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 text-slate-400">CORE_ENGINE_HEALTH</h4>
+              <div className="space-y-8">
+                 {[ 
+                   { l: 'Data_Ingress', v: 84, c: 'bg-blue-500' }, 
+                   { l: 'Notice_Gen', v: 92, c: 'bg-cyan-500' }, 
+                   { l: 'Latency', v: 14, c: 'bg-emerald-500' } 
+                 ].map((a, i) => (
+                   <AntdTooltip key={i} title={healthTooltips[a.l]} placement="left">
+                     <div className="cursor-help">
+                        <div className="flex justify-between font-mono text-[10px] font-bold uppercase mb-3 text-slate-500">
+                          <span>{a.l}</span>
+                          <span>{a.v}{a.l === 'Latency' ? 'ms' : '%'}</span>
+                        </div>
+                        <div className="h-2 rounded-full bg-white/5 overflow-hidden">
+                          <div className={`h-full ${a.c} shadow-[0_0_10px_rgba(37,99,235,0.3)] transition-all duration-1000`} style={{ width: `${a.v}%` }}></div>
+                        </div>
+                     </div>
+                   </AntdTooltip>
                  ))}
+              </div>
+              <div className="mt-12 flex justify-center">
+                 <div className="w-16 h-1 bg-white/5 rounded-full"></div>
               </div>
            </div>
         </div>
@@ -97,149 +142,159 @@ export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) =>
   );
 };
 
-export const PreviewBorrower360: React.FC<PreviewProps> = ({ theme }) => {
-  const isDark = theme === 'dark';
+export const PreviewBorrower360: React.FC<PreviewProps> = ({ lang }) => {
   return (
-    <div className="flex flex-col gap-4 md:gap-6">
-      <div className={`p-4 md:p-6 rounded-2xl border flex flex-col sm:flex-row items-center justify-between gap-4 ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-slate-50 border-slate-100'}`}>
-        <div className="flex items-center gap-3 md:gap-4">
-           <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-xl flex items-center justify-center font-black text-white shadow-lg shadow-blue-500/10">B</div>
+    <div className="flex flex-col gap-6 w-full p-2">
+      <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 flex flex-col sm:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+        <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 blur-[60px] group-hover:bg-blue-600/10 transition-colors"></div>
+        <div className="flex items-center gap-6">
+           <div className="w-20 h-20 bg-gradient-to-br from-blue-600 to-indigo-700 rounded-3xl flex items-center justify-center font-black text-3xl text-white shadow-2xl shadow-blue-600/40 relative">
+              B
+              <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 rounded-full border-4 border-slate-900 flex items-center justify-center">
+                 <div className="w-2 h-2 bg-white rounded-full"></div>
+              </div>
+           </div>
            <div>
-              <div className={`text-base md:text-lg font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>Bat-Erdene.G</div>
-              <div className="text-[9px] md:text-xs text-slate-500 font-bold uppercase tracking-widest">POLARIS ID: 802991</div>
+              <div className="text-3xl font-black text-white tracking-tight mb-1">Bat-Erdene.G</div>
+              <div className="font-mono text-[10px] text-slate-500 font-bold uppercase tracking-[0.1em]">ID_REF: POL-802991-X</div>
            </div>
         </div>
-        <div className="flex gap-2">
-           <div className="px-3 py-1 bg-red-500/10 text-red-600 text-[8px] md:text-[10px] font-black rounded-full border border-red-500/20 uppercase tracking-widest">High Risk</div>
-           <div className="px-3 py-1 bg-emerald-500/10 text-emerald-600 text-[8px] md:text-[10px] font-black rounded-full border border-emerald-500/20 uppercase tracking-widest">Active</div>
+        <div className="flex gap-4">
+           <div className="px-6 py-2.5 bg-red-500/10 text-red-500 text-[10px] font-black rounded-xl border border-red-500/20 uppercase tracking-[0.1em]">HIGH_RISK</div>
+           <div className="px-6 py-2.5 bg-emerald-500/10 text-emerald-500 text-[10px] font-black rounded-xl border border-emerald-500/20 uppercase tracking-[0.1em]">CONNECTED</div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-         <div className={`p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-            <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}><History size={14}/> RECENT ACTIONS</h4>
-            <div className="space-y-3 md:space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+         <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative group">
+            <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400"><History size={16}/> AUDIT_TRACE_LOG</h4>
+            <div className="space-y-6">
                {[
-                 { act: 'Outbound call', res: 'Connected - 4:22s', time: '2h ago' },
-                 { act: 'SMS Triggered', res: 'Delivered', time: '1d ago' },
-                 { act: 'Asset Inspection', res: 'Vehicle Logged', time: '3d ago' }
+                 { act: 'Outbound_Call', res: 'CONN_04:22s', time: '2h_ago', c: 'text-blue-500' },
+                 { act: 'SMS_Trigger', res: 'DELIVERED', time: '1d_ago', c: 'text-emerald-500' },
+                 { act: 'Asset_Sync', res: 'ASSET_8022_UBA', time: '3d_ago', c: 'text-white' }
                ].map((log, i) => (
-                 <div key={i} className={`flex justify-between items-center border-b pb-3 last:border-0 ${isDark ? 'border-slate-800' : 'border-slate-50'}`}>
+                 <div key={i} className="flex justify-between items-center border-b border-white/5 pb-5 last:border-0 last:pb-0">
                     <div>
-                       <div className={`text-[10px] md:text-xs font-bold ${isDark ? 'text-slate-200' : 'text-slate-900'}`}>{log.act}</div>
-                       <div className="text-[8px] md:text-[10px] text-slate-500 font-medium uppercase mt-0.5">{log.res}</div>
+                       <div className="font-mono text-xs font-bold text-slate-200">{log.act}</div>
+                       <div className={`text-[10px] font-black uppercase tracking-widest mt-2 ${log.c}`}>{log.res}</div>
                     </div>
-                    <div className="text-[8px] md:text-[10px] font-bold text-slate-400">{log.time}</div>
+                    <div className="font-mono text-[10px] font-bold text-slate-600">{log.time}</div>
                  </div>
                ))}
             </div>
          </div>
-         <div className={`p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-            <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}><Target size={14}/> RISK SCORE</h4>
-            <div className="flex items-center justify-center py-4">
-               <div className="relative w-28 h-28 md:w-36 md:h-36 flex items-center justify-center">
-                  <svg className="w-full h-full -rotate-90">
-                     <circle cx="50%" cy="50%" r="42%" stroke="currentColor" strokeWidth="8" fill="transparent" className={isDark ? "text-slate-800" : "text-slate-50"} />
-                     <circle cx="50%" cy="50%" r="42%" stroke="currentColor" strokeWidth="8" fill="transparent" strokeDasharray="264" strokeDashoffset="132" className="text-red-500" />
-                  </svg>
-                  <div className="absolute inset-0 flex flex-col items-center justify-center">
-                     <span className={`text-2xl md:text-3xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>25%</span>
-                     <span className="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">NPL RATIO</span>
-                  </div>
-               </div>
-            </div>
+         <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 flex flex-col justify-center items-center group">
+            <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400 self-start"><Target size={16}/> RISK_METRIC</h4>
+            <AntdTooltip title={lang === 'mn' ? 'Зээлдэгчийн эрсдэлийн индекс' : 'Proprietary risk score based on repayment behavior and asset coverage.'}>
+              <div className="relative w-48 h-48 flex items-center justify-center cursor-help">
+                 <svg className="w-full h-full -rotate-90">
+                    <circle cx="50%" cy="50%" r="42%" stroke="#1e293b" strokeWidth="12" fill="transparent" />
+                    <circle cx="50%" cy="50%" r="42%" stroke="#ef4444" strokeWidth="12" fill="transparent" strokeDasharray="264" strokeDashoffset="198" strokeLinecap="round" className="drop-shadow-[0_0_12px_rgba(239,68,68,0.5)]" />
+                 </svg>
+                 <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-5xl font-black text-white tracking-tighter">25%</span>
+                    <span className="font-mono text-[9px] font-bold text-slate-500 uppercase tracking-[0.1em] mt-2">INDEX_V2</span>
+                 </div>
+              </div>
+            </AntdTooltip>
          </div>
       </div>
     </div>
   );
 };
 
-export const PreviewLegalPipeline: React.FC<PreviewProps> = ({ theme }) => {
-  const isDark = theme === 'dark';
+export const PreviewLegalPipeline: React.FC<PreviewProps> = ({ lang }) => {
   return (
-    <div>
-      <div className="flex items-center justify-between mb-6 md:mb-8">
-         <h4 className={`text-[10px] md:text-xs font-black uppercase flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}><Gavel size={16} className="text-blue-600"/> DOCUMENTS</h4>
-         <button className="text-[10px] font-black text-blue-600 flex items-center gap-1.5 hover:gap-2 transition-all">GENERATE ALL <ChevronRight size={12}/></button>
+    <div className="w-full h-full p-2">
+      <div className="flex items-center justify-between mb-12">
+         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] flex items-center gap-3 text-slate-400"><Gavel size={18} className="text-blue-500"/> LEGAL_ENGINE_V1</h4>
+         <button className="h-10 px-6 bg-white/5 border border-white/10 text-blue-500 text-[10px] font-black uppercase tracking-widest rounded-xl hover:bg-blue-600 hover:text-white transition-all flex items-center gap-3">
+            QUEUE_BATCH <ChevronRight size={14}/>
+         </button>
       </div>
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
          {[
-           { stage: 'Notices', count: 124, color: 'bg-blue-400' },
-           { stage: 'Invoices', count: 82, color: 'bg-blue-600' },
-           { stage: 'Court Filing', count: 45, color: 'bg-red-500' },
-           { stage: 'Resolved', count: 312, color: 'bg-emerald-500' }
+           { stage: 'Notices', count: 124, color: 'bg-blue-400', desc: lang === 'mn' ? 'Илгээсэн мэдэгдэх хуудас' : 'Sent repayment reminders.' },
+           { stage: 'Invoices', count: 82, color: 'bg-blue-600', desc: lang === 'mn' ? 'Үүсгэсэн нэхэмжлэхүүд' : 'Generated billing documents.' },
+           { stage: 'Filings', count: 45, color: 'bg-red-500', desc: lang === 'mn' ? 'Шүүхэд шилжсэн хэргүүд' : 'Active court submissions.' },
+           { stage: 'Closed', count: 312, color: 'bg-emerald-500', desc: lang === 'mn' ? 'Шийдвэрлэгдсэн' : 'Successfully settled cases.' }
          ].map((s, i) => (
-           <div key={i} className={`p-4 md:p-5 rounded-xl border text-center transition-all hover:scale-105 ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-              <div className={`w-2 h-2 rounded-full mx-auto mb-2 md:mb-3 ${s.color}`}></div>
-              <div className={`text-lg md:text-xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>{s.count}</div>
-              <div className="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest mt-1">{s.stage}</div>
-           </div>
+           <AntdTooltip key={i} title={s.desc}>
+             <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 text-center transition-all hover:scale-105 hover:border-blue-500/40 relative overflow-hidden group cursor-help">
+                <div className={`absolute top-0 left-0 w-full h-1 ${s.color} opacity-40`}></div>
+                <div className={`w-3 h-3 rounded-full mx-auto mb-6 ${s.color} shadow-lg shadow-white/10`}></div>
+                <div className="text-4xl font-black text-white tracking-tighter">{s.count}</div>
+                <div className="font-mono text-[9px] font-bold text-slate-500 uppercase tracking-[0.1em] mt-4">{s.stage}</div>
+             </div>
+           </AntdTooltip>
          ))}
       </div>
     </div>
   );
 };
 
-export const PreviewSMSDashboard: React.FC<PreviewProps> = ({ theme }) => {
-  const isDark = theme === 'dark';
+export const PreviewSMSDashboard: React.FC<PreviewProps> = ({ lang }) => {
   return (
-    <div>
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
-         <div className="lg:col-span-4 space-y-4">
-            <div className={`p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-               <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>Carrier Status</h4>
-               <div className="flex items-center gap-3 md:gap-4">
-                  <div className="w-10 h-10 md:w-12 md:h-12 bg-blue-600/10 text-blue-600 rounded-full flex items-center justify-center">
-                     <Zap size={20}/>
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full p-2">
+       <div className="lg:col-span-4 space-y-6">
+          <AntdTooltip title={lang === 'mn' ? 'Сүлжээний холболтын төлөв' : 'Active connection with SMS/Voice gateway providers.'}>
+            <div className="p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative group cursor-help">
+               <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 text-slate-400">CARRIER_NODE</h4>
+               <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 bg-blue-600/10 text-blue-500 rounded-3xl flex items-center justify-center border border-blue-500/20">
+                     <Zap size={28} className="animate-pulse" />
                   </div>
                   <div>
-                     <div className={`text-base md:text-lg font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>Connected</div>
-                     <div className="text-[8px] md:text-[10px] font-bold text-slate-500 uppercase tracking-widest">Live Integration</div>
+                     <div className="text-xl font-black text-white">READY</div>
+                     <div className="font-mono text-[10px] font-bold text-emerald-500 uppercase tracking-widest mt-1">LAT: 142ms</div>
                   </div>
                </div>
             </div>
-         </div>
-         <div className={`lg:col-span-8 p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-            <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}><MessageCircle size={16} className="text-blue-500"/> NOTIFICATION QUEUE</h4>
-            <div className="space-y-3 md:space-y-4">
-               {[
-                 { channel: 'Voice', to: 'Batch #801', msg: 'Automated voice notice...', status: 'SENT' },
-                 { channel: 'SMS', to: 'Batch #902', msg: 'Urgent reminder regarding account...', status: 'OPEN' }
-               ].map((log, i) => (
-                  <div key={i} className={`flex gap-3 md:gap-4 border-b pb-3 md:pb-4 last:border-0 ${isDark ? 'border-slate-800' : 'border-slate-50'}`}>
-                     <div className="text-[8px] md:text-[10px] font-black px-2 py-0.5 bg-blue-600/10 text-blue-600 rounded h-fit">{log.channel}</div>
-                     <div className="flex-1">
-                        <span className={`text-[10px] md:text-xs font-bold ${isDark ? 'text-slate-300' : 'text-slate-900'}`}>{log.to}</span>
-                        <p className={`text-[9px] md:text-[11px] italic mt-0.5 ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>"{log.msg}"</p>
-                     </div>
-                  </div>
-               ))}
-            </div>
-         </div>
-      </div>
+          </AntdTooltip>
+       </div>
+       <div className="lg:col-span-8 p-8 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden group">
+          <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-8 flex items-center gap-3 text-slate-400"><MessageCircle size={18} className="text-blue-500"/> QUEUE_V2</h4>
+          <div className="space-y-6">
+             {[
+               { ch: 'Voice', to: 'Batch_A', msg: 'Collection_Notice_01...', stat: 'SENT' },
+               { ch: 'SMS', to: 'Batch_B', msg: 'Urgency_Trigger_Batch...', stat: 'PENDING' }
+             ].map((log, i) => (
+                <div key={i} className="flex gap-6 border-b border-white/5 pb-6 last:border-0 last:pb-0">
+                   <div className="font-mono text-[10px] font-black px-4 py-1.5 bg-blue-500/10 text-blue-500 rounded-xl h-fit border border-blue-500/20">{log.ch}</div>
+                   <div className="flex-1">
+                      <div className="font-mono text-xs font-bold text-slate-300">{log.to}</div>
+                      <p className="text-[11px] font-medium text-slate-600 italic mt-2">"{log.msg}"</p>
+                   </div>
+                   <div className="text-[10px] font-black text-slate-500 self-center">{log.stat}</div>
+                </div>
+             ))}
+          </div>
+       </div>
     </div>
   );
 };
 
-export const PreviewPerformance: React.FC<PreviewProps> = ({ theme }) => {
-  const isDark = theme === 'dark';
+export const PreviewPerformance: React.FC<PreviewProps> = ({ lang }) => {
   const data = [
-    { name: 'Bayaraa', recovery: 82000, target: 90000 },
-    { name: 'Sarnai', recovery: 95000, target: 90000 },
-    { name: 'Enkh', recovery: 64000, target: 90000 },
-    { name: 'Nomin', recovery: 112000, target: 90000 },
+    { name: 'Bayaraa', rec: 82000, target: 90000 },
+    { name: 'Sarnai', rec: 95000, target: 90000 },
+    { name: 'Enkh', rec: 64000, target: 90000 },
+    { name: 'Nomin', rec: 112000, target: 90000 },
   ];
   return (
-    <div>
-      <div className={`p-4 md:p-6 rounded-2xl border ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-100'}`}>
-         <h4 className={`text-[10px] md:text-xs font-black uppercase mb-4 md:mb-6 flex items-center gap-2 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}><Award size={16} className="text-blue-600"/> LEADERBOARD</h4>
-         <div className="h-48 md:h-56">
+    <div className="w-full h-full p-2">
+      <div className="p-10 rounded-[2.5rem] bg-white/5 border border-white/10 relative overflow-hidden group">
+         <h4 className="font-mono text-[10px] font-black uppercase tracking-[0.1em] mb-12 flex items-center gap-3 text-slate-400"><Award size={18} className="text-blue-500"/> KPI_ENGINE_ACTIVE</h4>
+         <div className="h-64">
             <ResponsiveContainer width="100%" height="100%">
                <BarChart data={data} layout="vertical" margin={{ left: 0 }}>
                   <XAxis type="number" hide />
-                  <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} fontSize={10} fontBold={true} stroke={isDark ? "#64748b" : "#475569"} width={60} />
-                  <Bar dataKey="recovery" radius={[0, 4, 4, 0]}>
+                  <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} fontSize={11} stroke="#475569" width={80} />
+                  <Bar dataKey="rec" radius={[0, 10, 10, 0]}>
                      {data.map((entry, index) => (
-                        <Cell key={index} fill={entry.recovery >= entry.target ? '#10b981' : '#3b82f6'} />
+                        <AntdTooltip key={index} title={`${entry.name}: ${entry.rec.toLocaleString()} recovered out of ${entry.target.toLocaleString()} target`}>
+                          <Cell fill={entry.rec >= entry.target ? '#10b981' : '#3b82f6'} fillOpacity={0.8} style={{ cursor: 'help' }} />
+                        </AntdTooltip>
                      ))}
                   </Bar>
                </BarChart>

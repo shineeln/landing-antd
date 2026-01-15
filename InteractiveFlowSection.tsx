@@ -69,9 +69,10 @@ export const InteractiveFlowSection: React.FC<InteractiveFlowSectionProps> = ({ 
         </div>
       </div>
     </div>,
-    <PreviewBorrower360 theme={theme} />,
-    <PreviewLegalPipeline theme={theme} />,
-    <PreviewPerformance theme={theme} />
+    // Fix: Added missing required 'lang' prop to Preview components
+    <PreviewBorrower360 lang={lang} theme={theme} />,
+    <PreviewLegalPipeline lang={lang} theme={theme} />,
+    <PreviewPerformance lang={lang} theme={theme} />
   ];
 
   return (
@@ -113,11 +114,12 @@ export const InteractiveFlowSection: React.FC<InteractiveFlowSectionProps> = ({ 
                   }`}
               >
                 <div className="flex items-start gap-4 md:gap-6">
+                  {/* Fix: Cast to React.ReactElement<{ size?: number }> to resolve 'size' property type error during cloneElement */}
                   <div className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl flex items-center justify-center transition-all duration-500 shrink-0
                     ${activeStep === i 
                       ? 'bg-blue-600 text-white shadow-xl shadow-blue-600/20' 
                       : (isDark ? 'bg-slate-900 text-slate-500' : 'bg-slate-100 text-slate-400')}`}>
-                    {React.cloneElement(flowIcons[i] as React.ReactElement, { size: 20 })}
+                    {React.cloneElement(flowIcons[i] as React.ReactElement<{ size?: number }>, { size: 20 })}
                   </div>
                   <div className="flex-1 overflow-hidden">
                     <div className="flex items-center gap-2 mb-1.5 md:mb-2">

@@ -33,25 +33,38 @@ const App: React.FC = () => {
         algorithm: themeMode === 'dark' ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
         token: {
           colorPrimary: '#2563eb',
-          borderRadius: 16,
-          fontFamily: 'Inter, sans-serif',
+          borderRadius: 14,
+          fontFamily: 'Inter, Plus Jakarta Sans, sans-serif',
           colorBgContainer: themeMode === 'dark' ? '#0f172a' : '#ffffff',
-          colorText: themeMode === 'dark' ? 'rgba(255, 255, 255, 0.85)' : 'rgba(0, 0, 0, 0.88)',
+          colorText: themeMode === 'dark' ? '#f8fafc' : '#0f172a',
           colorBgLayout: themeMode === 'dark' ? '#020617' : '#ffffff',
+          colorBorder: 'rgba(255, 255, 255, 0.08)',
         },
         components: {
           Button: {
-            fontWeight: 700,
-            controlHeight: 40,
+            fontWeight: 800,
+            controlHeight: 52,
+            borderRadius: 14,
           },
           Card: {
             borderRadiusLG: 32,
+            colorBgContainer: themeMode === 'dark' ? 'rgba(15, 23, 42, 0.4)' : '#ffffff',
+            colorBorderSecondary: 'rgba(255, 255, 255, 0.05)',
+          },
+          Segmented: {
+            borderRadius: 12,
+            fontWeightStrong: 900,
+          },
+          Input: {
+            controlHeight: 52,
+            borderRadius: 12,
+            colorBgContainer: 'rgba(255, 255, 255, 0.02)',
           }
         }
       }}
     >
       <AntdApp>
-        <Layout className={`min-h-screen transition-colors duration-500 ${themeMode === 'dark' ? 'bg-slate-950 text-slate-200' : 'bg-white text-slate-900'}`}>
+        <Layout className={`min-h-screen transition-all duration-700 ${themeMode === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-white text-slate-900'}`}>
           <Navbar 
             lang={lang} 
             setLang={setLang} 

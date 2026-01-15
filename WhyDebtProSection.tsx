@@ -14,39 +14,39 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
   const isDark = theme === 'dark';
 
   return (
-    <section className={`py-20 md:py-32 relative overflow-hidden transition-colors ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section id="why" className={`py-32 relative overflow-hidden transition-colors ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <Reveal>
-          <div className="text-center mb-16 md:mb-24">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black text-blue-500 uppercase tracking-widest mb-6">
+          <div className="text-center mb-24">
+            <div className={`inline-block px-5 py-2 rounded-full border text-[11px] font-black uppercase tracking-widest mb-8 ${isDark ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
               {t.whyDebtPro.tag}
             </div>
-            <h2 className={`text-3xl md:text-5xl font-black mb-6 md:mb-8 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            <h2 className={`text-4xl md:text-6xl font-black mb-8 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
               {t.whyDebtPro.title}
             </h2>
-            <p className={`text-base md:text-lg max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+            <p className={`text-lg md:text-xl max-w-2xl mx-auto font-medium leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
               {t.whyDebtPro.subtitle}
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 mb-16 md:mb-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-24">
           {/* Legacy Card */}
           <Reveal direction="right">
-            <div className={`h-full p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border flex flex-col ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'}`}>
-              <div className="flex items-center gap-4 mb-6 md:mb-8">
-                <div className={`w-12 h-12 md:w-14 md:h-14 rounded-xl md:rounded-2xl flex items-center justify-center ${isDark ? 'bg-red-500/10 text-red-500' : 'bg-red-50 text-red-600'}`}>
-                  <AlertTriangle size={28} className="md:w-8 md:h-8" />
+            <div className={`h-full p-10 rounded-[2.5rem] border flex flex-col ${isDark ? 'bg-slate-900/30 border-slate-800' : 'bg-white border-slate-200 shadow-xl shadow-slate-200/50'}`}>
+              <div className="flex items-center gap-5 mb-10">
+                <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-red-500/10 text-red-500' : 'bg-red-50 text-red-600'}`}>
+                  <AlertTriangle size={28} />
                 </div>
-                <h3 className={`text-xl md:text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                <h3 className={`text-2xl font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   {t.whyDebtPro.legacy.title}
                 </h3>
               </div>
-              <ul className="space-y-4 md:space-y-6 flex-1">
+              <ul className="space-y-6 flex-1">
                 {t.whyDebtPro.legacy.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3 md:gap-4">
+                  <li key={idx} className="flex items-start gap-4">
                     <XCircle size={18} className="text-red-500 mt-1 shrink-0" />
-                    <span className={`text-sm md:text-base font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</span>
+                    <span className={`text-base font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -55,23 +55,23 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
 
           {/* Advantage Card */}
           <Reveal direction="left">
-            <div className={`h-full p-8 md:p-10 rounded-[2.5rem] md:rounded-[3rem] border flex flex-col relative overflow-hidden ${isDark ? 'bg-blue-600/5 border-blue-500/20 shadow-2xl shadow-blue-900/10' : 'bg-blue-50/30 border-blue-200 shadow-xl shadow-blue-100/50'}`}>
-              <div className="absolute top-0 right-0 p-6 md:p-8 opacity-10">
-                <ShieldCheck size={80} className="md:w-[120px] md:h-[120px] text-blue-500" />
+            <div className={`h-full p-10 rounded-[2.5rem] border flex flex-col relative overflow-hidden ${isDark ? 'bg-blue-600/5 border-blue-500/20' : 'bg-blue-50/30 border-blue-200 shadow-xl'}`}>
+              <div className="absolute top-0 right-0 p-8 opacity-5">
+                <ShieldCheck size={120} className="text-blue-500" />
               </div>
-              <div className="flex items-center gap-4 mb-6 md:mb-8 relative z-10">
-                <div className="w-12 h-12 md:w-14 md:h-14 bg-blue-600 rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-lg shadow-blue-600/20">
-                  <ShieldCheck size={28} className="md:w-8 md:h-8" />
+              <div className="flex items-center gap-5 mb-10 relative z-10">
+                <div className="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-xl shadow-blue-600/20">
+                  <ShieldCheck size={28} />
                 </div>
-                <h3 className={`text-xl md:text-2xl font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                <h3 className={`text-2xl font-black tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>
                   {t.whyDebtPro.advantage.title}
                 </h3>
               </div>
-              <ul className="space-y-4 md:space-y-6 flex-1 relative z-10">
+              <ul className="space-y-6 flex-1 relative z-10">
                 {t.whyDebtPro.advantage.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3 md:gap-4">
+                  <li key={idx} className="flex items-start gap-4">
                     <CheckCircle2 size={18} className="text-emerald-500 mt-1 shrink-0" />
-                    <span className={`text-sm md:text-base font-bold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{item}</span>
+                    <span className={`text-base font-bold ${isDark ? 'text-slate-200' : 'text-slate-800'}`}>{item}</span>
                   </li>
                 ))}
               </ul>
@@ -79,85 +79,39 @@ export const WhyDebtProSection: React.FC<WhyDebtProSectionProps> = ({ lang, them
           </Reveal>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-24 md:mb-32">
-          {t.whyDebtPro.benefits.map((benefit, idx) => (
-            <Reveal key={idx} delay={idx * 150} direction="up">
-              <div className={`p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] border h-full transition-all hover:scale-[1.03] duration-500 
-                ${isDark ? 'bg-slate-900/20 border-slate-900 hover:border-blue-500/30' : 'bg-white border-slate-100 shadow-sm hover:shadow-md'}`}>
-                <div className="mb-4 md:mb-6">
-                  {idx === 0 ? <Globe className="text-blue-500" size={28} /> : 
-                   idx === 1 ? <Layout className="text-blue-500" size={28} /> : 
-                   <Zap className="text-blue-500" size={28} />}
-                </div>
-                <h4 className={`text-base md:text-lg font-black uppercase tracking-tight mb-3 md:mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  {benefit.title}
-                </h4>
-                <p className={`text-xs md:text-sm leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
-                  {benefit.desc}
-                </p>
-              </div>
-            </Reveal>
-          ))}
-        </div>
-
         {/* Use Cases Section */}
         <div className="relative">
           <Reveal>
-            <div className="mb-12 md:mb-16">
-              <h3 className={`text-2xl md:text-3xl font-black tracking-tight mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            <div className="mb-16">
+              <h3 className={`text-3xl font-black tracking-tight mb-6 ${isDark ? 'text-white' : 'text-slate-900'}`}>
                 {t.whyDebtPro.useCases.title}
               </h3>
-              <div className="w-20 h-1.5 bg-blue-600 rounded-full"></div>
+              <div className="w-16 h-1.5 bg-blue-600 rounded-full"></div>
             </div>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
-            {/* Bank Case */}
-            <Reveal direction="right" delay={100}>
-              <div className={`group p-8 md:p-10 rounded-[3rem] border transition-all duration-500 ${isDark ? 'bg-slate-900/20 border-slate-800 hover:border-blue-500/40' : 'bg-slate-50 border-slate-100 hover:border-blue-200 shadow-sm'}`}>
-                <div className="flex items-start justify-between mb-8">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>
-                    <Landmark size={28} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Standardized Use Case Cards */}
+            {[t.whyDebtPro.useCases.bank, t.whyDebtPro.useCases.nbfi].map((item, i) => (
+              <Reveal key={i} direction={i === 0 ? "right" : "left"} delay={i * 100}>
+                <div className={`group p-10 rounded-[2.5rem] border transition-all duration-500 ${isDark ? 'bg-slate-900/20 border-slate-800 hover:border-blue-500/40' : 'bg-slate-50 border-slate-100 hover:border-blue-200 shadow-sm'}`}>
+                  <div className="flex items-start justify-between mb-10">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-blue-500/10 text-blue-400' : 'bg-blue-100 text-blue-600'}`}>
+                      {i === 0 ? <Landmark size={28} /> : <Building2 size={28} />}
+                    </div>
                   </div>
-                  <div className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${isDark ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-400'}`}>
-                    Enterprise
-                  </div>
-                </div>
-                <h4 className={`text-xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  {t.whyDebtPro.useCases.bank.title}
-                </h4>
-                <p className={`text-sm md:text-base font-medium leading-relaxed mb-8 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                  {t.whyDebtPro.useCases.bank.desc}
-                </p>
-                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all cursor-pointer`}>
-                  Learn More <ArrowRight size={14} />
-                </div>
-              </div>
-            </Reveal>
-
-            {/* NBFI Case */}
-            <Reveal direction="left" delay={200}>
-              <div className={`group p-8 md:p-10 rounded-[3rem] border transition-all duration-500 ${isDark ? 'bg-slate-900/20 border-slate-800 hover:border-blue-500/40' : 'bg-slate-50 border-slate-100 hover:border-blue-200 shadow-sm'}`}>
-                <div className="flex items-start justify-between mb-8">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center ${isDark ? 'bg-emerald-500/10 text-emerald-400' : 'bg-emerald-100 text-emerald-600'}`}>
-                    <Building2 size={28} />
-                  </div>
-                  <div className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${isDark ? 'border-slate-800 text-slate-500' : 'border-slate-200 text-slate-400'}`}>
-                    SaaS
+                  <h4 className={`text-2xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                    {item.title}
+                  </h4>
+                  <p className={`text-base font-medium leading-relaxed mb-10 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                    {item.desc}
+                  </p>
+                  <div className="flex items-center gap-3 text-[11px] font-black uppercase tracking-widest text-blue-500 group-hover:gap-5 transition-all cursor-pointer">
+                    View Solution <ArrowRight size={16} />
                   </div>
                 </div>
-                <h4 className={`text-xl font-black mb-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
-                  {t.whyDebtPro.useCases.nbfi.title}
-                </h4>
-                <p className={`text-sm md:text-base font-medium leading-relaxed mb-8 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
-                  {t.whyDebtPro.useCases.nbfi.desc}
-                </p>
-                <div className={`flex items-center gap-2 text-xs font-black uppercase tracking-widest text-blue-500 group-hover:gap-4 transition-all cursor-pointer`}>
-                  Learn More <ArrowRight size={14} />
-                </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
         </div>
       </div>

@@ -4,7 +4,6 @@ import { Card, Table, Typography, Row, Col, Badge, Space } from 'antd';
 import { 
   CloseCircleOutlined, 
   CheckCircleOutlined, 
-  WarningOutlined, 
   RocketOutlined, 
   FileExcelOutlined 
 } from '@ant-design/icons';
@@ -12,10 +11,6 @@ import { i18n, Language } from './i18n';
 import { Reveal, ExcelChaosAnimation, DebtProOrderAnimation } from './CommonUI';
 
 const { Title, Text, Paragraph } = Typography;
-
-// Fix: Ant Design Card component can sometimes have type issues in certain TS environments. 
-// Casting it to any as a workaround for the "does not have any construct or call signatures" error.
-const AntdCard = Card as any;
 
 interface ComparisonSectionProps {
   lang: Language;
@@ -35,101 +30,116 @@ export const ComparisonSection: React.FC<ComparisonSectionProps> = ({ lang, them
 
   const columns = [
     { 
-      title: 'Feature', 
+      title: 'Infrastructure Component', 
       dataIndex: 'feature', 
       key: 'feature', 
       className: 'uppercase text-[10px] font-black',
       render: (val: string) => (
-        <Text strong className={`uppercase text-[11px] tracking-tight ${isDark ? 'text-slate-300' : 'text-slate-950'}`}>
+        <Text strong className={`uppercase text-[11px] tracking-tight ${isDark ? 'text-slate-400' : 'text-slate-900'}`}>
           {val}
         </Text>
       )
     },
     { 
-      title: 'Legacy Excel', 
+      title: 'Legacy (Static Excel)', 
       dataIndex: 'excel', 
       key: 'excel',
-      render: (val: string) => <Text type="danger" className="font-bold">{val}</Text>
+      render: (val: string) => <Text className={`font-bold ${isDark ? 'text-red-400/70' : 'text-red-600'}`}>{val}</Text>
     },
     { 
-      title: 'DebtPro OS', 
+      title: 'DebtPro Advanced OS', 
       dataIndex: 'debtpro', 
       key: 'debtpro',
-      render: (val: string) => <Space><CheckCircleOutlined className="text-emerald-500" /> <Text strong className="text-blue-600">{val}</Text></Space>
+      render: (val: string) => (
+        <Space>
+          <CheckCircleOutlined className="text-blue-500" />
+          <Text strong className={isDark ? 'text-white' : 'text-slate-900'}>{val}</Text>
+        </Space>
+      )
     },
   ];
   
   return (
-    <section className={`py-32 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section className={`py-40 relative overflow-hidden transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
        <div className="max-w-7xl mx-auto px-6 relative">
           <Reveal>
-             <div className="text-center mb-24">
-                <Badge 
-                  count={t.excelSection.tag} 
-                  style={{ backgroundColor: '#2563eb10', color: '#2563eb', border: '1px solid #2563eb20' }} 
-                  className="mb-8 font-black uppercase tracking-widest"
-                />
-                <Title level={2} className="text-4xl md:text-5xl font-black mb-8 tracking-tight">{t.excelSection.title}</Title>
-                <Paragraph className={`text-lg max-w-2xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.subtitle}</Paragraph>
+             <div className="text-center mb-32">
+                <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-10 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
+                   <Text className={`text-[10px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.excelSection.tag}</Text>
+                </div>
+                <h2 className={`text-4xl md:text-6xl font-black mb-10 tracking-tight ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.excelSection.title}</h2>
+                <p className={`text-xl max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.subtitle}</p>
              </div>
           </Reveal>
           
-          <Row gutter={[48, 48]} className="mb-24 relative">
-             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:flex w-16 h-16 rounded-full bg-blue-600 text-white text-sm font-black items-center justify-center shadow-2xl border-4 ${isDark ? 'border-slate-950' : 'border-slate-50'}`}>VS</div>
+          <Row gutter={[64, 64]} className="mb-32 relative">
+             <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 hidden lg:flex w-20 h-20 rounded-full text-xs font-black items-center justify-center shadow-2xl border ${isDark ? 'bg-slate-950 text-white border-white/10' : 'bg-white text-slate-900 border-slate-200'}`}>VS</div>
              
              <Col xs={24} lg={12}>
                 <Reveal direction="right">
-                   <AntdCard className={`h-full transition-all duration-500 hover:border-red-500/50 ${isDark ? 'bg-slate-900/30' : 'bg-white'}`}>
+                   <div className={`glass-card-pro h-full rounded-[3.5rem] p-12 transition-all duration-500 border border-transparent hover:border-red-500/30 group`}>
                       <ExcelChaosAnimation />
-                      <div className="mt-8">
-                         <Title level={4} className="flex items-center gap-3"><FileExcelOutlined className="text-red-500" /> {t.excelSection.excel.title}</Title>
-                         <Paragraph className={`mb-8 font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.excel.description}</Paragraph>
-                         <ul className="space-y-4">
+                      <div className="mt-12">
+                         <h3 className={`text-2xl font-black mb-6 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                           <FileExcelOutlined className="text-red-500" /> {t.excelSection.excel.title}
+                         </h3>
+                         <p className={`mb-10 font-medium leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.excel.description}</p>
+                         <ul className="space-y-6">
                             {t.excelSection.excel.items.map((item, idx) => (
-                               <li key={idx} className="flex items-start gap-3">
-                                  <CloseCircleOutlined className="text-red-500 mt-1" />
-                                  <Text strong className={isDark ? 'text-slate-400' : 'text-slate-700'}>{item}</Text>
+                               <li key={idx} className="flex items-start gap-4">
+                                  <CloseCircleOutlined className="text-red-500/40 mt-1" />
+                                  <Text className={`font-medium ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{item}</Text>
                                </li>
                             ))}
                          </ul>
                       </div>
-                   </AntdCard>
+                   </div>
                 </Reveal>
              </Col>
              
              <Col xs={24} lg={12}>
                 <Reveal direction="left">
-                   <AntdCard className={`h-full border-blue-500/20 hover:border-blue-500 transition-all duration-500 ${isDark ? 'bg-blue-600/5' : 'bg-blue-50/30'}`}>
+                   <div className={`glass-card-pro h-full rounded-[3.5rem] p-12 border transition-all duration-500 ${isDark ? 'border-blue-500/20 hover:border-blue-500' : 'border-blue-100 hover:border-blue-400'}`}>
                       <DebtProOrderAnimation />
-                      <div className="mt-8">
-                         <Title level={4} className="flex items-center gap-3"><RocketOutlined className="text-blue-500" /> {t.excelSection.debtpro.title}</Title>
-                         <Paragraph className={`mb-8 font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{t.excelSection.debtpro.description}</Paragraph>
-                         <ul className="space-y-4">
+                      <div className="mt-12">
+                         <h3 className={`text-2xl font-black mb-6 flex items-center gap-4 ${isDark ? 'text-white' : 'text-slate-900'}`}>
+                           <RocketOutlined className="text-blue-500" /> {t.excelSection.debtpro.title}
+                         </h3>
+                         <p className={`mb-10 font-medium leading-relaxed ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>{t.excelSection.debtpro.description}</p>
+                         <ul className="space-y-6">
                             {t.excelSection.debtpro.items.map((item, idx) => (
-                               <li key={idx} className="flex items-start gap-3">
-                                  <CheckCircleOutlined className="text-emerald-500 mt-1" />
-                                  <Text strong>{item}</Text>
+                               <li key={idx} className="flex items-start gap-4">
+                                  <CheckCircleOutlined className="text-blue-500 mt-1" />
+                                  <Text className={`font-bold ${isDark ? 'text-white' : 'text-slate-900'}`}>{item}</Text>
                                </li>
                             ))}
                          </ul>
                       </div>
-                   </AntdCard>
+                   </div>
                 </Reveal>
              </Col>
           </Row>
           
           <Reveal>
-             <AntdCard className="shadow-2xl overflow-hidden">
+             <div className="glass-card-pro rounded-[3rem] overflow-hidden p-2">
                 <Table 
                   dataSource={tableData} 
                   columns={columns} 
                   pagination={false} 
-                  className="rounded-3xl"
-                  rowClassName={() => isDark ? 'bg-slate-900/50' : 'bg-white'}
+                  className={`rounded-[2.5rem] overflow-hidden ${isDark ? 'dark-table' : 'light-table'}`}
+                  rowClassName={() => 'bg-transparent'}
                 />
-             </AntdCard>
+             </div>
           </Reveal>
        </div>
+       <style>{`
+         .dark-table .ant-table { background: transparent !important; color: white !important; }
+         .dark-table .ant-table-thead > tr > th { background: rgba(255,255,255,0.02) !important; color: rgba(255,255,255,0.5) !important; border-bottom: 1px solid rgba(255,255,255,0.05) !important; }
+         .dark-table .ant-table-tbody > tr > td { border-bottom: 1px solid rgba(255,255,255,0.03) !important; }
+         
+         .light-table .ant-table { background: transparent !important; color: #0f172a !important; }
+         .light-table .ant-table-thead > tr > th { background: rgba(0,0,0,0.02) !important; color: #64748b !important; border-bottom: 1px solid rgba(0,0,0,0.05) !important; }
+       `}</style>
     </section>
   );
 };
