@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
       :root {
         --primary: #2563eb;
@@ -24,7 +25,7 @@
         margin: 0;
         overflow-x: hidden;
         -webkit-font-smoothing: antialiased;
-        -moz-osx-smoothing: grayscale;
+        -moz-osx-font-smoothing: grayscale;
       }
 
       body.dark {
@@ -43,14 +44,13 @@
       }
 
       .gradient-text-hero {
-        background: linear-gradient(to bottom right, #ffffff 30%, #3b82f6 70%, #60a5fa 100%);
+        background: linear-gradient(to bottom, #fff 30%, #475569 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        background-size: 200% 200%;
       }
       
       .light .gradient-text-hero {
-        background: linear-gradient(to bottom right, #0f172a 30%, #2563eb 70%, #3b82f6 100%);
+        background: linear-gradient(to bottom, #0f172a 30%, #64748b 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
@@ -83,10 +83,6 @@
         will-change: transform, scale;
       }
 
-      .stage-glow {
-        background: radial-gradient(50% 50% at 50% 50%, rgba(37, 99, 235, 0.12) 0%, transparent 100%);
-      }
-
       .grid-bg-complex {
         background-size: 80px 80px;
         mask-image: radial-gradient(ellipse at center, black 10%, transparent 80%);
@@ -104,6 +100,34 @@
           linear-gradient(90deg, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
       }
 
+      @keyframes scroll-spark {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(220%); }
+      }
+      .animate-scroll-spark {
+        animation: scroll-spark 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      }
+
+      @keyframes content-entrance {
+        from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+        to { opacity: 1; transform: translateY(0); filter: blur(0); }
+      }
+      .animate-content-entrance {
+        animation: content-entrance 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      @keyframes beam {
+        0% { transform: translateY(-100%); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(100%); opacity: 0; }
+      }
+      .animate-beam {
+        animation: beam 4s linear infinite;
+      }
+
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
       .ant-btn-primary {
         background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
@@ -117,55 +141,21 @@
         font-size: 11px !important;
         transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
       }
-      
-      .ant-btn-primary:hover {
-        transform: translateY(-2px) !important;
-        box-shadow: 0 20px 40px -10px rgba(37, 99, 235, 0.5) !important;
-        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%) !important;
-      }
-
-      .floating-orb {
-        position: absolute;
-        filter: blur(150px);
-        border-radius: 50%;
-        z-index: -1;
-        opacity: 0.25;
-        will-change: transform;
-      }
-
-      .dark .ant-segmented {
-        background: rgba(255, 255, 255, 0.05) !important;
-      }
-      .dark .ant-segmented-item-selected {
-        background: #2563eb !important;
-        color: white !important;
-        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3) !important;
-      }
-      
-      .no-scrollbar::-webkit-scrollbar { display: none; }
-      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-
-      .section-fullscreen {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 100px 0;
-      }
     </style>
-  <script type="importmap">
+    <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
+    "react": "https://esm.sh/react@19.0.0",
+    "react-dom": "https://esm.sh/react-dom@19.0.0",
+    "react-dom/client": "https://esm.sh/react-dom@19.0.0/client",
+    "react/jsx-runtime": "https://esm.sh/react@19.0.0/jsx-runtime",
+    "lucide-react": "https://esm.sh/lucide-react@0.475.0?deps=react@19.0.0",
+    "recharts": "https://esm.sh/recharts@2.15.1?bundle&deps=react@19.0.0,react-dom@19.0.0",
+    "@google/genai": "https://esm.sh/@google/genai@1.36.0",
+    "antd": "https://esm.sh/antd@5.24.0?bundle&deps=react@19.0.0,react-dom@19.0.0",
+    "@ant-design/icons": "https://esm.sh/@ant-design/icons@5.6.1?bundle&deps=react@19.0.0,react-dom@19.0.0",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "recharts": "https://esm.sh/recharts@^3.6.0",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
-    "vite": "https://esm.sh/vite@^7.3.1",
-    "@google/genai": "https://esm.sh/@google/genai@^1.36.0",
-    "antd": "https://esm.sh/antd@^6.2.0",
-    "@ant-design/icons": "https://esm.sh/@ant-design/icons@^6.1.0"
+    "react/": "https://esm.sh/react@^19.2.3/"
   }
 }
 </script>
