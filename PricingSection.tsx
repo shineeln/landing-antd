@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Typography, Badge, Button, Space } from 'antd';
-import { CheckCircleFilled, RocketFilled, ThunderboltFilled } from '@ant-design/icons';
+import { CheckCircleFilled, RocketFilled, ThunderboltFilled, StarFilled } from '@ant-design/icons';
 import { i18n, Language } from './i18n';
 import { Reveal } from './CommonUI';
 
@@ -22,88 +22,100 @@ export const PricingSection: React.FC<PricingSectionProps> = ({ lang, theme }) =
   };
 
   return (
-    <section id="pricing" className={`section-fullscreen transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
+    <section id="pricing" className={`py-32 md:py-48 transition-colors duration-500 ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-6 w-full">
         <Reveal>
-          <div className="text-center mb-16 md:mb-20">
+          <div className="text-center mb-24 md:mb-32">
              <div className={`inline-flex items-center gap-3 px-6 py-2 rounded-full border mb-8 ${isDark ? 'border-blue-500/20 bg-blue-500/5' : 'border-blue-200 bg-blue-50'}`}>
                 <Text className={`text-[10px] font-black tracking-[0.4em] uppercase ${isDark ? 'text-blue-400' : 'text-blue-600'}`}>{t.pricing.tag}</Text>
              </div>
-            <h2 className={`text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
+            <h2 className={`text-4xl md:text-5xl lg:text-7xl font-black mb-10 tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>
               {t.pricing.title}
             </h2>
-            <p className={`text-base md:text-lg max-w-3xl mx-auto font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
+            <p className={`text-base md:text-xl max-w-3xl mx-auto font-medium leading-relaxed ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>
               {t.pricing.subtitle}
             </p>
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 max-w-5xl mx-auto">
-          {/* Free Plan */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto items-stretch">
+          {/* StarterPro Plan */}
           <Reveal direction="right" delay={200}>
-            <div className={`glass-card-pro p-8 md:p-10 rounded-[3rem] h-full flex flex-col transition-all hover:scale-[1.02] duration-500 border ${isDark ? 'border-white/5 hover:border-white/10' : 'border-slate-100 hover:border-slate-300'}`}>
-              <div className="mb-10">
-                <Text className="text-[10px] font-black uppercase tracking-[0.3em] text-slate-500 block mb-4">{t.pricing.free.name}</Text>
-                <div className="flex items-baseline gap-3 mb-4">
-                  <span className={`text-5xl md:text-6xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.free.price}</span>
-                  <span className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.2em]">/ {t.pricing.free.period}</span>
+            <div className={`
+              group glass-card-pro p-10 md:p-14 rounded-[3.5rem] h-full flex flex-col transition-all duration-500 border relative overflow-hidden
+              ${isDark ? 'bg-white/5 border-white/5 hover:border-white/10' : 'bg-slate-50 border-slate-200 hover:border-slate-300 shadow-lg'}
+            `}>
+              <div className="mb-12">
+                <Text className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-500 block mb-6">{t.pricing.starter.name}</Text>
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span className={`text-5xl md:text-6xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.starter.price}</span>
                 </div>
+                <p className={`text-sm font-medium leading-relaxed opacity-70 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {t.pricing.starter.desc}
+                </p>
               </div>
 
-              <ul className="space-y-4 mb-10 flex-1">
-                {t.pricing.free.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4">
-                    <CheckCircleFilled className={isDark ? 'text-slate-700' : 'text-slate-300'} />
-                    <Text className={`${isDark ? 'text-slate-400' : 'text-slate-600'} text-sm font-medium`}>{feature}</Text>
-                  </li>
+              <div className="space-y-5 mb-12 flex-1">
+                {t.pricing.starter.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <CheckCircleFilled className={`mt-1 ${isDark ? 'text-slate-700' : 'text-slate-300'}`} />
+                    <Text className={`${isDark ? 'text-slate-400' : 'text-slate-600'} text-sm font-medium leading-tight`}>{feature}</Text>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <button 
-                className={`h-16 w-full rounded-2xl border font-black uppercase tracking-[0.2em] text-[10px] transition-all active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-slate-50 border-slate-200 text-slate-900 hover:bg-slate-100'}`}
+                className={`h-16 w-full rounded-2xl border font-black uppercase tracking-[0.25em] text-[11px] transition-all duration-300 active:scale-95 ${isDark ? 'bg-white/5 border-white/10 text-white hover:bg-white/10' : 'bg-white border-slate-200 text-slate-900 hover:bg-slate-100 shadow-sm'}`}
                 onClick={() => scrollTo('contact')}
               >
-                {t.pricing.free.cta}
+                {t.pricing.starter.cta}
               </button>
             </div>
           </Reveal>
 
-          {/* Pro Plan */}
+          {/* EnterprisePro Plan */}
           <Reveal direction="left" delay={400}>
-            <div className={`glass-card-pro relative p-8 md:p-10 rounded-[3rem] h-full flex flex-col transition-all hover:scale-[1.02] duration-500 border ${isDark ? 'border-blue-500/20 shadow-[0_0_80px_rgba(37,99,235,0.1)]' : 'border-blue-200 shadow-xl'}`}>
-              <div className="absolute top-0 right-0 p-8">
-                <ThunderboltFilled className="text-4xl text-blue-500 opacity-20" />
+            <div className={`
+              group glass-card-pro relative p-10 md:p-14 rounded-[3.5rem] h-full flex flex-col transition-all duration-500 border
+              ${isDark 
+                ? 'bg-gradient-to-br from-blue-600/10 to-transparent border-blue-500/20 shadow-[0_0_100px_rgba(37,99,235,0.15)]' 
+                : 'bg-white border-blue-200 shadow-[0_40px_100px_rgba(37,99,235,0.1)]'}
+            `}>
+              <div className="absolute top-0 right-0 p-10">
+                <StarFilled className="text-5xl text-blue-600 opacity-20 animate-pulse" />
               </div>
 
-              <div className="mb-10 relative z-10">
-                <div className="inline-block px-4 py-1.5 rounded-full bg-blue-500 text-white text-[8px] font-black tracking-widest uppercase mb-6 shadow-xl shadow-blue-600/30">
-                  RECOMMENDED
+              <div className="mb-12 relative z-10">
+                <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-600 text-white text-[10px] font-black tracking-widest uppercase mb-8 shadow-2xl shadow-blue-600/40">
+                  <StarFilled /> RECOMMENDED
                 </div>
-                <Text className="text-[10px] font-black uppercase tracking-[0.3em] text-blue-500 block mb-4">{t.pricing.pro.name}</Text>
-                <div className="flex items-baseline gap-3 mb-4">
-                  <span className={`text-5xl md:text-6xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.pro.price}</span>
-                  <span className="text-slate-500 font-bold uppercase text-[9px] tracking-[0.2em]">/ {t.pricing.pro.period}</span>
+                <Text className="text-[11px] font-black uppercase tracking-[0.4em] text-blue-600 block mb-6">{t.pricing.enterprise.name}</Text>
+                <div className="flex items-baseline gap-4 mb-6">
+                  <span className={`text-5xl md:text-6xl font-black tracking-tighter ${isDark ? 'text-white' : 'text-slate-900'}`}>{t.pricing.enterprise.price}</span>
                 </div>
+                <p className={`text-sm font-medium leading-relaxed opacity-70 ${isDark ? 'text-slate-400' : 'text-slate-600'}`}>
+                  {t.pricing.enterprise.desc}
+                </p>
               </div>
 
-              <ul className="space-y-4 mb-10 flex-1 relative z-10">
-                {t.pricing.pro.features.map((feature, i) => (
-                  <li key={i} className="flex items-center gap-4">
-                    <CheckCircleFilled className="text-blue-500" />
-                    <Text className={`${isDark ? 'text-white' : 'text-slate-900'} text-sm font-bold tracking-tight`}>{feature}</Text>
-                  </li>
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-4 mb-12 flex-1 relative z-10">
+                {t.pricing.enterprise.features.map((feature, i) => (
+                  <div key={i} className="flex items-start gap-4">
+                    <CheckCircleFilled className="mt-1 text-blue-600 shadow-[0_0_15px_rgba(37,99,235,0.4)]" />
+                    <Text className={`${isDark ? 'text-white' : 'text-slate-900'} text-sm font-bold tracking-tight leading-tight`}>{feature}</Text>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               <Button 
                 type="primary" 
                 size="large" 
                 block 
                 icon={<RocketFilled />}
-                className="h-16 rounded-2xl font-black uppercase tracking-[0.2em] text-[10px] shadow-2xl shadow-blue-600/40"
+                className="h-20 rounded-2xl font-black uppercase tracking-[0.3em] text-[12px] shadow-[0_25px_50px_rgba(37,99,235,0.4)] hover:scale-[1.02] active:scale-95 transition-all"
                 onClick={() => scrollTo('contact')}
               >
-                {t.pricing.pro.cta}
+                {t.pricing.enterprise.cta}
               </Button>
             </div>
           </Reveal>

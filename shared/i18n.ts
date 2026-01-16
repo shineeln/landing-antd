@@ -102,32 +102,38 @@ export const i18n = {
       tag: 'PRICING ENGINE',
       title: 'Уян хатан үнийн нөхцөл',
       subtitle: 'Байгууллагын цар хүрээ, багцын хэмжээнд тохирох мэргэжлийн шийдлүүд.',
-      free: {
-        name: 'Starter (Үнэгүй)',
-        price: '0₮',
-        period: 'forever',
-        desc: 'Гарааны ББСБ болон жижиг багуудад зориулагдсан.',
+      starter: {
+        name: 'StarterPro',
+        price: 'Тохиролцоно',
+        period: 'monthly',
+        desc: 'Дунд болон жижиг ББСБ-уудад зориулагдсан.',
         features: [
-          'Зээлийн үндсэн удирдлага',
-          'Гараар дата импортлох',
-          '3 хүртэлх ажилтан',
-          'Стандарт тайлангийн систем',
-          'Мэдээллийн аюулгүй байдал'
+          'Хуваарилалт болон дата - manual & automation',
+          'Хугацаа хэтэрсэн зээлийн удирдлага',
+          'Ажилтны тоо, эрхийн түвшин - хязгаарлагдмал',
+          'Ажиллагаа хийх, бүртгэх - manual',
+          'Тайлан, дашбоард - стандарт тайлан',
+          'Ажилтнуудын гүйцэтгэл, үнэлгээ - стандарт тайлан'
         ],
         cta: 'Одоо эхлэх'
       },
-      pro: {
-        name: 'Enterprise Pro',
+      enterprise: {
+        name: 'EnterprisePro',
         price: 'Тохиролцоно',
         period: 'tailored',
         desc: 'Томоохон Банк, ББСБ-д зориулагдсан цогц үйлдлийн систем.',
         features: [
-          'Polaris Core системтэй шууд холбогдох',
-          'CallPro: Дуудлага, МСЖ автоматжуулалт',
-          'Smart Auto-Allocation алгоритм',
-          'Хууль, Шүүхийн иж бүрэн удирдлага',
-          'Advanced Migration Analytics',
-          'Хязгааргүй ажилтан'
+          'Хуваарилалт болон дата - automation',
+          'Эргэн төлөлтийн иж бүрэн удирдлага',
+          'Ажилтны тоо, эрхийн түвшин - хязгааргүй',
+          'Ажиллагаа хийх, бүртгэх - manual & automation',
+          'Тайлан, дашбоард - Хүссэн өгөгдөл, загвараар',
+          'Ажилтнуудын гүйцэтгэл, үнэлгээ - Хүссэн өгөгдөл',
+          'Бичиг баримтын автомат удирдлага',
+          'CallPro Омничаннел интеграц',
+          'Нарийвчилсан Аудит лог',
+          'Зээл төлөлтийн зан төлөвийн шинжилгээ',
+          'Судалгаа, Гомдол шийдвэрлэлт, Workflow тохиргоо'
         ],
         cta: 'Демо Захиалах'
       }
@@ -206,7 +212,7 @@ export const i18n = {
     flow: {
       tag: 'SYSTEM ARCHITECTURE',
       title: 'Өгөгдлөөс Үр дүн хүртэл',
-      subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг вэ?',
+      subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг vэ?',
       steps: [
         { title: 'Өгөгдөл Төвлөрүүлэх', desc: 'Polaris системээс датаг шууд импортлоно.' },
         { title: 'Ухаалаг Хуваарилалт', desc: 'Зээлүүдийг ажилтнуудын ачаалал дээр үндэслэн хуваарилна.' },
@@ -288,7 +294,7 @@ export const i18n = {
     faq: {
       title: 'Түгээмэл асуултууд',
       items: [
-        { q: 'Polaris системтэй хэрхэн холбогддог вэ?', a: 'DebtPro нь Polaris-аас экспортолсон файлыг шууд уншиж, зээлийн ангиллыг автоматаар боддог.' },
+        { q: 'Polaris системтэй хэрхэн холбогддог vэ?', a: 'DebtPro нь Polaris-аас экспортолсон файлыг шууд уншиж, зээлийн ангиллыг автоматаар боддог.' },
         { q: 'CallPro интеграц ямар давуу талтай вэ?', a: 'Ажилтнууд системээс шууд залгах боломжтой бөгөөд ярианы түүх нь харилцагчийн картад бүртгэгддэг.' }
       ]
     },
@@ -398,32 +404,38 @@ export const i18n = {
       tag: 'PRICING ENGINE',
       title: 'Flexible pricing models',
       subtitle: 'Scalable options designed for high-performance financial operations.',
-      free: {
-        name: 'Starter (Free)',
-        price: '$0',
-        period: 'forever',
-        desc: 'Ideal for small teams and startup cooperatives.',
+      starter: {
+        name: 'StarterPro',
+        price: 'Custom',
+        period: 'monthly',
+        desc: 'Designed for small and medium-sized NBFIs.',
         features: [
-          'Basic Loan Tracking',
-          'Manual Data Import (Excel)',
-          'Up to 3 Agents',
-          'Standard Reporting',
-          'Basic Data Security'
+          'Allocation & Data - manual & automation',
+          'Overdue loan management',
+          'Employee count & roles - limited',
+          'Operations & Logging - manual',
+          'Standard reporting & dashboards',
+          'Standard employee performance evaluation'
         ],
         cta: 'Get Started'
       },
-      pro: {
-        name: 'Enterprise Pro',
+      enterprise: {
+        name: 'EnterprisePro',
         price: 'Custom',
         period: 'tailored',
         desc: 'Comprehensive OS for large Banks & NBFIs.',
         features: [
-          'Direct Polaris Core Integration',
-          'CallPro: Voice & SMS Automation',
-          'Smart Auto-Allocation Algorithm',
-          'End-to-end Legal Automation',
-          'Advanced Migration Analytics',
-          'Unlimited Agents'
+          'Allocation & Data - full automation',
+          'Complete repayment management',
+          'Unlimited employees & permission levels',
+          'Operations & Logging - manual & auto',
+          'Custom reports & tailored dashboards',
+          'Advanced performance analytics',
+          'Full document automation engine',
+          'CallPro Omnichannel integration',
+          'Advanced Audit Logs',
+          'Behavioral repayment analysis',
+          'Surveys & customer complaints'
         ],
         cta: 'Request Demo'
       }
@@ -694,32 +706,38 @@ export const i18n = {
       tag: 'PRICING ENGINE',
       title: '유연한 요금제',
       subtitle: '비즈니스 규모에 맞는 최적화된 플랜을 선택하세요.',
-      free: {
-        name: 'Starter (무료)',
-        price: '₩0',
-        period: 'forever',
-        desc: '소규모 팀 및 스타트업에 적합합니다.',
+      starter: {
+        name: 'StarterPro',
+        price: '별도 문의',
+        period: 'monthly',
+        desc: '중소형 금융기관을 위한 최적의 시작.',
         features: [
-          '기본 대출 추적',
-          '수동 데이터 가져오기',
-          '3명의 사용자',
-          '표준 보고서',
-          '기본 보안'
+          '배분 및 데이터 - 수동 및 자동화',
+          '연체 채권 관리 시스템',
+          '직원 수 및 권한 - 제한적',
+          '업무 수행 및 로깅 - 수동',
+          '표준 보고서 및 대시보드',
+          '표준 직원 성과 평가'
         ],
         cta: '시작하기'
       },
-      pro: {
-        name: 'Enterprise Pro',
+      enterprise: {
+        name: 'EnterprisePro',
         price: '별도 문의',
         period: 'customized',
         desc: '중대형 금융기관을 위한 종합 OS.',
         features: [
-          'Polaris 코어 직접 연동',
-          'CallPro: 자동 콜/SMS',
-          '스마트 자동 배분 알고리즘',
-          '법적 절차 자동화',
-          '고급 이동 분석',
-          '사용자 무제한'
+          '배분 및 데이터 - 완전 자동화',
+          '상환 관리 엔진',
+          '사용자 수 및 권한 - 무제한',
+          '업무 수행 및 로깅 - 수동 및 자동',
+          '맞춤형 보고서 및 대시보드',
+          '고급 성과 분석 엔진',
+          '문서 자동화 엔진',
+          'CallPro 옴니채널 통합',
+          '상세 감사 로그',
+          '상환 행동 패턴 분석',
+          '설문 및 불만 관리'
         ],
         cta: '데모 신청'
       }
