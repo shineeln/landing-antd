@@ -1,17 +1,23 @@
 
 import React from 'react';
 import { Typography } from 'antd';
-import { MessageSquare, Zap, ShieldCheck, PhoneCall } from 'lucide-react';
+import { MessageSquare, Layout, Send, History } from 'lucide-react';
 import { SectionProps } from '../../shared/types';
 import { i18n } from '../../shared/i18n';
 import { Reveal } from '../../components/ui/Reveal';
-import { PreviewSMSDashboard } from '../../DashboardPreviews';
+import { PreviewSMSTemplate } from '../../DashboardPreviews';
 
 const { Text } = Typography;
 
 export const SMSAutomationSection: React.FC<SectionProps> = ({ lang, theme }) => {
   const t = i18n[lang].smsSection;
   const isDark = theme === 'dark';
+
+  const icons = [
+    <Layout size={20}/>,
+    <Send size={20}/>,
+    <History size={20}/>
+  ];
 
   return (
     <section id="sms" className={`py-44 md:py-64 transition-colors ${isDark ? 'bg-slate-950' : 'bg-white'}`}>
@@ -32,9 +38,9 @@ export const SMSAutomationSection: React.FC<SectionProps> = ({ lang, theme }) =>
 
               <div className="space-y-8 mb-12">
                 {t.features.map((f, i) => (
-                  <div key={i} className="flex gap-6">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border ${isDark ? 'bg-white/5 border-white/5 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
-                      {i === 0 ? <Zap size={20}/> : i === 1 ? <PhoneCall size={20}/> : <ShieldCheck size={20}/>}
+                  <div key={i} className="flex gap-6 group">
+                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 border transition-all duration-500 group-hover:scale-110 ${isDark ? 'bg-white/5 border-white/5 text-blue-400' : 'bg-blue-50 border-blue-100 text-blue-600'}`}>
+                      {icons[i]}
                     </div>
                     <div>
                       <h4 className={`text-lg font-black mb-1 ${isDark ? 'text-white' : 'text-slate-900'}`}>{f.title}</h4>
@@ -56,9 +62,11 @@ export const SMSAutomationSection: React.FC<SectionProps> = ({ lang, theme }) =>
           </Reveal>
 
           <Reveal direction="left" delay={200}>
-            <div className={`relative p-8 rounded-[3rem] border overflow-hidden shadow-2xl ${isDark ? 'bg-slate-900/40 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
+            <div className={`relative p-1 md:p-8 rounded-[3.5rem] border overflow-hidden shadow-[0_50px_100px_rgba(0,0,0,0.1)] ${isDark ? 'bg-slate-900/20 border-white/5' : 'bg-slate-50 border-slate-200'}`}>
                <div className="absolute inset-0 grid-bg opacity-10"></div>
-               <PreviewSMSDashboard lang={lang} theme={theme} />
+               <div className="relative z-10 scale-95 md:scale-100">
+                  <PreviewSMSTemplate lang={lang} theme={theme} />
+               </div>
             </div>
           </Reveal>
         </div>

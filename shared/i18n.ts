@@ -58,27 +58,45 @@ export const i18n = {
         }
       ]
     },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: 'Бодит Үр Дүн ба Статистик',
+      subtitle: 'DebtPro системийг нэвтрүүлснээр танай байгууллагад гарах эерэг өөрчлөлтүүд.',
+      items: [
+        { label: 'Ажиллагааны ил тод байдал', value: '100', suffix: '%', desc: 'Процесс бүр хяналттай' },
+        { label: 'Ажлын цагийн хэмнэлт', value: '40', suffix: '%', desc: 'Автоматжуулалтын үр дүнд' },
+        { label: 'Ажилтнуудын сэтгэл ханамж', value: '25', suffix: 'пт', desc: 'Бүтээмж нэмэгдсэнээр' },
+        { label: 'Manual ажиллагаа', value: '60', prefix: '-', suffix: '%', desc: 'Гар ажиллагааг хална' },
+        { label: 'PTP биелэлт', value: '25', prefix: '+', suffix: '%', desc: 'Амлалт авсан төлөлт' },
+        { label: 'Гомдлын тоо', value: '30', prefix: '-', suffix: '%', desc: 'Харилцааны соёл сайжирна' },
+        { label: 'Шүүх рүү шилжих кейс', value: '25', prefix: '-', suffix: '%', desc: 'Эрт үеийн төлүүлэлт' },
+        { label: 'Харилцагчийн сэтгэл ханамж', value: '20', suffix: 'пт', desc: 'Зөв арга хэмжээ' },
+        { label: 'Ажиллагааны зардал', value: '40', prefix: '-', suffix: '%', desc: 'Зардал буурна' },
+        { label: 'NPL хувь', value: '1-3', suffix: 'пт', desc: 'Багцын чанар' },
+        { label: 'NPE илрүүлэлт', value: '20', prefix: '+', suffix: '%', desc: 'Эрт үеийн оношлогоо' }
+      ]
+    },
     smsSection: {
-      tag: 'OMNICHANNEL AUTOMATION',
-      title: 'CallPro-д суурилсан ухаалаг МСЖ',
-      subtitle: 'Зээлдэгчийн зан төлөвт суурилсан автомат МСЖ болон Дуут мэдэгдлийн систем. Гараар илгээх шаардлагагүй.',
+      tag: 'CALLPRO OMNICHANNEL',
+      title: 'Ухаалаг МСЖ-ний нэгдсэн систем',
+      subtitle: 'Зээлдэгчийн зан төлөвт суурилсан автомат сануулга болон масс илгээлтийн цогц шийдэл.',
       features: [
-        { title: 'Trigger Logic', desc: 'Хугацаа хэтэрсэн хоногоос хамаарч өөр өөр агуулгатай МСЖ илгээнэ.' },
-        { title: 'CallPro Sync', desc: 'Ярианы түүх болон МСЖ-ний хүргэлтийг системээсээ шууд хянана.' },
-        { title: 'Mass Messaging', desc: 'Мянга мянган зээлдэгчид нэгэн зэрэг мэдээлэл хүргэх хүчин чадал.' }
+        { title: 'Message Templates', desc: 'Дахин ашиглах боломжтой мэргэжлийн мессеж загварууд үүсгэнэ.' },
+        { title: 'Auto & Mass Delivery', desc: 'Загвараа ашиглан авто, масс болон хувийн МСЖ-г нэг товчоор илгээнэ.' },
+        { title: 'Full Traceability', desc: 'Илгээсэн бүх мессежний түүх, хүргэлтийн төлөв, хариуг системээсээ хянана.' }
       ],
-      stats: { delivery: '99.9%', latency: '<2s', volume: '10K+' }
+      stats: { templates: '50+', delivery: '99.9%', latency: '<1s' }
     },
     docSection: {
-      tag: 'LEGAL ENGINE',
+      tag: 'SMART DOCUMENT ENGINE',
       title: 'Бичиг баримтын иж бүрэн автоматжуулалт',
-      subtitle: 'Нэхэмжлэх, мэдэгдэх хуудас, шүүхийн нэхэмжлэлийг 1-хэн секундэд үүсгэж, хэвлэхэд бэлэн болгоно.',
+      subtitle: 'Түлхүүр үг ашиглан загвар үүсгэж, нэг секундэд бэлэн баримт бичиг боловсруулна.',
       features: [
-        { title: 'Smart Templates', desc: 'Зээлдэгчийн датаг автоматаар бөглөх ухаалаг загварууд.' },
-        { title: 'E-Sign Ready', desc: 'Цахим гарын үсэг болон QR кодоор баталгаажуулах боломж.' },
-        { title: 'Legal Archive', desc: 'Үүсгэсэн бүх баримт бичгийг Timeline-д хавсаргаж архивлана.' }
+        { title: 'Keyword Template Builder', desc: 'Гэрээ, мэдэгдэх хуудастаа {firstname} гэх мэт түлхүүр үг ашиглан загвар үүсгэнэ.' },
+        { title: 'Instant Generation', desc: 'Сонгосон харилцагч, зээлийн дата дээр үндэслэн шууд хэвлэх, татах боломжтой.' },
+        { title: 'Audit Logs', desc: 'Үүсгэсэн, хэвлэсэн бүх бичиг баримтын лог, хувилбарууд түүх болон хадгалагдана.' }
       ],
-      impact: '80% ЦАГ ХЭМНЭЛТ'
+      impact: '100% АЛДААГҮЙ'
     },
     pricing: {
       tag: 'PRICING ENGINE',
@@ -236,7 +254,7 @@ export const i18n = {
           'Auto-Allocation: Тэнцүү хуваарилалт',
           'Эрсдэлийн сангийн автомат тооцоолол',
           'CallPro: Системээс шууд залгах',
-          'Барьцаа хөрөнгө, Хамаарал бүхий 360° мэдээлэл'
+          'Барьцаа хөрөнөг, Хамаарал бүхий 360° мэдээлэл'
         ]
       }
     },
@@ -336,27 +354,45 @@ export const i18n = {
         }
       ]
     },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: 'Real Impact & Statistics',
+      subtitle: 'Expected positive changes in your organization after deploying DebtPro.',
+      items: [
+        { label: 'Operational Transparency', value: '100', suffix: '%', desc: 'Fully visible audit trails' },
+        { label: 'Work Time Saving', value: '40', suffix: '%', desc: 'Via automation logic' },
+        { label: 'Employee Satisfaction', value: '25', suffix: 'pts', desc: 'Increased productivity' },
+        { label: 'Manual Operations', value: '60', prefix: '-', suffix: '%', desc: 'Human error elimination' },
+        { label: 'Promise to Pay (PTP)', value: '25', prefix: '+', suffix: '%', desc: 'Better fulfillment' },
+        { label: 'Customer Complaints', value: '30', prefix: '-', suffix: '%', desc: 'Ethical recovery' },
+        { label: 'Legal Transition Rate', value: '25', prefix: '-', suffix: '%', desc: 'Pre-court success' },
+        { label: 'Customer Satisfaction', value: '20', suffix: 'pts', desc: 'Better UX journey' },
+        { label: 'Operational Cost', value: '40', prefix: '-', suffix: '%', desc: 'Lower overhead' },
+        { label: 'NPL Ratio Reduction', value: '1-3', suffix: 'pts', desc: 'Portfolio health' },
+        { label: 'NPE Detection', value: '20', prefix: '+', suffix: '%', desc: 'Early diagnostics' }
+      ]
+    },
     smsSection: {
-      tag: 'OMNICHANNEL AUTOMATION',
-      title: 'Smart SMS via CallPro',
-      subtitle: 'Behavioral-based automated SMS and Voice notifications. Zero manual intervention.',
+      tag: 'CALLPRO OMNICHANNEL',
+      title: 'Smart SMS Automation Hub',
+      subtitle: 'Unified solution for behavioral triggers, mass messaging, and tracking.',
       features: [
-        { title: 'Trigger Logic', desc: 'Send tailored messages based on exact overdue aging days.' },
-        { title: 'CallPro Sync', desc: 'Track voice history and SMS delivery directly from your cockpit.' },
-        { title: 'Mass Messaging', desc: 'Industrial capacity to reach thousands of borrowers simultaneously.' }
+        { title: 'Message Templates', desc: 'Create reusable professional templates for all recovery stages.' },
+        { title: 'Auto & Mass Delivery', desc: 'Execute automated, mass, or personal messages with one click.' },
+        { title: 'Full Traceability', desc: 'Track entire message history, delivery reports, and responses in real-time.' }
       ],
-      stats: { delivery: '99.9%', latency: '<2s', volume: '10K+' }
+      stats: { templates: '50+', delivery: '99.9%', latency: '<1s' }
     },
     docSection: {
-      tag: 'LEGAL ENGINE',
-      title: 'End-to-end Document Automation',
-      subtitle: 'Generate notices, invoices, and court filings in 1 second. Ready to print.',
+      tag: 'SMART DOCUMENT ENGINE',
+      title: 'End-to-End Document Automation',
+      subtitle: 'Create templates with smart keywords and generate precise documents in seconds.',
       features: [
-        { title: 'Smart Templates', desc: 'Templates that auto-fill with precise borrower and debt data.' },
-        { title: 'E-Sign Ready', desc: 'Support for digital signatures and secure QR authentication.' },
-        { title: 'Legal Archive', desc: 'Every generated document is automatically archived in the borrower timeline.' }
+        { title: 'Keyword Template Builder', desc: 'Use tags like {firstname} in your contracts and notices.' },
+        { title: 'Instant Generation', desc: 'Generate, print, or download docs based on real customer data.' },
+        { title: 'Audit Logs', desc: 'Full history of generated documents and versions stored in borrower timeline.' }
       ],
-      impact: '80% TIME SAVED'
+      impact: '100% ACCURACY'
     },
     pricing: {
       tag: 'PRICING ENGINE',
@@ -614,27 +650,45 @@ export const i18n = {
         }
       ]
     },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: '측정 가능한 결과 및 통계',
+      subtitle: 'DebtPro 도입 후 기대할 수 있는 조직의 긍정적인 변화들입니다.',
+      items: [
+        { label: '운영 투명성', value: '100', suffix: '%', desc: '모든 기록 가시화' },
+        { label: '업무 시간 절약', value: '40', suffix: '%', desc: '자동화 엔진 활용' },
+        { label: '직원 만족도', value: '25', suffix: 'pts', desc: '생산성 향상' },
+        { label: '수동 작업 감소', value: '60', prefix: '-', suffix: '%', desc: '업무 효율성' },
+        { label: 'PTP 이행률', value: '25', prefix: '+', suffix: '%', desc: '약속 상환 증가' },
+        { label: '고객 불만 감소', value: '30', prefix: '-', suffix: '%', desc: '윤리적 회수' },
+        { label: '법적 절차 전환율', value: '25', prefix: '-', suffix: '%', desc: '조기 회수 성공' },
+        { label: '고객 만족도', value: '20', suffix: 'pts', desc: '원활한 소통' },
+        { label: '운영 비용 절감', value: '40', prefix: '-', suffix: '%', desc: '비용 최적화' },
+        { label: 'NPL 비율 감소', value: '1-3', suffix: 'pts', desc: '포트폴리오 건전성' },
+        { label: 'NPE 탐지율', value: '20', prefix: '+', suffix: '%', desc: '조기 진단' }
+      ]
+    },
     smsSection: {
-      tag: 'OMNICHANNEL AUTOMATION',
-      title: 'CallPro 기반의 지능형 SMS',
-      subtitle: '사용자 행동 기반의 자동 SMS 및 음성 알림. 수동 작업이 필요 없습니다.',
+      tag: 'CALLPRO OMNICHANNEL',
+      title: '지능형 SMS 자동화 허브',
+      subtitle: '동적 템플릿, 대량 발송 및 실시간 추적 기능을 통합적으로 제공합니다.',
       features: [
-        { title: 'Trigger Logic', desc: '연체 일수에 따른 맞춤형 메시지 자동 발송.' },
-        { title: 'CallPro Sync', desc: '통화 내역 및 SMS 전송 결과를 시스템에서 직접 확인.' },
-        { title: 'Mass Messaging', desc: '수천 명의 대출자에게 동시에 정보를 전달할 수 있는 산업급 용량.' }
+        { title: 'Message Templates', desc: '모든 회수 단계에 재사용 가능한 전문 메시지 템플릿을 생성합니다.' },
+        { title: 'Auto & Mass Delivery', desc: '한 번의 클릭으로 자동, 대량 또는 개인화된 메시지를 발송합니다.' },
+        { title: 'Full Traceability', desc: '메시지 발송 내역, 수신 여부 및 고객 응답을 실시간으로 확인합니다.' }
       ],
-      stats: { delivery: '99.9%', latency: '<2s', volume: '10K+' }
+      stats: { templates: '50+', delivery: '99.9%', latency: '<1s' }
     },
     docSection: {
-      tag: 'LEGAL ENGINE',
-      title: '종단간 문서 자동화',
-      subtitle: '고지서, 영수증, 법원 제출 서류를 1초 만에 생성하고 즉시 인쇄하세요.',
+      tag: 'SMART DOCUMENT ENGINE',
+      title: '엔드투엔드 문서 자동화',
+      subtitle: '스마트 키워드를 사용해 템플릿을 만들고 1초 만에 정확한 문서를 생성하세요.',
       features: [
-        { title: 'Smart Templates', desc: '대출자 데이터를 기반으로 자동 완성되는 템플릿.' },
-        { title: 'E-Sign Ready', desc: '전자 서명 및 보안 QR 인증 지원.' },
-        { title: 'Legal Archive', desc: '생성된 모든 문서는 대출자 타임라인에 자동으로 보관됩니다.' }
+        { title: 'Keyword Template Builder', desc: '계약서와 고지서에 {firstname}과 같은 태그를 사용하세요.' },
+        { title: 'Instant Generation', desc: '실제 고객 데이터를 바탕으로 문서를 생성, 출력 또는 다운로드합니다.' },
+        { title: 'Audit Logs', desc: '생성된 모든 문서 내역과 버전이 대출자 타임라인에 저장됩니다.' }
       ],
-      impact: '80% 시간 절감'
+      impact: '100% 정확도'
     },
     pricing: {
       tag: 'PRICING ENGINE',

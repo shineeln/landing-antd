@@ -58,6 +58,24 @@ export const i18n = {
         }
       ]
     },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: 'Бодит Үр Дүн ба Статистик',
+      subtitle: 'DebtPro системийг нэвтрүүлснээр танай байгууллагад гарах эерэг өөрчлөлтүүд.',
+      items: [
+        { label: 'Ажиллагааны ил тод байдал', value: '100', suffix: '%', desc: 'Процесс бүр хяналттай' },
+        { label: 'Ажлын цагийн хэмнэлт', value: '40', suffix: '%', desc: 'Автоматжуулалтын үр дүнд' },
+        { label: 'Ажилтнуудын сэтгэл ханамж', value: '25', suffix: 'пт', desc: 'Бүтээмж нэмэгдсэнээр' },
+        { label: 'Manual ажиллагаа', value: '60', prefix: '-', suffix: '%', desc: 'Гар ажиллагааг хална' },
+        { label: 'PTP биелэлт', value: '25', prefix: '+', suffix: '%', desc: 'Амлалт авсан төлөлт' },
+        { label: 'Гомдлын тоо', value: '30', prefix: '-', suffix: '%', desc: 'Харилцааны соёл сайжирна' },
+        { label: 'Шүүх рүү шилжих кейс', value: '25', prefix: '-', suffix: '%', desc: 'Эрт үеийн төлүүлэлт' },
+        { label: 'Харилцагчийн сэтгэл ханамж', value: '20', suffix: 'пт', desc: 'Зөв арга хэмжээ' },
+        { label: 'Ажиллагааны зардал', value: '40', prefix: '-', suffix: '%', desc: 'Зардал буурна' },
+        { label: 'NPL хувь', value: '1-3', suffix: 'пт', desc: 'Багцын чанар' },
+        { label: 'NPE илрүүлэлт', value: '20', prefix: '+', suffix: '%', desc: 'Эрт үеийн оношлогоо' }
+      ]
+    },
     smsSection: {
       tag: 'OMNICHANNEL AUTOMATION',
       title: 'CallPro-д суурилсан ухаалаг МСЖ',
@@ -336,6 +354,24 @@ export const i18n = {
         }
       ]
     },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: 'Real Impact & Statistics',
+      subtitle: 'Expected positive changes in your organization after deploying DebtPro.',
+      items: [
+        { label: 'Operational Transparency', value: '100', suffix: '%', desc: 'Fully visible audit trails' },
+        { label: 'Work Time Saving', value: '40', suffix: '%', desc: 'Via automation logic' },
+        { label: 'Employee Satisfaction', value: '25', suffix: 'pts', desc: 'Increased productivity' },
+        { label: 'Manual Operations', value: '60', prefix: '-', suffix: '%', desc: 'Human error elimination' },
+        { label: 'Promise to Pay (PTP)', value: '25', prefix: '+', suffix: '%', desc: 'Better fulfillment' },
+        { label: 'Customer Complaints', value: '30', prefix: '-', suffix: '%', desc: 'Ethical recovery' },
+        { label: 'Legal Transition Rate', value: '25', prefix: '-', suffix: '%', desc: 'Pre-court success' },
+        { label: 'Customer Satisfaction', value: '20', suffix: 'pts', desc: 'Better UX journey' },
+        { label: 'Operational Cost', value: '40', prefix: '-', suffix: '%', desc: 'Lower overhead' },
+        { label: 'NPL Ratio Reduction', value: '1-3', suffix: 'pts', desc: 'Portfolio health' },
+        { label: 'NPE Detection', value: '20', prefix: '+', suffix: '%', desc: 'Early diagnostics' }
+      ]
+    },
     smsSection: {
       tag: 'OMNICHANNEL AUTOMATION',
       title: 'Smart SMS via CallPro',
@@ -612,6 +648,24 @@ export const i18n = {
           label: '상각 및 매각',
           desc: '담보 매각, 대손 처리 및 최종 리스크 펀드 정산을 완료합니다.'
         }
+      ]
+    },
+    impactMetrics: {
+      tag: 'MEASURABLE RESULTS',
+      title: '측정 가능한 결과 및 통계',
+      subtitle: 'DebtPro 도입 후 기대할 수 있는 조직의 긍정적인 변화들입니다.',
+      items: [
+        { label: '운영 투명성', value: '100', suffix: '%', desc: '모든 기록 가시화' },
+        { label: '업무 시간 절약', value: '40', suffix: '%', desc: '자동화 엔진 활용' },
+        { label: '직원 만족도', value: '25', suffix: 'pts', desc: '생산성 향상' },
+        { label: '수동 작업 감소', value: '60', prefix: '-', suffix: '%', desc: '업무 효율성' },
+        { label: 'PTP 이행률', value: '25', prefix: '+', suffix: '%', desc: '약속 상환 증가' },
+        { label: '고객 불만 감소', value: '30', prefix: '-', suffix: '%', desc: '윤리적 회수' },
+        { label: '법적 절차 전환율', value: '25', prefix: '-', suffix: '%', desc: '조기 회수 성공' },
+        { label: '고객 만족도', value: '20', suffix: 'pts', desc: '원활한 소통' },
+        { label: '운영 비용 절감', value: '40', prefix: '-', suffix: '%', desc: '비용 최적화' },
+        { label: 'NPL 비율 감소', value: '1-3', suffix: 'pts', desc: '포트폴리오 건전성' },
+        { label: 'NPE 탐지율', value: '20', prefix: '+', suffix: '%', desc: '조기 진단' }
       ]
     },
     smsSection: {

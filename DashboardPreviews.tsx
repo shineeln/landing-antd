@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   BarChart3, 
   History, 
@@ -11,7 +11,13 @@ import {
   Award,
   TrendingUp,
   Activity,
-  Info
+  Info,
+  Type,
+  Send,
+  Braces,
+  FileText,
+  CheckCircle,
+  Download
 } from 'lucide-react';
 import { 
   XAxis, 
@@ -30,6 +36,99 @@ interface PreviewProps {
   lang: Language;
   theme: 'light' | 'dark';
 }
+
+export const PreviewSMSTemplate: React.FC<PreviewProps> = ({ lang, theme }) => {
+  const isDark = theme === 'dark';
+  return (
+    <div className="w-full h-full flex flex-col gap-6">
+       <div className={`p-6 rounded-3xl border ${isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'} shadow-xl`}>
+          <div className="flex items-center gap-3 mb-6 border-b border-white/5 pb-4">
+             <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white"><Type size={14}/></div>
+             <h4 className="text-[10px] font-black uppercase tracking-widest">Template_Studio_V1</h4>
+          </div>
+          <div className={`p-4 rounded-xl font-mono text-[11px] leading-relaxed mb-6 ${isDark ? 'bg-black/40 text-blue-400' : 'bg-slate-50 text-blue-600'}`}>
+            Сайн байна уу, <span className="bg-blue-500/20 px-1 rounded">{"{firstname}"}</span>. <br/>
+            Таны <span className="bg-blue-500/20 px-1 rounded">{"{loan_id}"}</span> дугаартай зээлийн эргэн төлөлт <span className="bg-red-500/20 px-1 rounded text-red-400">{"{days_overdue}"}</span> хоног хэтэрлээ. <br/>
+            Яаралтай холбогдоно уу: 77012277
+          </div>
+          <div className="flex gap-2">
+             <button className="flex-1 h-9 bg-blue-600 text-white text-[9px] font-black uppercase rounded-lg flex items-center justify-center gap-2">
+                <Send size={12}/> Mass_Send
+             </button>
+             <button className={`flex-1 h-9 border text-[9px] font-black uppercase rounded-lg flex items-center justify-center gap-2 ${isDark ? 'border-white/10 text-slate-400' : 'border-slate-200 text-slate-500'}`}>
+                <Activity size={12}/> Set_Trigger
+             </button>
+          </div>
+       </div>
+       
+       <div className={`p-6 rounded-3xl border flex-1 ${isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'} shadow-xl overflow-hidden`}>
+          <h4 className="text-[9px] font-black uppercase tracking-[0.2em] text-slate-500 mb-6 flex items-center gap-2">
+             <History size={14}/> Recent_History
+          </h4>
+          <div className="space-y-4">
+             {[
+               { to: 'Bat.E', stat: 'Delivered', time: '10:45' },
+               { to: 'Suren.D', stat: 'Failed', time: '10:42' },
+               { to: 'Anar.M', stat: 'Delivered', time: '10:38' }
+             ].map((log, i) => (
+                <div key={i} className="flex justify-between items-center pb-3 border-b border-white/5 last:border-0">
+                   <div className="flex items-center gap-3">
+                      <div className={`w-2 h-2 rounded-full ${log.stat === 'Failed' ? 'bg-red-500' : 'bg-emerald-500'}`}></div>
+                      <span className="text-[11px] font-bold">{log.to}</span>
+                   </div>
+                   <span className="text-[9px] font-black text-slate-500">{log.time}</span>
+                </div>
+             ))}
+          </div>
+       </div>
+    </div>
+  );
+};
+
+export const PreviewDocAutomation: React.FC<PreviewProps> = ({ lang, theme }) => {
+  const isDark = theme === 'dark';
+  return (
+    <div className="w-full h-full grid grid-cols-1 md:grid-cols-2 gap-6">
+       <div className={`p-8 rounded-[2.5rem] border flex flex-col ${isDark ? 'bg-slate-900 border-white/10' : 'bg-white border-slate-200'} shadow-2xl`}>
+          <div className="flex items-center gap-3 mb-8">
+             <div className="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white"><Braces size={20}/></div>
+             <h4 className="text-[11px] font-black uppercase tracking-widest">Keyword_Editor</h4>
+          </div>
+          <div className="space-y-4 flex-1">
+             <div className={`p-4 rounded-2xl border flex flex-col gap-2 ${isDark ? 'bg-black/20 border-white/5' : 'bg-slate-50 border-slate-100'}`}>
+                <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">Document_Type</span>
+                <span className="text-sm font-bold">Мэдэгдэх хуудас V2</span>
+             </div>
+             <div className={`p-5 rounded-2xl border flex-1 font-serif text-sm leading-relaxed ${isDark ? 'bg-black/40 border-white/5 text-slate-400' : 'bg-slate-50 border-slate-100 text-slate-600'}`}>
+                ... таны <span className="text-emerald-500 font-mono text-xs">{"{loan_amount}"}</span>₮-ний үлдэгдэлтэй зээл <span className="text-emerald-500 font-mono text-xs">{"{overdue_days}"}</span> хоног хэтэрсэн тул ...
+             </div>
+          </div>
+       </div>
+       
+       <div className={`p-8 rounded-[2.5rem] border flex flex-col relative overflow-hidden ${isDark ? 'bg-slate-950 border-white/10' : 'bg-slate-50 border-slate-200'} shadow-2xl`}>
+          <div className="absolute top-0 right-0 p-8 opacity-10"><FileText size={120} /></div>
+          <div className="flex items-center gap-3 mb-10 relative z-10">
+             <div className="w-3 h-3 rounded-full bg-emerald-500"></div>
+             <h4 className="text-[11px] font-black uppercase tracking-widest">Generated_Output</h4>
+          </div>
+          <div className={`flex-1 p-8 rounded-2xl border relative z-10 shadow-inner ${isDark ? 'bg-white/5 border-white/10' : 'bg-white border-slate-100'}`}>
+             <div className="w-16 h-2 bg-slate-500/20 rounded-full mb-8"></div>
+             <div className="space-y-4">
+                <div className="h-3 w-full bg-slate-500/10 rounded"></div>
+                <div className="h-3 w-[90%] bg-slate-500/10 rounded"></div>
+                <div className="h-4 w-[60%] bg-emerald-500/20 border border-emerald-500/10 rounded flex items-center px-2 text-[10px] font-black text-emerald-500">124,000,000₮</div>
+                <div className="h-3 w-[95%] bg-slate-500/10 rounded"></div>
+                <div className="h-3 w-full bg-slate-500/10 rounded"></div>
+             </div>
+             <div className="absolute bottom-8 right-8 flex gap-3">
+                <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white shadow-xl cursor-pointer hover:scale-110 transition-transform"><Download size={18}/></div>
+                <div className="w-10 h-10 rounded-full bg-emerald-600 flex items-center justify-center text-white shadow-xl cursor-pointer hover:scale-110 transition-transform"><CheckCircle size={18}/></div>
+             </div>
+          </div>
+       </div>
+    </div>
+  );
+};
 
 export const PreviewCommandCenter: React.FC<PreviewProps> = ({ lang, theme }) => {
   const t = i18n[lang];

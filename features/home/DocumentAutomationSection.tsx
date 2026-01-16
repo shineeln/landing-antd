@@ -1,17 +1,23 @@
 
 import React from 'react';
 import { Typography, Progress } from 'antd';
-import { FileText, Printer, FileCheck, Archive } from 'lucide-react';
+import { FileText, Braces, Printer, History } from 'lucide-react';
 import { SectionProps } from '../../shared/types';
 import { i18n } from '../../shared/i18n';
 import { Reveal } from '../../components/ui/Reveal';
-import { PreviewLegalPipeline } from '../../DashboardPreviews';
+import { PreviewDocAutomation } from '../../DashboardPreviews';
 
 const { Text } = Typography;
 
 export const DocumentAutomationSection: React.FC<SectionProps> = ({ lang, theme }) => {
   const t = i18n[lang].docSection;
   const isDark = theme === 'dark';
+
+  const icons = [
+    <Braces size={24}/>,
+    <Printer size={24}/>,
+    <History size={24}/>
+  ];
 
   return (
     <section id="docs" className={`py-44 md:py-64 transition-colors ${isDark ? 'bg-slate-950' : 'bg-[#fcfdfe]'}`}>
@@ -30,41 +36,34 @@ export const DocumentAutomationSection: React.FC<SectionProps> = ({ lang, theme 
                 {t.subtitle}
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              <div className="grid grid-cols-1 md:grid-cols-1 gap-6 mb-12">
                 {t.features.map((f, i) => (
-                  <div key={i} className={`p-8 rounded-[2rem] border transition-all hover:scale-105 ${isDark ? 'bg-white/5 border-white/5' : 'bg-white border-slate-100 shadow-sm'}`}>
-                    <div className="mb-6 text-emerald-500">
-                      {i === 0 ? <Printer size={24}/> : i === 1 ? <FileCheck size={24}/> : <Archive size={24}/>}
+                  <div key={i} className={`p-8 rounded-[2.5rem] border transition-all duration-500 hover:-translate-y-1 flex items-start gap-6 ${isDark ? 'bg-white/5 border-white/5 hover:border-emerald-500/20' : 'bg-white border-slate-100 shadow-sm hover:border-emerald-200'}`}>
+                    <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0">
+                      {icons[i]}
                     </div>
-                    <h4 className={`text-base font-black mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{f.title}</h4>
-                    <p className={`text-sm font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{f.desc}</p>
+                    <div>
+                      <h4 className={`text-base font-black mb-2 ${isDark ? 'text-white' : 'text-slate-900'}`}>{f.title}</h4>
+                      <p className={`text-sm font-medium ${isDark ? 'text-slate-500' : 'text-slate-600'}`}>{f.desc}</p>
+                    </div>
                   </div>
                 ))}
               </div>
 
               <div className={`p-8 rounded-3xl border border-emerald-500/20 bg-emerald-500/5`}>
                 <div className="flex justify-between items-center mb-4">
-                  <span className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Efficiency Boost</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-emerald-500">Efficiency_Score</span>
                   <span className="text-xl font-black text-emerald-500">{t.impact}</span>
                 </div>
-                <Progress percent={80} showInfo={false} strokeColor="#10b981" trailColor={isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"} />
+                <Progress percent={100} showInfo={false} strokeColor="#10b981" trailColor={isDark ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)"} />
               </div>
             </div>
           </Reveal>
 
           <Reveal direction="left" delay={200} className="lg:order-1">
-            <div className={`relative p-8 rounded-[3rem] border overflow-hidden shadow-2xl ${isDark ? 'bg-slate-900/40 border-white/5' : 'bg-white border-slate-200'}`}>
-               <div className="absolute inset-0 grid-bg opacity-10"></div>
-               <PreviewLegalPipeline lang={lang} theme={theme} />
-               <div className="mt-12 p-6 rounded-2xl bg-blue-600/10 border border-blue-500/20">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-xs">PDF</div>
-                    <div>
-                      <div className={`text-[11px] font-black ${isDark ? 'text-white' : 'text-slate-900'}`}>Мэдэгдэх_хуудас_V2.pdf</div>
-                      <div className="text-[9px] font-bold text-slate-500 uppercase">Generated Successfully • 1.2MB</div>
-                    </div>
-                  </div>
-               </div>
+            <div className="relative">
+               <div className="absolute -inset-10 bg-emerald-500/10 blur-[100px] rounded-full opacity-30"></div>
+               <PreviewDocAutomation lang={lang} theme={theme} />
             </div>
           </Reveal>
         </div>
