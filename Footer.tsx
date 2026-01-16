@@ -93,7 +93,7 @@ export const Footer: React.FC<FooterProps> = ({ lang, theme }) => {
 
           <div className={`pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-6 ${isDark ? 'border-white/5' : 'border-slate-200'}`}>
             <p className="text-[9px] font-black text-slate-600 uppercase tracking-[0.1em] text-center md:text-left">
-              © 2024 TND DEBTPRO TECHNOLOGY GROUP. MISSION CRITICAL.
+              © 2024 KCH SOLUTION LLC. MISSION CRITICAL.
             </p>
             <div className="flex items-center gap-4">
                <span className="text-[9px] font-black text-slate-500 uppercase tracking-[0.1em] flex items-center gap-2">

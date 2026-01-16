@@ -8,6 +8,7 @@ import { HeroSection } from './features/home/HeroSection';
 import { PartnerMarquee } from './PartnerMarquee';
 import { ComparisonSection } from './ComparisonSection';
 import { WhyDebtProSection } from './WhyDebtProSection';
+import { RecoveryStagesSection } from './RecoveryStagesSection';
 import { WorkflowSection } from './WorkflowSection';
 import { InteractiveFlowSection } from './InteractiveFlowSection';
 import { SMSAutomationSection } from './features/home/SMSAutomationSection';
@@ -50,6 +51,7 @@ const App: React.FC = () => {
             <div id="home"><HeroSection lang={lang} theme={themeMode} /></div>
             <PartnerMarquee lang={lang} theme={themeMode} />
             
+            <div id="lifecycle"><RecoveryStagesSection lang={lang} theme={themeMode} /></div>
             <div id="comparison"><ComparisonSection lang={lang} theme={themeMode} /></div>
             <div id="why"><WhyDebtProSection lang={lang} theme={themeMode} /></div>
             <div id="solutions"><WorkflowSection lang={lang} theme={themeMode} /></div>

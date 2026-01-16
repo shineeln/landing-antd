@@ -15,6 +15,49 @@ export const i18n = {
       sms: 'МСЖ',
       docs: 'Бичиг баримт'
     },
+    recoveryStages: {
+      tag: 'LIFECYCLE MANAGEMENT',
+      title: 'Зээл төлүүлэлтийн иж бүрэн үе шат',
+      subtitle: 'Зээл олголтоос эхлээд хасалт хийх хүртэлх бүх процессыг DebtPro-оор удирд.',
+      stages: [
+        {
+          id: 'onboarding',
+          title: 'Portfolio onboarding',
+          label: 'Шинэ зээл',
+          desc: 'Зээлийн багцыг системд бүртгэж, анхны төлөв тогтоох үе шат.'
+        },
+        {
+          id: 'pre-delinquent',
+          title: 'Pre-delinquent',
+          label: 'Хугацаа хэтрэхээс өмнө',
+          desc: 'Автомат сануулга, урьдчилсан хяналт.'
+        },
+        {
+          id: 'early',
+          title: 'Early collections',
+          label: 'Эрт үеийн цуглуулалт',
+          desc: 'Зөөлөн арга хэмжээ буюу автомат болон масс мсж илгээх, оператор холбогдож сануулах.'
+        },
+        {
+          id: 'late',
+          title: 'Late collections',
+          label: 'Хожуу үеийн цуглуулалт',
+          desc: 'Ойр дотны хүмүүстэй холбогдох, ажил болон гэрийн хаягаар уулзалтууд хийх, мэдэгдэх хуудас өгөх.'
+        },
+        {
+          id: 'recoveries',
+          title: 'Recoveries',
+          label: 'Нөхөн төлүүлэх',
+          desc: 'Барьцаа хөрөнгө хураах, Шүүх, ШШГ процесс.'
+        },
+        {
+          id: 'sales',
+          title: 'Write-off / Sales / Surveillance',
+          label: 'Борлуулалт, Хасалт',
+          desc: 'Барьцаа хөрөнгүүдийг зарах, Балансаас хасалт хийх, Сангийн зардлаас хаах.'
+        }
+      ]
+    },
     smsSection: {
       tag: 'OMNICHANNEL AUTOMATION',
       title: 'CallPro-д суурилсан ухаалаг МСЖ',
@@ -79,7 +122,7 @@ export const i18n = {
     hero: {
       tag: 'THE NEXT-GEN RECOVERY ENGINE',
       title: 'Зээл төлүүлэлтийн нэгдсэн удирдлагын Cockpit',
-      subtitle: 'DebtPro бол Банк, ББСБ-ын зээлийн багцыг эрүүлжүүлэх "Mission-Critical" үйлдлийн систем юм. Polaris-аас дата уншиж, CallPro-оор автоматжуул.',
+      subtitle: 'Банк болон ББСБ-ийн зээлийн эргэн төлөлтийг удирдах, хянах, автоматжуулж ажилтнуудын бүтээмжийг нэмэгдүүлэх, гүйцэтгэлийг бодит үнэлэх зорилготой цогц систем.',
       cta: 'Демо Захиалах',
       secondary: 'Шууд Үзэх',
       carousel: {
@@ -91,42 +134,30 @@ export const i18n = {
       }
     },
     whyDebtPro: {
-      tag: 'CORE DIFFERENTIATOR',
-      title: 'Яагаад DebtPro гэж?',
-      subtitle: 'DebtPro бол борлуулалтын CRM биш, харин өр төлүүлэлтийн онцлогт зориулагдсан мэргэжлийн "Operating System" юм.',
+      tag: 'ORGANIZATIONAL VALUE',
+      title: 'Байгууллагад өгөх үнэ цэн',
+      subtitle: 'Өрсөлдөх давуу талаа бий болгож бусдаас ялгар. Өгөгдөлд суурилан шийдвэр гаргаж эрсдэлээ бууруул.',
       legacy: {
-        title: 'Уламжлалт CRM',
+        title: 'Системийн Давуу Тал',
         items: [
-          'Зөвхөн борлуулалтад төвлөрсөн бүтэц',
-          'Зээлийн ангиллын ложик байхгүй',
-          'Дотоодын системүүдтэй холбогдоход хүндрэлтэй',
-          'Нэмэлт хөгжүүлэлтийн зардал өндөр'
+          'Харилцагч бүрд тохирсон стратеги хэрэгжүүлнэ',
+          'Зөв цагт, зөв сувгаар холбогдож эрсдэлээ удирдана',
+          'Зээлийн амьдралын мөчлөгт тохирсон ажиллагаа',
+          'Процессоо оновчилж ажилтнуудын бүтээмжийг нэмэгдүүлнэ',
+          'Автомат болон гар ажиллагааны уян хатан шийдэл',
+          'Ажилтнууд өөрсдийн хүссэнээр тохиргоо хийнэ'
         ]
       },
       advantage: {
-        title: 'DebtPro Advanced OS',
+        title: 'Бидний өгөх үнэ цэн',
         items: [
-          'Төлүүлэлтэд оновчлогдсон UI/UX',
-          'Polaris датаг шууд унших алгоритм',
-          'Хууль, Шүүхийн нэгдсэн хяналт',
-          'Баримт бичиг автоматаар үүсгэх загвар'
+          'Технологийн дэвшлийг ашиглан зардлаа бууруул',
+          'Ажилтнуудын гүйцэтгэлийг ил тод үнэлж сэтгэл ханамжийг нэмэгдүүл',
+          'Бүх төрлийн тайлан, датаг цаг алдалгүй авч хяналтаа чанаржуул',
+          'Төлөлтийн зан төлөвт суурилсан оновчтой шийдвэр',
+          'Аудит лог, бүртгэлүүдийг бүрэн хянах боломж',
+          'Виртуал оператор болон хиймэл оюуны шийдлүүд'
         ]
-      },
-      benefits: [
-        { title: 'Локал Интеграц', desc: 'CallPro болон банкны системүүдтэй шууд холбогдоно.' },
-        { title: 'Бүрэн Нийцэл', desc: 'Монгол улсын санхүүгийн хууль тогтоомжид нийцсэн.' },
-        { title: 'Автоматжуулалт', desc: 'Зээлдэгчийн зан төлөвт суурилсан төлүүлэлт.' }
-      ],
-      useCases: {
-        title: 'Салбарын шийдлүүд',
-        bank: {
-          title: 'Арилжааны Банкууд',
-          desc: 'Томоохон багц зээлийн ангилал, шилжилтийн тайланг автоматаар бодож, эрсдэлийн санг тогтооно.'
-        },
-        nbfi: {
-          title: 'ББСБ ба Хадгаламж зээл',
-          desc: 'Бичил зээлийн төлүүлэлтийг бүрэн автоматжуулж, үйл ажиллагааны зардлыг 40% бууруулна.'
-        }
       }
     },
     reviews: {
@@ -136,21 +167,18 @@ export const i18n = {
       items: [
         {
           name: 'Б. Тулга',
-          position: 'Эрсдэлийн удирдлагын газар',
           org: 'ТОП Банк',
           text: 'DebtPro-д шилжсэнээр манай зээлийн багцын чанар 24%-иар сайжирсан. Polaris системтэй шууд холбогддог нь хамгийн том давуу тал.',
           rating: 5
         },
         {
           name: 'Г. Саруул',
-          position: 'Гүйцэтгэх захирал',
           org: 'Финтек ББСБ',
           text: 'CallPro интеграц болон автомат МСЖ нь манай төлүүлэлтийн багийн бүтээмжийг 2 дахин нэмэгдүүлсэн.',
           rating: 5
         },
         {
           name: 'Д. Энхбаяр',
-          position: 'Ахлах хуульч',
           org: 'Кредит ХЗХ',
           text: 'Шүүхийн процесс болон мэдэгдэх хуудас автоматаар үүсдэг нь бичиг хэргийн ажлыг 80% хөнгөвчилсөн.',
           rating: 5
@@ -162,41 +190,11 @@ export const i18n = {
       title: 'Өгөгдлөөс Үр дүн хүртэл',
       subtitle: 'Зээл төлүүлэлтийн бүх процессыг DebtPro хэрхэн автоматжуулдаг вэ?',
       steps: [
-        {
-          id: 0,
-          label: 'Data Centralization',
-          path: 'Dashboard -> Import',
-          title: 'Өгөгдөл Төвлөрүүлэх',
-          desc: 'Polaris системээс датаг шууд импортлоно. Систем зээлийн ангиллыг автоматаар тогтооно.'
-        },
-        {
-          id: 1,
-          label: 'Smart Distribution',
-          path: 'Management -> Allocation',
-          title: 'Ухаалаг Хуваарилалт',
-          desc: 'Зээлүүдийг ажилтнуудын ачаалал болон дүн дээр үндэслэн алгоритмаар хуваарилна.'
-        },
-        {
-          id: 2,
-          label: 'Multi-Channel Action',
-          path: 'Collection -> Action',
-          title: 'Харилцах Сувгууд',
-          desc: 'CallPro ашиглан системээс шууд залгах, МСЖ илгээх. Бүх үйлдэл Timeline-д хадгалагдана.'
-        },
-        {
-          id: 3,
-          label: 'Legal Automation',
-          path: 'Legal -> Document Gen',
-          title: 'Баримт Бичгийн Автоматжуулалт',
-          desc: 'Мэдэгдэх хуудас, Шүүхийн нэхэмжлэлийг систем автоматаар бөглөж, хэвлэхэд бэлэн болгоно.'
-        },
-        {
-          id: 4,
-          label: 'Insights & Reporting',
-          path: 'Reports -> Dashboard',
-          title: 'Тайлан, Дүн Шинжилгээ',
-          desc: 'Төлүүлсэн дүн, ажилтнуудын гүйцэтгэлийг бодит цагийн графикаар хянана.'
-        }
+        { title: 'Өгөгдөл Төвлөрүүлэх', desc: 'Polaris системээс датаг шууд импортлоно.' },
+        { title: 'Ухаалаг Хуваарилалт', desc: 'Зээлүүдийг ажилтнуудын ачаалал дээр үндэслэн хуваарилна.' },
+        { title: 'Харилцах Сувгууд', desc: 'CallPro ашиглан системээс шууд залгах, МСЖ илгээх.' },
+        { title: 'Баримт Бичгийн Автоматжуулалт', desc: 'Мэдэгдэх хуудас, Шүүхийн нэхэмжлэлийг систем автоматаар бөглөнө.' },
+        { title: 'Тайлан, Дүн Шинжилгээ', desc: 'Төлүүлсэн дүн, ажилтнуудын гүйцэтгэлийг бодит цагт хянана.' }
       ]
     },
     workflow: {
@@ -225,7 +223,6 @@ export const i18n = {
       subtitle: 'Зээл төлүүлэлт бол секундээр хэмжигдэх өгөгдлийн урсгал юм.',
       excel: {
         title: 'Уламжлалт арга (Excel)',
-        description: 'Төлүүлэлтийн багийг хяналтгүй ажиллуулж, дата алдагдах өндөр эрсдэлтэй.',
         items: [
           'Датаг гараар зөөж алдаа гаргах',
           'Зээлийн ангиллыг гараар тооцоолох',
@@ -235,42 +232,33 @@ export const i18n = {
       },
       debtpro: {
         title: 'DebtPro Advanced OS',
-        description: 'Бүх датаг нэгдсэн системд төвлөрүүлж, бодит хяналт бий болгоно.',
         items: [
           'Auto-Allocation: Тэнцүү хуваарилалт',
           'Эрсдэлийн сангийн автомат тооцоолол',
           'CallPro: Системээс шууд залгах',
           'Барьцаа хөрөнгө, Хамаарал бүхий 360° мэдээлэл'
         ]
-      },
-      table: {
-        features: ['Өгөгдлийн хамгаалалт', 'Автомат хуваарилалт', 'CallPro Интеграц', 'Шүүхийн процесс', 'Баримт бичиг үүсгэх'],
-        excelValues: ['Байхгүй', 'Гар ажиллагаа', 'Байхгүй', 'Байхгүй', 'Байхгүй'],
-        debtproValues: ['AES-256', 'Автомат', 'Тийм', 'Тийм', 'Тийм']
       }
-    },
-    showcase: {
-      allocation: { title: 'Ухаалаг Хуваарилалт', benefit: 'Зээлийн багцыг ажилтнуудад оновчтой хуваарилна.', impact: 'AUTO-DISTRIBUTION' },
-      sms: { title: 'МСЖ Автоматжуулалт', benefit: 'Автомат МСЖ илгээж, хүргэлтийн тайланг хянана.', impact: '99.9% DELIVERY' },
-      routing: { title: 'CallPro Интеграц', benefit: 'Системээс шууд залгаж, ярианы түүхийг бүртгэнэ.', impact: 'ONE-CLICK CALL' },
-      lockin: { title: 'Баримт Бичиг', benefit: 'Нэхэмжлэх, мэдэгдэх хуудсыг системээс хэвлэнэ.', impact: 'DOC AUTOMATION' }
     },
     contactSection: {
       title: 'Хамтран ажиллах хүсэлт илгээх',
       subtitle: 'Бидэнтэй нэгдэж, төлүүлэлтийн процессоо дараагийн шатанд гаргахад бэлэн үү?',
       name: 'Таны нэр',
       org: 'Байгууллагын нэр',
-      phone: 'Утасны дугаар',
       email: 'И-мэйл хаяг',
-      message: 'Зурвас',
       submit: 'Хүсэлт Илгээх',
       success: 'Таны хүсэлтийг хүлээн авлаа. Бид тун удахгүй холбогдох болно.',
       placeholders: {
         name: 'Овог нэр',
         org: 'Банк, ББСБ-ын нэр',
-        phone: '9911....',
-        email: 'name@company.mn',
-        message: 'Хэрэгцээ шаардлагаа бичнэ үү...'
+        email: 'name@company.mn'
+      },
+      companyInfo: {
+        name: 'KCH Solution LLC',
+        phone: '77012277',
+        email: 'info@kchsolution.mn',
+        address: 'Улаанбаатар хот, Монгол улс',
+        map: 'Байршил харах'
       }
     },
     stats: {
@@ -287,8 +275,8 @@ export const i18n = {
       ]
     },
     finalCta: {
-      title: 'Эрсдэлээ Орлого болго.',
-      subtitle: 'Зээлийн багцаа эрүүлжүүлж, капиталын эргэлтээ сайжруул. Бид танд тусална.',
+      title: 'Эрсдэлээ орлого болго.',
+      subtitle: 'Эрсдэлийг гартаа ав. Зээлийн багцаа эрүүлжүүлж, капиталын эргэлтээ сайжруул. Бид танд тусална.',
       cta: 'Демо Захиалах'
     }
   },
@@ -304,6 +292,49 @@ export const i18n = {
       demo: 'Book a Demo',
       sms: 'SMS',
       docs: 'Documents'
+    },
+    recoveryStages: {
+      tag: 'LIFECYCLE MANAGEMENT',
+      title: 'End-to-end Recovery Lifecycle',
+      subtitle: 'Manage every phase from credit onboarding to final resolution or write-off.',
+      stages: [
+        {
+          id: 'onboarding',
+          title: 'Portfolio onboarding',
+          label: 'New Credit',
+          desc: 'Registering credit portfolios and establishing initial risk status.'
+        },
+        {
+          id: 'pre-delinquent',
+          title: 'Pre-delinquent',
+          label: 'Pre-overdue Phase',
+          desc: 'Automated reminders and proactive monitoring before missed payments.'
+        },
+        {
+          id: 'early',
+          title: 'Early collections',
+          label: 'Soft Collection',
+          desc: 'Automated mass SMS, IVR, and operator calls for short-term delays.'
+        },
+        {
+          id: 'late',
+          title: 'Late collections',
+          label: 'Hard Collection',
+          desc: 'Field visits, legal notices, and coordination with authorized contacts.'
+        },
+        {
+          id: 'recoveries',
+          title: 'Recoveries',
+          label: 'Asset Recovery',
+          desc: 'Asset seizure, court filings, and enforcement procedures.'
+        },
+        {
+          id: 'sales',
+          title: 'Write-off / Sales / Surveillance',
+          label: 'Resolution',
+          desc: 'Collateral sales, portfolio write-offs, and final risk fund clearing.'
+        }
+      ]
     },
     smsSection: {
       tag: 'OMNICHANNEL AUTOMATION',
@@ -369,7 +400,7 @@ export const i18n = {
     hero: {
       tag: 'THE NEXT-GEN RECOVERY ENGINE',
       title: 'The Unified Command Cockpit for Loan Recovery',
-      subtitle: 'The mission-critical operating system for Banks and NBFIs. Import data from Polaris and automate recovery with CallPro.',
+      subtitle: 'An intelligent system designed to manage, monitor, and automate loan repayments for Banks and NBFIs while increasing team productivity.',
       cta: 'Book a Demo',
       secondary: 'Live Preview',
       carousel: {
@@ -381,42 +412,30 @@ export const i18n = {
       }
     },
     whyDebtPro: {
-      tag: 'CORE DIFFERENTIATOR',
-      title: 'Why DebtPro?',
-      subtitle: 'Unlike generic CRMs, DebtPro is a specialized Operating System designed for the high-stakes world of debt recovery.',
+      tag: 'ORGANIZATIONAL VALUE',
+      title: 'Value to Organization',
+      subtitle: 'Stand out by building a competitive advantage. Reduce risk by making data-driven decisions.',
       legacy: {
-        title: 'Legacy CRMs',
+        title: 'System Advantages',
         items: [
-          'Sales-focused pipelines (Not recovery)',
-          'No native financial classification logic',
-          'Complex local integration barriers',
-          'High maintenance & dev overhead'
+          'Implement tailored strategies for every client',
+          'Manage risk via the right channel at the right time',
+          'Repayment behavior tracking & analysis',
+          'Optimize processes to boost agent productivity',
+          'Seamless blend of manual & auto allocation',
+          'Flexible self-service configuration'
         ]
       },
       advantage: {
-        title: 'DebtPro OS',
+        title: 'Core Business Value',
         items: [
-          'UI/UX optimized for high-volume collections',
-          'Native Polaris data mapping engine',
-          'End-to-end legal & court tracking',
-          'Automated notice generation templates'
+          'Reduce operational costs using advanced tech',
+          'Transparent performance evaluation',
+          'Real-time analytics for high-quality control',
+          'Proactive risk mitigation strategies',
+          'Full audit logs and historical tracking',
+          'Virtual agents & AI-powered recovery'
         ]
-      },
-      benefits: [
-        { title: 'Local Integration', desc: 'Direct connectivity with CallPro and local banking cores.' },
-        { title: 'Full Compliance', desc: 'Adheres to all Mongolian financial regulations.' },
-        { title: 'Automation', desc: 'Behavioral-based collection workflows.' }
-      ],
-      useCases: {
-        title: 'Industry Solutions',
-        bank: {
-          title: 'Commercial Banks',
-          desc: 'Automated migration reporting and risk fund provisioning for massive retail portfolios.'
-        },
-        nbfi: {
-          title: 'NBFIs & Cooperatives',
-          desc: 'End-to-end micro-loan automation using SMS triggers and CallPro integration.'
-        }
       }
     },
     reviews: {
@@ -426,21 +445,18 @@ export const i18n = {
       items: [
         {
           name: 'Tulga B.',
-          position: 'Head of Risk',
           org: 'Major Commercial Bank',
           text: 'Since switching to DebtPro, our portfolio recovery rate increased by 24%. The Polaris sync is seamless.',
           rating: 5
         },
         {
           name: 'Saruul G.',
-          position: 'CEO',
           org: 'Fintech NBFI',
           text: 'CallPro integration and mass SMS automation doubled our collection team\'s productivity.',
           rating: 5
         },
         {
           name: 'Enkhbayar D.',
-          position: 'Senior Counsel',
           org: 'Credit Cooperative',
           text: 'Automated legal notices reduced our paperwork burden by 80%. Highly efficient.',
           rating: 5
@@ -452,41 +468,11 @@ export const i18n = {
       title: 'From Data to Results',
       subtitle: 'How DebtPro automates every step of the loan recovery process.',
       steps: [
-        {
-          id: 0,
-          label: 'Data Centralization',
-          path: 'Dashboard -> Import',
-          title: 'Centralize Information',
-          desc: 'Import data from Polaris core. System auto-categorizes loans (Normal, Caution, etc.).'
-        },
-        {
-          id: 1,
-          label: 'Smart Distribution',
-          path: 'Management -> Allocation',
-          title: 'Intelligent Allocation',
-          desc: 'Automatically distribute loans based on agent workload via advanced system logic.'
-        },
-        {
-          id: 2,
-          label: 'Multi-Channel Action',
-          path: 'Collection -> Action',
-          title: 'Interaction Channels',
-          desc: 'Dial CallPro or send SMS directly from the app. Every action is tracked in real-time.'
-        },
-        {
-          id: 3,
-          label: 'Legal Automation',
-          path: 'Legal -> Document Gen',
-          title: 'Document Automation',
-          desc: 'Auto-fill notices and court documents based on borrower data. Ready to print.'
-        },
-        {
-          id: 4,
-          label: 'Insights & Reporting',
-          path: 'Reports -> Dashboard',
-          title: 'Analytics & Insights',
-          desc: 'Monitor recovery rates and agent performance through real-time charts.'
-        }
+        { title: 'Centralize Information', desc: 'Import data from Polaris core.' },
+        { title: 'Intelligent Allocation', desc: 'Automatically distribute loans based on agent workload.' },
+        { title: 'Interaction Channels', desc: 'Dial CallPro or send SMS directly from the app.' },
+        { title: 'Document Automation', desc: 'Auto-fill notices and court documents based on borrower data.' },
+        { title: 'Analytics & Insights', desc: 'Monitor recovery rates and agent performance.' }
       ]
     },
     workflow: {
@@ -515,7 +501,6 @@ export const i18n = {
       subtitle: 'Recovery is a data flow measured in seconds. Excel is a bottleneck.',
       excel: {
         title: 'Legacy (Excel)',
-        description: 'Unmonitored teams leading to high data risk and information silos.',
         items: [
           'Manual entry from core banking',
           'Manual risk fund calculation',
@@ -525,42 +510,33 @@ export const i18n = {
       },
       debtpro: {
         title: 'DebtPro Advanced OS',
-        description: 'Centralized system optimized by automated rules.',
         items: [
           'Auto-Allocation: Fair distribution',
           'Automatic Risk Fund calculation',
           'CallPro: Direct dialing & SMS',
           '360° Collateral & Linkage view'
         ]
-      },
-      table: {
-        features: ['Security', 'Auto Allocation', 'CallPro Integration', 'Legal Tracking', 'Doc Generation'],
-        excelValues: ['None', 'Manual', 'None', 'None', 'None'],
-        debtproValues: ['AES-256', 'Automated', 'Yes', 'Yes', 'Yes']
       }
-    },
-    showcase: {
-      allocation: { title: 'Smart Allocation', benefit: 'Distribute portfolios to agents automatically based on balance.', impact: 'AUTO-DISTRIBUTION' },
-      sms: { title: 'SMS Automation', benefit: 'Trigger mass SMS reminders and track delivery in real-time.', impact: '99.9% DELIVERY' },
-      routing: { title: 'CallPro Integration', benefit: 'Call directly from the system and auto-log results.', impact: 'ONE-CLICK CALL' },
-      lockin: { title: 'Doc Automation', benefit: 'Generate legal notices from templates instantly.', impact: 'DOC AUTOMATION' }
     },
     contactSection: {
       title: 'Modernize Your Recovery',
       subtitle: 'Ready to turn bad debt into recovered revenue? Fill out the form below.',
       name: 'Your Name',
       org: 'Organization Name',
-      phone: 'Phone Number',
       email: 'Email Address',
-      message: 'Message',
       submit: 'Request Access',
       success: 'Thank you! We will reach out to schedule your demo.',
       placeholders: {
         name: 'Full Name',
         org: 'Bank or NBFI Name',
-        phone: 'Phone Number',
-        email: 'name@company.com',
-        message: 'Tell us about your needs...'
+        email: 'name@company.com'
+      },
+      companyInfo: {
+        name: 'KCH Solution LLC',
+        phone: '77012277',
+        email: 'info@kchsolution.mn',
+        address: 'Ulaanbaatar, Mongolia',
+        map: 'View Location'
       }
     },
     stats: {
@@ -577,8 +553,8 @@ export const i18n = {
       ]
     },
     finalCta: {
-      title: 'Turn Risk into Revenue.',
-      subtitle: 'Stop managing debt in spreadsheets. Deploy DebtPro and recover capital with precision.',
+      title: 'Turn risk into income.',
+      subtitle: 'Take risk in your hands. Deploy DebtPro and recover capital with precision.',
       cta: 'Book a Demo'
     }
   },
@@ -594,6 +570,49 @@ export const i18n = {
       demo: '데모 신청',
       sms: 'SMS',
       docs: '문서'
+    },
+    recoveryStages: {
+      tag: '라이프사이클 관리',
+      title: '엔드투엔드 채권 회수 단계',
+      subtitle: '신규 대출 온보딩부터 최종 상각 및 매각까지의 모든 프로세스를 관리하세요.',
+      stages: [
+        {
+          id: 'onboarding',
+          title: 'Portfolio onboarding',
+          label: '신규 대출 등록',
+          desc: '대출 포트폴리오를 시스템에 등록하고 초기 리스크 상태를 설정합니다.'
+        },
+        {
+          id: 'pre-delinquent',
+          title: 'Pre-delinquent',
+          label: '연체 전 단계',
+          desc: '자동 알림 및 사전 모니터링을 통해 연체를 방지합니다.'
+        },
+        {
+          id: 'early',
+          title: 'Early collections',
+          label: '초기 채권 회수',
+          desc: '자동 및 대량 SMS/전화 안내를 통해 단기 연체를 관리합니다.'
+        },
+        {
+          id: 'late',
+          title: 'Late collections',
+          label: '후기 채권 회수',
+          desc: '현장 방문, 법적 예고 및 실거주지 확인을 통한 집중 관리를 수행합니다.'
+        },
+        {
+          id: 'recoveries',
+          title: 'Recoveries',
+          label: '채권 추심 단계',
+          desc: '담보물 회수, 소송 제기 및 강제 집행 절차를 진행합니다.'
+        },
+        {
+          id: 'sales',
+          title: 'Write-off / Sales / Surveillance',
+          label: '상각 및 매각',
+          desc: '담보 매각, 대손 처리 및 최종 리스크 펀드 정산을 완료합니다.'
+        }
+      ]
     },
     smsSection: {
       tag: 'OMNICHANNEL AUTOMATION',
@@ -671,42 +690,30 @@ export const i18n = {
       }
     },
     whyDebtPro: {
-      tag: 'CORE DIFFERENTIATOR',
-      title: '왜 DebtPro인가요?',
-      subtitle: '일반 CRM과 달리 DebtPro는 채권 회수라는 특수한 목적을 위해 설계된 전문 운영 시스템입니다.',
+      tag: 'ORGANIZATIONAL VALUE',
+      title: '조직에 대한 가치',
+      subtitle: '데이터 중심의 의사 결정을 통해 리스크를 관리하세요.',
       legacy: {
-        title: '레거시 CRM',
+        title: '시스템의 장점',
         items: [
-          '영업 중심의 파이프라인 (회수 부적합)',
-          '금융 분류 로직 부재',
-          '현지 시스템 연동의 어려움',
-          '높은 유지보수 비용'
+          '각 고객에게 맞는 맞춤형 전략 수립',
+          '적절한 시기에 적절한 채널을 통한 리스크 관리',
+          '상환 행동 데이터 분석 및 활용',
+          '상담원의 생산성을 극대화하기 위한 프로세스 최적화',
+          '수동 및 자동 배분의 유연한 결합',
+          '사용자가 직접 설정 가능한 시스템 구성'
         ]
       },
       advantage: {
-        title: 'DebtPro OS',
+        title: '우리가 제공하는 가치',
         items: [
-          '대량 회수에 최적화된 UI/UX',
-          '기본 Polaris 데이터 매핑 엔진',
-          '종단간 법적 추적 기능',
-          '자동 통지서 생성 템플릿'
+          '첨단 기술을 활용한 운영 비용 절감',
+          '투명한 성과 평가 체계 구축',
+          '실시간 분석을 통한 고품질 제어 시스템',
+          '선제적인 리스크 완화 전략',
+          '완벽한 감사 로그 및 이력 관리',
+          '가상 상담원 및 AI 기반 회수 솔루션'
         ]
-      },
-      benefits: [
-        { title: '현지 통합', desc: 'CallPro 및 현지 뱅킹 코어와 직접 연결됩니다.' },
-        { title: '규제 준수', desc: '모든 금융 규제 사항을 준수합니다.' },
-        { title: '자동화', desc: '행동 기반의 채권 회수 워크플로우.' }
-      ],
-      useCases: {
-        title: '산업별 솔루션',
-        bank: {
-          title: '상업 은행',
-          desc: '대규모 리테일 포트폴리오를 위한 자동 이동 보고 및 리스크 관리.'
-        },
-        nbfi: {
-          title: '비은행 금융기관',
-          desc: 'SMS 트리거 및 CallPro 통합을 통한 소액 대출 자동화.'
-        }
       }
     },
     reviews: {
@@ -716,21 +723,18 @@ export const i18n = {
       items: [
         {
           name: 'Tulga B.',
-          position: '리스크 관리 총괄',
           org: '대형 상업 은행',
           text: 'DebtPro 도입 후 회수율이 24% 향상되었습니다. Polaris 연동이 매우 강력합니다.',
           rating: 5
         },
         {
           name: 'Saruul G.',
-          position: 'CEO',
           org: '핀테크 NBFI',
           text: 'CallPro 통합과 자동 SMS 덕분에 팀의 생산성이 2배 증가했습니다.',
           rating: 5
         },
         {
           name: 'Enkhbayar D.',
-          position: '수석 고문',
           org: '신용 협동조합',
           text: '법적 문서 자동화로 서류 작업 부담이 80% 줄었습니다.',
           rating: 5
@@ -742,46 +746,16 @@ export const i18n = {
       title: '데이터에서 결과까지',
       subtitle: 'DebtPro가 채권 회수의 모든 단계를 자동화하는 방법.',
       steps: [
-        {
-          id: 0,
-          label: 'Data Centralization',
-          path: '대시보드 -> 가져오기',
-          title: '정보 중앙화',
-          desc: 'Polaris 코어에서 데이터를 즉시 가져옵니다. 시스템이 자동으로 대출을 분류합니다.'
-        },
-        {
-          id: 1,
-          label: 'Smart Distribution',
-          path: '관리 -> 배분',
-          title: '지능형 배분',
-          desc: '상담원의 업무량에 따라 대출 건을 자동으로 배분합니다.'
-        },
-        {
-          id: 2,
-          label: 'Multi-Channel Action',
-          path: '회수 -> 액션',
-          title: '상호작용 채널',
-          desc: '앱에서 직접 CallPro로 전화를 걸거나 SMS를 보냅니다.'
-        },
-        {
-          id: 3,
-          label: 'Legal Automation',
-          path: '법무 -> 문서 생성',
-          title: '문서 자동화',
-          desc: '대출자 데이터를 기반으로 법적 문서를 자동으로 생성합니다.'
-        },
-        {
-          id: 4,
-          label: 'Insights & Reporting',
-          path: '보고서 -> 대시보드',
-          title: '분석 및 인사이트',
-          desc: '실시간 차트를 통해 회수율과 상담원 실적을 모니터링합니다.'
-        }
+        { title: '정보 중앙화', desc: 'Polaris 코어에서 데이터를 즉시 가져옵니다.' },
+        { title: '지능형 배분', desc: '상담원의 업무량에 따라 대출 건을 자동으로 배분합니다.' },
+        { title: '상호작용 채널', desc: '앱에서 직접 CallPro로 전화를 걸거나 SMS를 보냅니다.' },
+        { title: '문서 자동화', desc: '대출자 데이터를 기반으로 법적 문서를 자동으로 생성합니다.' },
+        { title: '분석 및 인사이트', desc: '실시간 차트를 통해 회수율과 상담원 실적을 모니터링합니다.' }
       ]
     },
     workflow: {
       tag: 'PIPELINE LOGIC',
-      title: '통합 회수 워크플로우',
+      title: '통합 회수 워к플로우',
       subtitle: '첫 전화부터 법적 집행까지—단일 지능형 파이프라인에서 관리하세요.',
       stages: {
         call: '전화',
@@ -805,7 +779,6 @@ export const i18n = {
       subtitle: '회수는 초 단위로 측정되는 데이터 흐름입니다.',
       excel: {
         title: '레거시 (엑셀)',
-        description: '관리되지 않는 팀과 데이터 리스크가 발생합니다.',
         items: [
           '수동 데이터 입력 오류',
           '수동 리스크 계산',
@@ -815,42 +788,33 @@ export const i18n = {
       },
       debtpro: {
         title: 'DebtPro Advanced OS',
-        description: '자동화된 규칙에 의해 최적화된 중앙 시스템.',
         items: [
           'Auto-Allocation: 공정한 배분',
           '자동 리스크 충당금 계산',
           'CallPro: 직접 다이얼링 및 SMS',
           '360° 담보 및 연결성 보기'
         ]
-      },
-      table: {
-        features: ['보안', '자동 배분', 'CallPro 통합', '법적 추적', '문서 생성'],
-        excelValues: ['없음', '수동', '없음', '없음', '없음'],
-        debtproValues: ['AES-256', '자동화', '지원', '지원', '지원']
       }
-    },
-    showcase: {
-      allocation: { title: '스마트 배분', benefit: '잔액에 따라 상담원에게 포트폴리오를 자동 배분합니다.', impact: 'AUTO-DISTRIBUTION' },
-      sms: { title: 'SMS 자동화', benefit: '대량 SMS 알림을 트리거하고 실시간으로 수신을 추적합니다.', impact: '99.9% DELIVERY' },
-      routing: { title: 'CallPro 통합', benefit: '시스템에서 바로 전화를 걸고 결과를 기록합니다.', impact: 'ONE-CLICK CALL' },
-      lockin: { title: '문서 자동화', benefit: '템플릿에서 법적 문서를 즉시 생성합니다.', impact: 'DOC AUTOMATION' }
     },
     contactSection: {
       title: '회수 프로세스의 현대화',
       subtitle: '부실 채권을 회수 수익으로 바꿀 준비가 되셨나요?',
       name: '이름',
       org: '조직명',
-      phone: '전화번호',
       email: '이메일 주소',
-      message: '메시지',
       submit: '신청하기',
       success: '감사합니다! 데모 일정을 위해 곧 연락드리겠습니다.',
       placeholders: {
         name: '성함',
         org: '은행 또는 금융기관명',
-        phone: '전화번호',
-        email: 'name@company.com',
-        message: '필요한 사항을 알려주세요...'
+        email: 'name@company.com'
+      },
+      companyInfo: {
+        name: 'KCH Solution LLC',
+        phone: '77012277',
+        email: 'info@kchsolution.mn',
+        address: '몽골, 울란바토르',
+        map: '지도 보기'
       }
     },
     stats: {
@@ -868,7 +832,7 @@ export const i18n = {
     },
     finalCta: {
       title: '리스크를 수익으로.',
-      subtitle: '스프레드시트 관리는 멈추고 DebtPro로 정밀하게 자본을 회수하세요.',
+      subtitle: '리스크를 장악하세요. 스프레드시트 관리는 멈추고 DebtPro로 정밀하게 자본을 회수하세요.',
       cta: '데모 신청'
     }
   }

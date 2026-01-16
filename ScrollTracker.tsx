@@ -15,6 +15,7 @@ export const ScrollTracker: React.FC<ScrollTrackerProps> = ({ lang, theme }) => 
 
   const sections = [
     { id: 'home', label: t.nav.product },
+    { id: 'lifecycle', label: lang === 'mn' ? 'Үе шатууд' : 'Lifecycle' },
     { id: 'comparison', label: lang === 'mn' ? 'Харьцуулалт' : 'Comparison' },
     { id: 'why', label: t.nav.why },
     { id: 'solutions', label: t.nav.solutions },

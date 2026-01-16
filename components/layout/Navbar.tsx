@@ -69,12 +69,12 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
 
         <div className="hidden xl:flex items-center gap-8">
           <Dropdown menu={{ items: productMenuItems }} placement="bottomCenter">
-            <Button type="text" className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-500'}`}>
+            <Button type="text" className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-50'}`}>
               {t.nav.product} <DownOutlined style={{ fontSize: 9 }} />
             </Button>
           </Dropdown>
           {['solutions', 'why', 'pricing', 'customers'].map((key) => (
-            <Button key={key} type="text" onClick={() => scrollTo(key)} className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-500'}`}>
+            <Button key={key} type="text" onClick={() => scrollTo(key)} className={`uppercase text-[10px] font-black tracking-[0.2em] ${isDark ? 'text-slate-300' : 'text-slate-50'}`}>
               {(t.nav as any)[key]}
             </Button>
           ))}
@@ -91,8 +91,8 @@ export const Navbar: React.FC<NavbarProps> = ({ lang, setLang, theme, setTheme }
             />
             <Segmented
               size="small"
-              options={['MN', 'EN']}
-              value={lang.toUpperCase().slice(0,2)}
+              options={['MN', 'EN', 'KO']}
+              value={lang.toUpperCase()}
               onChange={(val) => setLang(val.toString().toLowerCase() as Language)}
               className="font-black text-[8px] md:text-[9px] hidden sm:block"
             />
